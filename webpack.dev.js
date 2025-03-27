@@ -23,7 +23,8 @@ module.exports = merge(common, {
   // Dev server code
   devtool: 'inline-source-map',
   devServer: {
-    static: './dist',
+    watchFiles: ['./src/template.html'],
+    liveReload: true
   },
 
   module: {

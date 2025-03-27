@@ -1,14 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Template</title>
-</head>
-<body>
-  <h1>Webpack</h1>
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur eveniet dolor neque culpa suscipit iste impedit unde. Deserunt provident tempora dignissimos sed necessitatibus, voluptate illum sapiente assumenda quae beatae, odio amet eveniet doloribus nisi vero culpa praesentium nemo consequatur, voluptatem atque! Fuga, tempore provident? Consectetur commodi aliquid sit molestiae culpa?</p>
-  <img src="https://picsum.photos/300/200" alt="Random Image">
-  <div class="image-div"></div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do List</title>
+  </head>
+  <body>
+    <header class="header">
+      <h1 class="header__title">To Do App</h1>
+    </header>
+    <aside class="sidebar">
+      <div class="profile">
+        <img
+          class="profile__image"
+          src="./assets/images/icon-profile.svg"
+          alt=""
+          width="50" />
+        <p class="profile__name">Username</p>
+      </div>
+
+      <ul class="action">
+        <li class="action__item">
+          <button class="action__button" type="button">
+            <img
+              class="action__image"
+              src="./assets/images/icon-plus-red.svg"
+              alt=""
+              width="15"
+              height="15" />
+            Add Task
+          </button>
+        </li>
+        <li class="action__item">
+          <button class="action__button" type="button">
+            <img
+              class="action__image"
+              src="./assets/images/icon-search.svg"
+              alt=""
+              width="15"
+              height="15" />
+            Search
+          </button>
+        </li>
+        <li class="action__item">
+          <button class="action__button" type="button">
+            <img
+              class="action__image"
+              src="./assets/images/icon-inbox.svg"
+              alt=""
+              width="15"
+              height="15" />
+            Inbox
+          </button>
+        </li>
+        <li class="action__item">
+          <button class="action__button" type="button">
+            <img
+              class="action__image"
+              src="./assets/images/icon-today.svg"
+              alt=""
+              width="15"
+              height="15" />
+            Today
+          </button>
+        </li>
+        <li class="action__item">
+          <button class="action__button" type="button">
+            <img
+              class="action__image"
+              src="./assets/images/icon-tomorrow.svg"
+              alt=""
+              width="15"
+              height="15" />
+            Tomorrow
+          </button>
+        </li>
+        <li class="action__item">
+          <button class="action__button" type="button">
+            <img
+              class="action__image"
+              src="./assets/images/icon-7-days.svg"
+              alt=""
+              width="15"
+              height="15" />
+            Next 7 days
+          </button>
+        </li>
+        <li class="action__item">
+          <button class="action__button" type="button">
+            <img
+              class="action__image"
+              src="./assets/images/icon-tasks.svg"
+              alt=""
+              width="15"
+              height="15" />
+            All Tasks
+          </button>
+        </li>
+      </ul>
+
+      <div class="projects">
+        <div class="project">
+          <div class="project__header">
+            <img
+              class="project__image-1"
+              src="./assets/images/icon-box.svg"
+              alt=""
+              width="20"
+              height="20" />
+            <h2 class="project__name">Hobbies</h2>
+            <button class="project__button">
+              <img class="project__image-2"
+              src="./assets/images/icon-plus-grey.svg" alt="" width="15"
+              height="15"
+            </button>
+          </div>
+
+          <ul class="project__list">
+            <li class="project__item">
+              <button class="project__button">
+                <img
+                  class="todo__image"
+                  src="./assets/images/icon-checkmark.svg"
+                  alt=""
+                  width="15"
+                  height="15" /> Learn Spanish
+              </button>
+            </li>
+            <li class="project__item">
+              <button class="project__button">
+                <img
+                  class="todo__image"
+                  src="./assets/images/icon-checkmark.svg"
+                  alt=""
+                  width="15"
+                  height="15" /> Go Hiking
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="add-project"></div>
+    </aside>
+    <main>
+      <div id="content"></div>
+    </main>
+  </body>
 </html>
