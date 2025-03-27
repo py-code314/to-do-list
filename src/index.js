@@ -1,7 +1,4 @@
-
+// import styles
 import './styles/styles.css'
-
-
-
-console.log("Hello World");
-console.log("Remove old files");
+// import JS modules
+import './scripts/newTodo'
