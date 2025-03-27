@@ -20,6 +20,8 @@
 
   --clr-white: hsl(0, 0%, 100%);
   --clr-light-grey: hsl(220, 16%, 96%);
+
+  --shadow-1: 3px 0px 5px 0px rgba(0,0,0,0.75);
 }
 
 /* ===================
@@ -121,12 +123,20 @@ body {
 
 .sidebar {
   grid-area: sidebar;
-  border-inline-end: 1px solid salmon;
+  /* border-inline-end: 1px solid salmon; */
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-80);
+  background-color: var(--clr-light-grey);
+  padding: var(--space-400);
+  box-shadow: var(--shadow-1);
+}
+
+.to-dos {
   display: flex;
   flex-direction: column;
   gap: var(--space-900);
-  background-color: var(--clr-light-grey);
-  padding: var(--space-400);
+  flex: 1;
 }
 
 .main {
@@ -171,6 +181,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: var(--space-900);
+  /* flex: 1; */
 }
 
 .project__header {
@@ -189,4 +200,10 @@ body {
 .project__name {
   font-weight: var(--fw-medium);
   font-size: var(--fs-600);
+}
+
+.new-project__button {
+  display: flex;
+  align-items: center;
+  gap: var(--space-80);
 }
