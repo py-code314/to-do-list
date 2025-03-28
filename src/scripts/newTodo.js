@@ -1,6 +1,6 @@
 // class to create a new to-do object
 class NewToDo {
-  constructor({ title, description = "", dueDate, priority, status = "incomplete", category = "inbox", notes = "", checklist = false }) {
+  constructor({ title, description = "", dueDate, priority = "medium", status = "incomplete", category = "inbox", notes = "", checklist = false }) {
     this.title = title
     this.description = description
     this.dueDate = dueDate
