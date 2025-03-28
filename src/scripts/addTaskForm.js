@@ -1,5 +1,5 @@
 /* Show Form when user clicks Add Task button */
-
+import { format } from 'date-fns';
 import closeIcon from '../assets/images/icon-close.svg';
 
 const content = document.querySelector('#content');
@@ -127,12 +127,15 @@ export function showNewTaskForm() {
   });
   dueDateLabel.appendChild(asterisk3);
 
+  const today = format(new Date(), 'yyyy-MM-dd');
+  console.log(today);
   // Create Due Date Input
   const dueDateInput = Object.assign(document.createElement('input'), {
     id: 'due-date',
     className: 'form__input',
     type: 'date',
     name: 'due-date',
+    min: `${today}`,
     required: true,
   });
 
