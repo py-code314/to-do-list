@@ -9,6 +9,9 @@
   --space-80: 0.5rem;
   --space-400: 1rem;
   --space-900: 2rem;
+  
+
+  
 
   --ff-baskerville: 'Libre Baskerville', serif;
   --ff-montserrat: 'Montserrat', sans-serif;
@@ -21,7 +24,8 @@
   --clr-white: hsl(0, 0%, 100%);
   --clr-light-grey: hsl(220, 16%, 96%);
 
-  --shadow-1: 3px 0px 5px 0px rgba(0,0,0,0.75);
+  --shadow-1: 3px 0px 5px 0px hsla(0, 0%, 0%, 0.75);
+  
 }
 
 /* ===================
@@ -207,3 +211,5 @@ body {
   align-items: center;
   gap: var(--space-80);
 }
+
+
