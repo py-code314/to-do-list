@@ -47,8 +47,10 @@ export function showNewTaskForm() {
   // Create Paragraph element
   const instruction = document.createElement('p');
   instruction.textContent = 'Required fields.';
-  const asterisk1 = document.createElement('strong');
-  asterisk1.textContent = '*';
+  const asterisk1 = Object.assign(document.createElement('strong'), {
+    className: 'form__asterisk',
+    textContent: '*',
+  });
   // Add Asterisk1 to Para
   instruction.insertAdjacentElement('afterbegin', asterisk1);
 
@@ -69,8 +71,10 @@ export function showNewTaskForm() {
     for: 'title',
     textContent: 'Title:',
   });
-  const asterisk2 = document.createElement('strong');
-  asterisk2.textContent = '* ';
+  const asterisk2 = Object.assign(document.createElement('strong'), {
+    className: 'form__asterisk',
+    textContent: '*'
+  });
   titleLabel.appendChild(asterisk2);
 
   // Create Title Input
@@ -117,8 +121,10 @@ export function showNewTaskForm() {
     for: 'due-date',
     textContent: 'Due Date:',
   });
-  const asterisk3 = document.createElement('strong');
-  asterisk3.textContent = '* ';
+  const asterisk3 = Object.assign(document.createElement('strong'), {
+    className: 'form__asterisk',
+    textContent: '*',
+  });
   dueDateLabel.appendChild(asterisk3);
 
   // Create Due Date Input
@@ -157,7 +163,7 @@ export function showNewTaskForm() {
   // Create Priority Legend
   const priorityLegend = Object.assign(document.createElement('legend'), {
     className: 'form__legend',
-    textContent: 'Priority',
+    textContent: 'Priority: ',
   });
 
   // Add Legend to Fieldset
@@ -174,7 +180,9 @@ export function showNewTaskForm() {
   // Create  Priority Radio buttons
   for (const priority of priorities) {
     // Create Priority Div
-    const priorityDiv = document.createElement('div');
+    const priorityDiv = Object.assign(document.createElement('div'), {
+      className: 'form__div'
+    });
 
     // Create Priority Input
     const priorityInput = Object.assign(document.createElement('input'), {
@@ -186,6 +194,7 @@ export function showNewTaskForm() {
       checked: priority.value === 'medium' ? true : false,
     });
 
+    //TODO: use append instead of appendChild
     // Create Priority Label
     const priorityLabel = Object.assign(document.createElement('label'), {
       for: `${priority.value}`,
@@ -222,7 +231,7 @@ export function showNewTaskForm() {
   // Create Status Legend
   const statusLegend = Object.assign(document.createElement('legend'), {
     className: 'form__legend',
-    textContent: 'Status',
+    textContent: 'Status: ',
   });
 
   // Add Legend to Fieldset
@@ -239,7 +248,9 @@ export function showNewTaskForm() {
   // Create  Status Radio buttons
   for (const status of statuses) {
     // Create Status div
-    const statusDiv = document.createElement('div');
+    const statusDiv = Object.assign(document.createElement('div'), {
+      className: 'form__div',
+    });
 
     // Create Status Input
     const statusInput = Object.assign(document.createElement('input'), {
