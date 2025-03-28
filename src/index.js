@@ -2,12 +2,10 @@
 import './styles/styles.css'
 // import JS modules
 import './scripts/newTodo'
-import { showNewTaskForm } from './scripts/addTaskForm';
+import { showNewTaskForm } from './scripts/newTaskForm';
 
 // Event listener for Add Task button
 const addTaskButton = document.querySelector('#addTask');
-// console.log(addTaskButton);
-
 addTaskButton.addEventListener('click', showNewTaskForm);
 
 

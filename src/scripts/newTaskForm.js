@@ -4,10 +4,36 @@ import closeIcon from '../assets/images/icon-close.svg';
 
 const content = document.querySelector('#content');
 
+// Priorities object
+const priorities = [
+  { value: 'low', text: 'Low' },
+  { value: 'medium', text: 'Medium' },
+  { value: 'high', text: 'High' },
+];
+
+// Statuses object
+const statuses = [
+  { value: 'incomplete', text: 'Incomplete' },
+  { value: 'in-progress', text: 'In Progress' },
+  { value: 'completed', text: 'Completed' },
+];
+
+// Categories object
+const categories = [
+  { value: 'inbox', text: 'Inbox' },
+  { value: 'personal', text: 'Personal' },
+  { value: 'work', text: 'Work' },
+  { value: 'hobbies', text: 'Hobbies' },
+];
+
+// Format today's date
+const today = format(new Date(), 'yyyy-MM-dd');
+
 export function showNewTaskForm() {
   // Dialog modal
-  const modal = document.createElement('dialog');
-  modal.classList.add('modal');
+  const modal = Object.assign(document.createElement('dialog'), {
+    className: 'modal',
+  });
 
   // Create Form
   const taskForm = Object.assign(document.createElement('form'), {
@@ -16,8 +42,9 @@ export function showNewTaskForm() {
   });
 
   /* Create Form Header */
-  const formHeader = document.createElement('header');
-  formHeader.classList.add('form__header');
+  const formHeader = Object.assign(document.createElement('header'), {
+    className: 'form__header',
+  });
 
   // Create Form Title
   const formTitle = Object.assign(document.createElement('h2'), {
@@ -45,8 +72,9 @@ export function showNewTaskForm() {
   closeButton.appendChild(closeImage);
 
   // Create Paragraph element
-  const instruction = document.createElement('p');
-  instruction.textContent = 'Required fields.';
+  const instruction = Object.assign(document.createElement('p'), {
+    textContent: 'Required fields.',
+  });
   const asterisk1 = Object.assign(document.createElement('strong'), {
     className: 'form__asterisk',
     textContent: '*',
@@ -58,12 +86,14 @@ export function showNewTaskForm() {
   formHeader.append(formTitle, closeButton, instruction);
 
   /* Form Content */
-  const formContent = document.createElement('div');
-  formContent.classList.add('form__content');
+  const formContent = Object.assign(document.createElement('div'), {
+    className: 'form__content',
+  });
 
   /* Create Title field */
-  const titleField = document.createElement('div');
-  titleField.classList.add('form__control');
+  const titleField = Object.assign(document.createElement('div'), {
+    className: 'form__control',
+  });
 
   // Create Title Label
   const titleLabel = Object.assign(document.createElement('label'), {
@@ -73,7 +103,7 @@ export function showNewTaskForm() {
   });
   const asterisk2 = Object.assign(document.createElement('strong'), {
     className: 'form__asterisk',
-    textContent: '*'
+    textContent: '*',
   });
   titleLabel.appendChild(asterisk2);
 
@@ -90,8 +120,9 @@ export function showNewTaskForm() {
   titleField.append(titleLabel, titleInput);
 
   /* Create Description field */
-  const descriptionField = document.createElement('div');
-  descriptionField.classList.add('form__control');
+  const descriptionField = Object.assign(document.createElement('div'), {
+    className: 'form__control',
+  });
 
   // Create Description Label
   const descriptionLabel = Object.assign(document.createElement('label'), {
@@ -112,8 +143,9 @@ export function showNewTaskForm() {
   descriptionField.append(descriptionLabel, descriptionInput);
 
   /* Create Due Date field */
-  const dueDateField = document.createElement('div');
-  dueDateField.classList.add('form__control');
+  const dueDateField = Object.assign(document.createElement('div'), {
+    className: 'form__control',
+  });
 
   // Create Due Date Label
   const dueDateLabel = Object.assign(document.createElement('label'), {
@@ -127,8 +159,6 @@ export function showNewTaskForm() {
   });
   dueDateLabel.appendChild(asterisk3);
 
-  const today = format(new Date(), 'yyyy-MM-dd');
-  console.log(today);
   // Create Due Date Input
   const dueDateInput = Object.assign(document.createElement('input'), {
     id: 'due-date',
@@ -142,26 +172,10 @@ export function showNewTaskForm() {
   // Add Label, Input to Due Date field
   dueDateField.append(dueDateLabel, dueDateInput);
 
-
-  // Priorities object
-  const priorities = [
-    {
-      value: 'low',
-      text: 'Low',
-    },
-    {
-      value: 'medium',
-      text: 'Medium',
-    },
-    {
-      value: 'high',
-      text: 'High',
-    },
-  ];
-
   /* Create Priority Fieldset */
-  const priorityFieldset = document.createElement('fieldset');
-  priorityFieldset.classList.add('form__control');
+  const priorityFieldset = Object.assign(document.createElement('fieldset'), {
+    className: 'form__control',
+  });
 
   // Create Priority Legend
   const priorityLegend = Object.assign(document.createElement('legend'), {
@@ -169,22 +183,16 @@ export function showNewTaskForm() {
     textContent: 'Priority: ',
   });
 
-  // Add Legend to Fieldset
-  priorityFieldset.appendChild(priorityLegend);
-
   // Create Wrapper for Radio buttons
   const priorityWrapper = Object.assign(document.createElement('div'), {
     className: 'form__wrapper',
   });
 
-  // Add Wrapper to Priority Field set
-  priorityFieldset.appendChild(priorityWrapper);
-
   // Create  Priority Radio buttons
   for (const priority of priorities) {
     // Create Priority Div
     const priorityDiv = Object.assign(document.createElement('div'), {
-      className: 'form__div'
+      className: 'form__div',
     });
 
     // Create Priority Input
@@ -204,32 +212,18 @@ export function showNewTaskForm() {
       textContent: `${priority.text}`,
     });
 
-    // Add Legend, Input to Div
+    // Add Input, Labels to Div
     priorityDiv.append(priorityInput, priorityLabel);
-    // Add priority div to wrapper
-    priorityWrapper.append(priorityDiv);
+    // Add Div to Wrapper
+    priorityWrapper.appendChild(priorityDiv);
+    // Add Legend, Wrapper to Priority Field set
+    priorityFieldset.append(priorityLegend, priorityWrapper);
   }
 
-
-  // Statuses object
-  const statuses = [
-    {
-      value: 'incomplete',
-      text: 'Incomplete',
-    },
-    {
-      value: 'in-progress',
-      text: 'In Progress',
-    },
-    {
-      value: 'completed',
-      text: 'Completed',
-    },
-  ];
-
   /* Create Status field */
-  const statusFieldset = document.createElement('fieldset');
-  statusFieldset.classList.add('form__control');
+  const statusFieldset = Object.assign(document.createElement('fieldset'), {
+    className: 'form__control',
+  });
 
   // Create Status Legend
   const statusLegend = Object.assign(document.createElement('legend'), {
@@ -237,16 +231,10 @@ export function showNewTaskForm() {
     textContent: 'Status: ',
   });
 
-  // Add Legend to Fieldset
-  statusFieldset.appendChild(statusLegend);
-
   // Create Wrapper for Radio buttons
   const statusWrapper = Object.assign(document.createElement('div'), {
     className: 'form__wrapper',
   });
-
-  // Add Wrapper to Status Field set
-  statusFieldset.appendChild(statusWrapper);
 
   // Create  Status Radio buttons
   for (const status of statuses) {
@@ -273,22 +261,16 @@ export function showNewTaskForm() {
 
     // Add Legend, Input to Div
     statusDiv.append(statusInput, statusLabel);
-    // Add status div to wrapper
-    statusWrapper.append(statusDiv);
+    // Add status Div to Wrapper
+    statusWrapper.appendChild(statusDiv);
+    // Add Legend, Wrapper to Status Field set
+    statusFieldset.append(statusLegend, statusWrapper);
   }
 
-
-  // Categories object
-  const categories = [
-    { value: 'inbox', text: 'Inbox' },
-    { value: 'personal', text: 'Personal' },
-    { value: 'work', text: 'Work' },
-    { value: 'hobbies', text: 'Hobbies' },
-  ];
-
   /* Create Category field */
-  const categoryField = document.createElement('div');
-  categoryField.classList.add('form__control');
+  const categoryField = Object.assign(document.createElement('div'), {
+    className: 'form__control',
+  });
 
   // Create Category Label
   const categoryLabel = Object.assign(document.createElement('label'), {
@@ -359,7 +341,7 @@ export function showNewTaskForm() {
     className: 'button button--cancel',
     type: 'button',
     value: 'cancel',
-    textContent: 'Cancel'
+    textContent: 'Cancel',
   });
 
   // Create Submit button
@@ -368,7 +350,7 @@ export function showNewTaskForm() {
     className: 'button button--submit',
     type: 'submit',
     value: 'submit',
-    textContent: 'Add'
+    textContent: 'Add',
   });
 
   // Add Cancel, Submit buttons to Footer
