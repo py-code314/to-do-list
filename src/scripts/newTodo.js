@@ -1,5 +1,5 @@
 // class to create a new to-do object
-class NewToDo {
+export class NewToDo {
   constructor({ title, description = "", dueDate, priority = "medium", status = "incomplete", category = "inbox", notes = "", checklist = false }) {
     this.title = title
     this.description = description
@@ -13,4 +13,4 @@ class NewToDo {
 }
 
 const todo = new NewToDo({ title: 'get milk', dueDate: '03-28-25', priority: 'high', notes: 'check the date before buying' })
-console.log(todo);
+// console.log(todo);

@@ -1,6 +1,6 @@
 /* Show Form when user clicks Add Task button */
 import { format } from 'date-fns';
-import closeIcon from '../assets/images/icon-close.svg';
+import { handleFormButtons } from './formButtons';
 
 const content = document.querySelector('#content');
 
@@ -52,25 +52,6 @@ export function showNewTaskForm() {
     textContent: 'New Task',
   });
 
-  // Create Close Button
-  const closeButton = Object.assign(document.createElement('button'), {
-    id: 'closeButton',
-    className: 'button button--close',
-    type: 'button',
-    value: 'close',
-  });
-
-  // Create Image element
-  const closeImage = Object.assign(document.createElement('img'), {
-    className: 'form__image',
-    src: `${closeIcon}`,
-    alt: 'Close',
-    title: 'Close',
-    width: '30',
-    height: '30',
-  });
-  closeButton.appendChild(closeImage);
-
   // Create Paragraph element
   const instruction = Object.assign(document.createElement('p'), {
     textContent: 'Required fields.',
@@ -83,7 +64,7 @@ export function showNewTaskForm() {
   instruction.insertAdjacentElement('afterbegin', asterisk1);
 
   // Add H2, Button, Para to Form Header
-  formHeader.append(formTitle, closeButton, instruction);
+  formHeader.append(formTitle, instruction);
 
   /* Form Content */
   const formContent = Object.assign(document.createElement('div'), {
@@ -114,6 +95,7 @@ export function showNewTaskForm() {
     type: 'text',
     name: 'title',
     required: true,
+    autofocus: true
   });
 
   // Add Label, Input to Title field
@@ -164,7 +146,7 @@ export function showNewTaskForm() {
     id: 'due-date',
     className: 'form__input',
     type: 'date',
-    name: 'due-date',
+    name: 'dueDate',
     min: `${today}`,
     required: true,
   });
@@ -205,7 +187,6 @@ export function showNewTaskForm() {
       checked: priority.value === 'medium' ? true : false,
     });
 
-    //TODO: use append instead of appendChild
     // Create Priority Label
     const priorityLabel = Object.assign(document.createElement('label'), {
       for: `${priority.value}`,
@@ -363,5 +344,11 @@ export function showNewTaskForm() {
   modal.appendChild(taskForm);
   content.appendChild(modal);
 
+  // Reset Form
+  // taskForm.reset()
+  // Show Modal
   modal.showModal();
+
+  handleFormButtons(modal, taskForm)
+  
 }
