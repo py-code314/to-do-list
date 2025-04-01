@@ -1,7 +1,7 @@
 /* Show Form when user clicks Add Task button */
 import { format } from 'date-fns';
 import { handleFormButtons } from './formButtons';
-import { validateForm } from './formInputs';
+import { validateForm } from './formValidation';
 
 const content = document.querySelector('#content');
 
@@ -365,13 +365,23 @@ export function showNewTaskForm() {
   // Show Modal
   modal.showModal();
 
-  handleFormButtons(
+  // handleFormButtons(
+  //   modal,
+  //   taskForm,
+  //   titleInput,
+  //   dueDateInput,
+  //   titleError,
+  //   dueDateError,
+  //   cancelButton
+  // );
+  // validateForm(taskForm, titleInput, dueDateInput, titleError, dueDateError)
+  return {
     modal,
     taskForm,
     titleInput,
     dueDateInput,
     titleError,
-    dueDateError
-  );
-  validateForm(taskForm, titleInput, dueDateInput, titleError, dueDateError)
+    dueDateError,
+    cancelButton
+  };
 }
