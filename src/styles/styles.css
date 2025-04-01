@@ -314,6 +314,18 @@ body {
   width: 65%;
 }
 
+.form__input:user-invalid {
+  border: none;
+  outline: 2px solid red;
+}
+
+/* Styles for form error messages */
+.form__error {
+  color: var(--clr-red);
+  width: 65%;
+  align-self: end;
+}
+
 .form__asterisk {
   color: var(--clr-red);
 }

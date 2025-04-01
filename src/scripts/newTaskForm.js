@@ -1,6 +1,7 @@
 /* Show Form when user clicks Add Task button */
 import { format } from 'date-fns';
 import { handleFormButtons } from './formButtons';
+import { validateForm } from './formInputs';
 
 const content = document.querySelector('#content');
 
@@ -39,6 +40,7 @@ export function showNewTaskForm() {
   const taskForm = Object.assign(document.createElement('form'), {
     className: 'form',
     method: 'dialog',
+    noValidate: true,
   });
 
   /* Create Form Header */
@@ -95,11 +97,17 @@ export function showNewTaskForm() {
     type: 'text',
     name: 'title',
     required: true,
-    autofocus: true
+    autofocus: true,
   });
 
   // Add Label, Input to Title field
   titleField.append(titleLabel, titleInput);
+
+  // Add Error Div
+  const titleError = Object.assign(document.createElement('div'), {
+    id: 'title-error',
+    className: 'form__error',
+  });
 
   /* Create Description field */
   const descriptionField = Object.assign(document.createElement('div'), {
@@ -153,6 +161,12 @@ export function showNewTaskForm() {
 
   // Add Label, Input to Due Date field
   dueDateField.append(dueDateLabel, dueDateInput);
+
+  // Add Error Div
+  const dueDateError = Object.assign(document.createElement('div'), {
+    id: 'due-date-error',
+    className: 'form__error',
+  });
 
   /* Create Priority Fieldset */
   const priorityFieldset = Object.assign(document.createElement('fieldset'), {
@@ -302,8 +316,10 @@ export function showNewTaskForm() {
   // Add Title, Description, Due Date, Priority, Status, Category, Notes to Form Content
   formContent.append(
     titleField,
+    titleError,
     descriptionField,
     dueDateField,
+    dueDateError,
     priorityFieldset,
     statusFieldset,
     categoryField,
@@ -349,6 +365,13 @@ export function showNewTaskForm() {
   // Show Modal
   modal.showModal();
 
-  handleFormButtons(modal, taskForm)
-  
+  handleFormButtons(
+    modal,
+    taskForm,
+    titleInput,
+    dueDateInput,
+    titleError,
+    dueDateError
+  );
+  validateForm(taskForm, titleInput, dueDateInput, titleError, dueDateError)
 }

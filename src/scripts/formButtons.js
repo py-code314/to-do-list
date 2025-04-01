@@ -1,7 +1,14 @@
-import { NewToDo } from "./newTodo";
+import { validateForm } from './formInputs';
+import { NewToDo } from './newTodo';
 
-
-export function handleFormButtons(modal, form) {
+export function handleFormButtons(
+  modal,
+  form,
+  titleInput,
+  dueDateInput,
+  titleError,
+  dueDateError
+) {
   // Close dialog when user presses Esc key
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') {
@@ -15,23 +22,24 @@ export function handleFormButtons(modal, form) {
     // Pass 'cancel' to the dialog so that it doesn't return 'submit'
 
     if (event.target.id === 'cancel') {
-      modal.close('cancel');
+      // modal.close('cancel');
+      modal.close();
     }
   });
 
   // Submit form when user clicks Add button
-  modal.addEventListener('close', () => {
-    if (modal.returnValue === 'submit') {
-      // Create new formData object
-      const formData = new FormData(form);
+  modal.addEventListener('submit', () => {
+    validateForm(form, titleInput, dueDateInput, titleError, dueDateError);
 
-      // Convert formData to object
-      const taskData = Object.fromEntries(formData);
-      // console.log(taskData);
+    // Create new formData object
+    const formData = new FormData(form);
 
-      // Create new to do
-      const task = new NewToDo(taskData)
-      console.log(task);
-    }
+    // Convert formData to JS object
+    const taskData = Object.fromEntries(formData);
+    console.log(taskData);
+
+    // Create new task
+    const task = new NewToDo(taskData);
+    // console.log(task);
   });
 }
