@@ -384,9 +384,16 @@ body {
   border-radius: var(--radius-2);
 }
 
+.task__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .task__div {
   display: flex;
-  gap: var(--space-80);
+  align-items: center;
+  gap: var(--space-200);
   font-weight: var(--fw-medium);
 }
 
@@ -402,6 +409,11 @@ body {
   padding: var(--space-80);
   width: var(--fs-400);
   
+}
+
+.task__buttons {
+  display: flex;
+  gap: var(--space-200);
 }
 
 .task__category {

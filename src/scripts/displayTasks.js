@@ -1,9 +1,15 @@
 import { tasks } from './formData';
 
+// Import Images
+import editIcon from '../assets/images/icon-edit.svg'
+import deleteIcon from '../assets/images/icon-delete.svg'
+
+
 const { parseISO, format } = require('date-fns');
 
 export function displayTasks() {
   const content = document.querySelector('#content');
+  content.textContent = ""
 
   // Create Tasks Container
   const tasksContainer = Object.assign(document.createElement('ul'), {
@@ -36,33 +42,99 @@ export function displayTasks() {
       }
     }
 
+    // Create container for Title div and Buttons div
+    const titleButtonsDiv = Object.assign(document.createElement('div'), {
+      className: 'task__container',
+    });
+
     // Create Title container
     const titleDiv = Object.assign(document.createElement('div'), {
-      className: 'task__div'
+      className: 'task__div',
     });
 
     // Create Check box
     const taskStatus = Object.assign(document.createElement('input'), {
-      id: 'status',
+      id: task.id,
       className: 'task__input',
       type: 'checkbox',
       name: 'status',
-      checked: task.status === 'completed' ? true : false
+      checked: task.status === 'completed' ? true : false,
     });
-
-    
 
     // Create Title
     const taskTitle = Object.assign(document.createElement('label'), {
       className: 'task__title',
-      for: 'status',
+      htmlFor: task.id,
       textContent: task.title,
     });
 
     // Add Check box and Title to Title Div
-    titleDiv.append(taskStatus, taskTitle)
+    titleDiv.append(taskStatus, taskTitle);
 
-    
+    // Create Buttons Container
+    const buttonsDiv = Object.assign(document.createElement('div'), {
+      className: 'task__buttons',
+    });
+
+    // Create Edit button
+    const editButton = Object.assign(document.createElement('button'), {
+      id: 'editButton',
+      className: 'button button--edit',
+    });
+    // Set Background color based on Priority
+    for (const priority of priorities) {
+      if (task.priority === priority.value) {
+        editButton.style.backgroundColor = priority.color;
+        break;
+      } else {
+        editButton.style.backgroundColor = '';
+      }
+    }
+
+    // Create Edit Image
+    const editImage = Object.assign(document.createElement('img'), {
+      className: 'task__image',
+      src: `${editIcon}`,
+      alt: '',
+      width: '22',
+      height: '22',
+    });
+
+    // Add Edit image to Edit button
+    editButton.appendChild(editImage);
+
+    // Create Edit button
+    const deleteButton = Object.assign(document.createElement('button'), {
+      id: 'deleteButton',
+      className: 'button button--delete',
+    });
+    // Set Background color based on Priority
+    for (const priority of priorities) {
+      if (task.priority === priority.value) {
+        deleteButton.style.backgroundColor = priority.color;
+        break;
+      } else {
+        deleteButton.style.backgroundColor = '';
+      }
+    }
+
+    // Create Edit Image
+    const deleteImage = Object.assign(document.createElement('img'), {
+      className: 'task__image',
+      src: `${deleteIcon}`,
+      alt: '',
+      width: '22',
+      height: '22',
+    });
+
+    // Add Edit image to Edit button
+    deleteButton.appendChild(deleteImage);
+
+    // Add Edit button to Buttons Container
+    buttonsDiv.append(editButton, deleteButton);
+
+    // Add Title div and Buttons div to Title Buttons container
+    titleButtonsDiv.append(titleDiv, buttonsDiv);
 
     // Create Description
     const taskDescription = Object.assign(document.createElement('p'), {
@@ -76,8 +148,8 @@ export function displayTasks() {
     });
 
     // Parse Due Date
-    const parsedDate = parseISO(task.dueDate)
-    
+    const parsedDate = parseISO(task.dueDate);
+
     // Create Date
     const taskDueDate = Object.assign(document.createElement('p'), {
       className: 'task__due-date',
@@ -91,7 +163,7 @@ export function displayTasks() {
     });
 
     // Add Date and Category to Date - Category Container
-    dateCategoryDiv.append(taskDueDate, taskCategory)
+    dateCategoryDiv.append(taskDueDate, taskCategory);
 
     // Create Notes
     const taskNotes = Object.assign(document.createElement('p'), {
@@ -101,8 +173,7 @@ export function displayTasks() {
 
     // Add Title, Description, Date, Category and Notes to Task Div
     taskDiv.append(
-      titleDiv,
-      
+      titleButtonsDiv,
       taskDescription,
       dateCategoryDiv,
       taskNotes
