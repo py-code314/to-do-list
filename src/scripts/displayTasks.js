@@ -36,26 +36,43 @@ export function displayTasks() {
       }
     }
 
+    // Create Title container
+    const titleDiv = Object.assign(document.createElement('div'), {
+      className: 'task__div'
+    });
+
     // Create Check box
     const taskStatus = Object.assign(document.createElement('input'), {
       id: 'status',
-      className: 'form__input',
+      className: 'task__input',
       type: 'checkbox',
       name: 'status',
       checked: task.status === 'completed' ? true : false
     });
 
+    
 
     // Create Title
-    const taskTitle = Object.assign(document.createElement('h2'), {
+    const taskTitle = Object.assign(document.createElement('label'), {
       className: 'task__title',
-      textContent: `${task.title}`,
+      for: 'status',
+      textContent: task.title,
     });
+
+    // Add Check box and Title to Title Div
+    titleDiv.append(taskStatus, taskTitle)
+
+    
 
     // Create Description
     const taskDescription = Object.assign(document.createElement('p'), {
       className: 'task__description',
-      textContent: `${task.description}`,
+      textContent: task.description,
+    });
+
+    // Create Date - Category container
+    const dateCategoryDiv = Object.assign(document.createElement('div'), {
+      className: 'task__div',
     });
 
     // Parse Due Date
@@ -70,22 +87,24 @@ export function displayTasks() {
     // Create Category
     const taskCategory = Object.assign(document.createElement('p'), {
       className: 'task__category',
-      textContent: `${task.category}`,
+      textContent: task.category,
     });
+
+    // Add Date and Category to Date - Category Container
+    dateCategoryDiv.append(taskDueDate, taskCategory)
 
     // Create Notes
     const taskNotes = Object.assign(document.createElement('p'), {
       className: 'task__notes',
-      textContent: `${task.notes}`,
+      textContent: task.notes,
     });
 
     // Add Title, Description, Date, Category and Notes to Task Div
     taskDiv.append(
-      taskStatus,
-      taskTitle,
+      titleDiv,
+      
       taskDescription,
-      taskDueDate,
-      taskCategory,
+      dateCategoryDiv,
       taskNotes
     );
 
