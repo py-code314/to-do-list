@@ -29,6 +29,7 @@ export function validateForm(
   if (titleInput.validity.valueMissing) {
     titleError.textContent = 'Title must not be empty';
     isValid = false;
+    titleInput.focus()
   } else {
     titleError.textContent = '';
   }

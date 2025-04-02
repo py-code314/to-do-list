@@ -11,7 +11,8 @@ import {
   validateDueDateInput,
   validateForm,
 } from './scripts/formValidation';
-import { closeModal, createNewTask } from './scripts/formButtons';
+import { createNewTask } from './scripts/formData';
+import { displayTasks } from './scripts/displayTasks';
 
 // Event listener for Add Task button
 const addTaskButton = document.querySelector('#addTask');
@@ -23,12 +24,13 @@ addTaskButton.addEventListener('click', () => {
     dueDateInput,
     titleError,
     dueDateError,
-    cancelButton
+    cancelButton,
   } = showNewTaskForm();
 
   cancelButton.addEventListener('click', () => {
-    closeModal(modal)
-  })
+    // closeModal(modal)
+    modal.close();
+  });
 
   titleInput.addEventListener('input', () => {
     validateTitleInput(titleInput, titleError);
@@ -48,7 +50,9 @@ addTaskButton.addEventListener('click', () => {
     if (isFormValid) {
       modal.close();
       console.log('form is valid');
-      createNewTask(taskForm)
+      createNewTask(taskForm);
     }
   });
 });
+
+displayTasks()

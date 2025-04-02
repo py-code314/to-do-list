@@ -28,6 +28,10 @@
   --clr-black: hsl(0, 0%, 0%);
   --clr-dark-grey: hsl(226, 46%, 20%);
   --clr-red: hsl(0, 100%, 50%);
+  --clr-light-red: hsl(6, 77%, 74%);
+  --clr-light-orange: hsl(37, 91%, 71%);
+  --clr-light-blue: hsl(204, 70%, 72%);
+
 
   --shadow-1: 3px 0px 5px 0px hsla(0, 0%, 0%, 0.75);
   --shadow-2: 5px 5px 10px hsla(0, 0%, 0%, 0.5);
@@ -363,3 +367,5 @@ body {
   color: var(--clr-white);
   padding: var(--space-40) var(--space-80);
 }
+
+

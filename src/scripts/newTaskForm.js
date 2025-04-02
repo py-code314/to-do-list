@@ -1,15 +1,21 @@
 /* Show Form when user clicks Add Task button */
 import { format } from 'date-fns';
-import { handleFormButtons } from './formButtons';
+import { handleFormButtons } from './formData';
 import { validateForm } from './formValidation';
+
+// Import images
+
+import blueCircleImg from '../assets/images/icon-blue-circle.svg'
+import orangeCircleImg from '../assets/images/icon-orange-circle.svg'
+import redCircleImg from '../assets/images/icon-red-circle.svg';
 
 const content = document.querySelector('#content');
 
 // Priorities object
 const priorities = [
-  { value: 'low', text: 'Low' },
-  { value: 'medium', text: 'Medium' },
-  { value: 'high', text: 'High' },
+  { value: 'low', text: 'Low', image: blueCircleImg },
+  { value: 'medium', text: 'Medium', image: orangeCircleImg },
+  { value: 'high', text: 'High', image: redCircleImg },
 ];
 
 // Statuses object
@@ -207,8 +213,17 @@ export function showNewTaskForm() {
       textContent: `${priority.text}`,
     });
 
+    // Add Color Image
+    const priorityImage = Object.assign(document.createElement('img'), {
+      className: 'form__image',
+      src: `${priority.image}`,
+      alt: "pic",
+      width: "15",
+      height: "15"
+    });
+
     // Add Input, Labels to Div
-    priorityDiv.append(priorityInput, priorityLabel);
+    priorityDiv.append(priorityInput, priorityLabel, priorityImage);
     // Add Div to Wrapper
     priorityWrapper.appendChild(priorityDiv);
     // Add Legend, Wrapper to Priority Field set
@@ -365,16 +380,6 @@ export function showNewTaskForm() {
   // Show Modal
   modal.showModal();
 
-  // handleFormButtons(
-  //   modal,
-  //   taskForm,
-  //   titleInput,
-  //   dueDateInput,
-  //   titleError,
-  //   dueDateError,
-  //   cancelButton
-  // );
-  // validateForm(taskForm, titleInput, dueDateInput, titleError, dueDateError)
   return {
     modal,
     taskForm,
@@ -382,6 +387,6 @@ export function showNewTaskForm() {
     dueDateInput,
     titleError,
     dueDateError,
-    cancelButton
+    cancelButton,
   };
 }
