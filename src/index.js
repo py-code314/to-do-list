@@ -13,6 +13,8 @@ import {
 } from './scripts/formValidation';
 import { createNewTask } from './scripts/formData';
 import { displayTasks } from './scripts/displayTasks';
+import { addToLocalStorage } from './scripts/localStorage';
+import { restoreFromLocalStorage } from './scripts/localStorage';
 
 const content = document.querySelector('#content');
 
@@ -51,7 +53,7 @@ addTaskButton.addEventListener('click', () => {
 
     if (isFormValid) {
       modal.close();
-      console.log('form is valid');
+      // console.log('form is valid');
       createNewTask(taskForm);
     }
   });
@@ -59,3 +61,5 @@ addTaskButton.addEventListener('click', () => {
 
 // displayTasks()
 content.addEventListener('itemsUpdated', displayTasks)
+content.addEventListener('itemsUpdated', addToLocalStorage)
+restoreFromLocalStorage()

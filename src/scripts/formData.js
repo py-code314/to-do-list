@@ -1,41 +1,41 @@
 import { NewTask } from './newTodo';
-import { displayTasks } from './displayTasks';
+// import { displayTasks } from './displayTasks';
 
 const content = document.querySelector('#content');
 // console.log(content);
-export const tasks = [
-  {
-    title: 'buy milk',
-    description:
-      'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi',
-    dueDate: '2025-04-02',
-    priority: 'medium',
-    status: 'incomplete',
-    category: 'inbox',
-    notes: '',
-    id: '123'
-  },
-  {
-    title: 'laundry',
-    description: '',
-    dueDate: '2025-04-05',
-    priority: 'low',
-    status: 'incomplete',
-    category: 'inbox',
-    notes:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-    id: '345'
-  },
-  {
-    title: 'pay bills',
-    description: '',
-    dueDate: '2025-04-05',
-    priority: 'high',
-    status: 'incomplete',
-    category: 'inbox',
-    notes: '',
-    id: '567'
-  },
+export let tasks = [
+  // {
+  //   title: 'buy milk',
+  //   description:
+  //     'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi',
+  //   dueDate: '2025-04-02',
+  //   priority: 'medium',
+  //   status: 'incomplete',
+  //   category: 'inbox',
+  //   notes: '',
+  //   id: '123'
+  // },
+  // {
+  //   title: 'laundry',
+  //   description: '',
+  //   dueDate: '2025-04-05',
+  //   priority: 'low',
+  //   status: 'incomplete',
+  //   category: 'inbox',
+  //   notes:
+  //     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+  //   id: '345'
+  // },
+  // {
+  //   title: 'pay bills',
+  //   description: '',
+  //   dueDate: '2025-04-05',
+  //   priority: 'high',
+  //   status: 'incomplete',
+  //   category: 'inbox',
+  //   notes: '',
+  //   id: '567'
+  // },
   
 ];
 
