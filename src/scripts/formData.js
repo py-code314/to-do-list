@@ -1,8 +1,10 @@
 import { NewTask } from './newTodo';
 // import { displayTasks } from './displayTasks';
 
-const content = document.querySelector('#content');
+const taskList = document.querySelector('#task-list');
 // console.log(content);
+
+
 export let tasks = [
   // {
   //   title: 'buy milk',
@@ -55,6 +57,6 @@ export function createNewTask(form) {
   tasks.push(task);
   console.log(tasks);
   // displayTasks()
-  content.dispatchEvent(new CustomEvent('itemsUpdated'))
+  taskList.dispatchEvent(new CustomEvent('itemsUpdated'))
 }
 console.log(tasks);

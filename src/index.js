@@ -15,8 +15,9 @@ import { createNewTask } from './scripts/formData';
 import { displayTasks } from './scripts/displayTasks';
 import { addToLocalStorage } from './scripts/localStorage';
 import { restoreFromLocalStorage } from './scripts/localStorage';
+import { deleteTask } from './scripts/deleteTask';
 
-const content = document.querySelector('#content');
+const taskList = document.querySelector('#task-list');
 
 // Event listener for Add Task button
 const addTaskButton = document.querySelector('#addTask');
@@ -60,6 +61,16 @@ addTaskButton.addEventListener('click', () => {
 });
 
 // displayTasks()
-content.addEventListener('itemsUpdated', displayTasks)
-content.addEventListener('itemsUpdated', addToLocalStorage)
+taskList.addEventListener('itemsUpdated', displayTasks)
+taskList.addEventListener('itemsUpdated', addToLocalStorage)
 restoreFromLocalStorage()
+
+taskList.addEventListener('click', (event) => {
+  // console.log(event, event.target, event.currentTarget);
+  console.log(event.target.parentNode.id);
+  if (event.target.parentNode.id === 'deleteButton') {
+    console.log('img clicked');
+    deleteTask(parseInt(event.target.parentNode.value));
+  }
+})
+

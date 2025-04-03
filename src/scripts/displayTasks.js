@@ -8,16 +8,21 @@ import deleteIcon from '../assets/images/icon-delete.svg'
 const { parseISO, format } = require('date-fns');
 
 export function displayTasks() {
-  const content = document.querySelector('#content');
-  content.textContent = ""
+  // const content = document.querySelector('#content');
+  // content.textContent = ""
 
-  // Create Tasks Container
-  const tasksContainer = Object.assign(document.createElement('ul'), {
-    className: 'tasks',
-  });
+  
+  // const tasksContainer = Object.assign(document.createElement('ul'), {
+  //   className: 'tasks',
+  // });
 
-  // Add Task Container to Content
-  content.appendChild(tasksContainer);
+  const taskList = document.querySelector('#task-list');
+  taskList.textContent = ""
+
+  
+
+  
+  // tasks.appendChild(tasksContainer);
 
   // console.log(tasks);
   tasks.map((task) => {
@@ -80,7 +85,8 @@ export function displayTasks() {
     const editButton = Object.assign(document.createElement('button'), {
       id: 'editButton',
       className: 'button button--edit',
-      ariaLabel: `Edit ${task.title}`
+      ariaLabel: `Edit ${task.title}`,
+      value: task.id
     });
     // Set Background color based on Priority
     for (const priority of priorities) {
@@ -109,7 +115,8 @@ export function displayTasks() {
     const deleteButton = Object.assign(document.createElement('button'), {
       id: 'deleteButton',
       className: 'button button--delete',
-      ariaLabel: `Delete ${task.title}`
+      ariaLabel: `Delete ${task.title}`,
+      value: task.id
     });
     // Set Background color based on Priority
     for (const priority of priorities) {
@@ -184,6 +191,6 @@ export function displayTasks() {
     );
 
     // Add Task Div to Tasks Container
-    tasksContainer.appendChild(taskDiv);
+    taskList.appendChild(taskDiv);
   });
 }

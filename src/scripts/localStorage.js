@@ -1,6 +1,6 @@
 import { tasks } from './formData';
 
-const content = document.querySelector('#content');
+const taskList = document.querySelector('#task-list');
 
 // Add all Tasks to Local storage
 export function addToLocalStorage() {
@@ -13,7 +13,8 @@ export function restoreFromLocalStorage() {
   const storedTasks = JSON.parse(localStorage.getItem("tasks"))
 
   if (storedTasks.length) {
+    // Push multiple tasks using spread operator
     tasks.push(...storedTasks)
-    content.dispatchEvent(new CustomEvent('itemsUpdated'))
+    taskList.dispatchEvent(new CustomEvent('itemsUpdated'))
   }
 }
