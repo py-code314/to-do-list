@@ -80,6 +80,7 @@ export function displayTasks() {
     const editButton = Object.assign(document.createElement('button'), {
       id: 'editButton',
       className: 'button button--edit',
+      ariaLabel: `Edit ${task.title}`
     });
     // Set Background color based on Priority
     for (const priority of priorities) {
@@ -98,6 +99,7 @@ export function displayTasks() {
       alt: '',
       width: '22',
       height: '22',
+      title: 'Edit'
     });
 
     // Add Edit image to Edit button
@@ -107,6 +109,7 @@ export function displayTasks() {
     const deleteButton = Object.assign(document.createElement('button'), {
       id: 'deleteButton',
       className: 'button button--delete',
+      ariaLabel: `Delete ${task.title}`
     });
     // Set Background color based on Priority
     for (const priority of priorities) {
@@ -125,6 +128,7 @@ export function displayTasks() {
       alt: '',
       width: '22',
       height: '22',
+      title: 'Delete'
     });
 
     // Add Edit image to Edit button

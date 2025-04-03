@@ -14,6 +14,8 @@ import {
 import { createNewTask } from './scripts/formData';
 import { displayTasks } from './scripts/displayTasks';
 
+const content = document.querySelector('#content');
+
 // Event listener for Add Task button
 const addTaskButton = document.querySelector('#addTask');
 addTaskButton.addEventListener('click', () => {
@@ -55,4 +57,5 @@ addTaskButton.addEventListener('click', () => {
   });
 });
 
-displayTasks()
+// displayTasks()
+content.addEventListener('itemsUpdated', displayTasks)
