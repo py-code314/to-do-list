@@ -16,6 +16,7 @@ import { displayTasks } from './scripts/displayTasks';
 import { addToLocalStorage } from './scripts/localStorage';
 import { restoreFromLocalStorage } from './scripts/localStorage';
 import { deleteTask } from './scripts/deleteTask';
+import { editTask } from './scripts/editTask';
 
 const taskList = document.querySelector('#task-list');
 
@@ -67,10 +68,14 @@ restoreFromLocalStorage()
 
 taskList.addEventListener('click', (event) => {
   // console.log(event, event.target, event.currentTarget);
-  console.log(event.target.parentNode.id);
-  if (event.target.parentNode.id === 'deleteButton') {
-    console.log('img clicked');
+  const elementId = event.target.parentNode.id;
+  // console.log(event.target.parentNode.id);
+  if (elementId === 'deleteButton') {
+    // console.log('img clicked');
     deleteTask(parseInt(event.target.parentNode.value));
+  } else if (elementId === 'editButton') {
+    console.log('edit button clicked');
+    editTask(parseInt(event.target.parentNode.value));
   }
 })
 
