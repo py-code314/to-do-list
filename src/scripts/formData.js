@@ -4,7 +4,7 @@ import { NewTask } from './newTodo';
 const taskList = document.querySelector('#task-list');
 // console.log(content);
 
-
+// Initialize State
 export let tasks = [];
 
 export function createNewTask(form) {

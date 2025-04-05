@@ -65,6 +65,12 @@ addTaskButton.addEventListener('click', () => {
 taskList.addEventListener('itemsUpdated', displayTasks);
 taskList.addEventListener('itemsUpdated', addToLocalStorage);
 restoreFromLocalStorage();
+// Check Local Storage previously accessed or not
+// if (!localStorage.getItem("tasks")) {
+//   addToLocalStorage()
+// } else {
+//   restoreFromLocalStorage()
+// }
 
 taskList.addEventListener('click', (event) => {
   const elementId = event.target.parentNode.id;

@@ -8,17 +8,29 @@ export function addToLocalStorage() {
   localStorage.setItem('tasks', JSON.stringify(tasks))
 }
 
+
+
 // Retrieve all Tasks from Local storage
 export function restoreFromLocalStorage() {
-  const storedTasks = JSON.parse(localStorage.getItem("tasks"))
+  /* Check for the presence of Tasks object in Local Storage 
+  to avoid localStorage = null error */
+  const storedTaskData = localStorage.getItem('tasks')
+  if (storedTaskData) {
+    const storedTasks = JSON.parse(localStorage.getItem('tasks'));
 
-  if (storedTasks === null) {
-    console.log('Add a Task');
+    if (storedTasks.length) {
+      // Push multiple tasks using spread operator
+      tasks.push(...storedTasks);
+      taskList.dispatchEvent(new CustomEvent('itemsUpdated'));
+    }
   }
+  // const storedTasks = JSON.parse(localStorage.getItem("tasks"))
 
-  if (storedTasks.length) {
-    // Push multiple tasks using spread operator
-    tasks.push(...storedTasks)
-    taskList.dispatchEvent(new CustomEvent('itemsUpdated'))
-  }
+  
+
+  // if (storedTasks.length) {
+  //   // Push multiple tasks using spread operator
+  //   tasks.push(...storedTasks)
+  //   taskList.dispatchEvent(new CustomEvent('itemsUpdated'))
+  // }
 }
