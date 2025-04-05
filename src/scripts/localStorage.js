@@ -12,6 +12,10 @@ export function addToLocalStorage() {
 export function restoreFromLocalStorage() {
   const storedTasks = JSON.parse(localStorage.getItem("tasks"))
 
+  if (storedTasks === null) {
+    console.log('Add a Task');
+  }
+
   if (storedTasks.length) {
     // Push multiple tasks using spread operator
     tasks.push(...storedTasks)

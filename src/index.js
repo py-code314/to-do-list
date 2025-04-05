@@ -62,20 +62,51 @@ addTaskButton.addEventListener('click', () => {
 });
 
 // displayTasks()
-taskList.addEventListener('itemsUpdated', displayTasks)
-taskList.addEventListener('itemsUpdated', addToLocalStorage)
-restoreFromLocalStorage()
+taskList.addEventListener('itemsUpdated', displayTasks);
+taskList.addEventListener('itemsUpdated', addToLocalStorage);
+restoreFromLocalStorage();
 
 taskList.addEventListener('click', (event) => {
-  // console.log(event, event.target, event.currentTarget);
   const elementId = event.target.parentNode.id;
-  // console.log(event.target.parentNode.id);
   if (elementId === 'deleteButton') {
-    // console.log('img clicked');
     deleteTask(parseInt(event.target.parentNode.value));
   } else if (elementId === 'editButton') {
     console.log('edit button clicked');
-    editTask(parseInt(event.target.parentNode.value));
-  }
-})
 
+    const {
+      modal,
+      taskForm,
+      titleInput,
+      dueDateInput,
+      titleError,
+      dueDateError,
+      cancelButton,
+    } = editTask(parseInt(event.target.parentNode.value));
+    console.log(taskForm);
+
+    cancelButton.addEventListener('click', () => {
+      modal.close();
+    });
+
+    titleInput.addEventListener('input', () => {
+      validateTitleInput(titleInput, titleError);
+    });
+    dueDateInput.addEventListener('input', () => {
+      validateDueDateInput(dueDateInput, dueDateError);
+    });
+    taskForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const isFormValid = validateForm(
+        titleInput,
+        dueDateInput,
+        titleError,
+        dueDateError
+      );
+
+      if (isFormValid) {
+        modal.close();
+        createNewTask(taskForm);
+      }
+    });
+  }
+});

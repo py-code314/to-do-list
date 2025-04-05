@@ -35,6 +35,7 @@ export function displayTasks() {
 
     // Create a Task Div
     const taskDiv = Object.assign(document.createElement('li'), {
+      id: task.id,
       className: 'task',
     });
     // Set Background color based on Priority
@@ -159,12 +160,12 @@ export function displayTasks() {
     });
 
     // Parse Due Date
-    const parsedDate = parseISO(task.dueDate);
+    // const parsedDate = parseISO(task.dueDate);
 
     // Create Date
     const taskDueDate = Object.assign(document.createElement('p'), {
       className: 'task__due-date',
-      textContent: format(parsedDate, 'MM/dd/yyyy'),
+      textContent: format(parseISO(task.dueDate), 'MM/dd/yyyy'),
     });
 
     // Create Category
