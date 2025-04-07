@@ -17,7 +17,7 @@ import { addToLocalStorage } from './scripts/localStorage';
 import { restoreFromLocalStorage } from './scripts/localStorage';
 import { deleteTask } from './scripts/deleteTask';
 import { editTask } from './scripts/editTask';
-import { addNewProject } from './scripts/newProject';
+import { showNewProjectForm } from './scripts/newProject';
 
 const taskList = document.querySelector('#task-list');
 
@@ -137,4 +137,4 @@ taskList.addEventListener('click', (event) => {
 
 const newProjectButton = document.querySelector('#new-project-button');
 console.log(newProjectButton);
-newProjectButton.addEventListener('click', addNewProject)
+newProjectButton.addEventListener('click', showNewProjectForm)

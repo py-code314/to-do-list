@@ -1,23 +1,25 @@
 
 const newProjectDiv = document.querySelector('.new-project');
 
-export function addNewProject() {
+export let categories = []
+
+export function showNewProjectForm() {
   /* Create Form */
   const projectForm = Object.assign(document.createElement('form'), {
-    className: 'form',
+    className: 'form new-project__form',
     method: 'dialog',
     // noValidate: true,
   });
 
   /* Create Title field */
   const titleField = Object.assign(document.createElement('div'), {
-    className: 'form__control',
+    className: 'form__control new-project__form-control',
   });
 
   // Create Title Input
   const titleInput = Object.assign(document.createElement('input'), {
     id: 'title',
-    className: 'form__input',
+    className: 'form__input new-project__form-input',
     type: 'text',
     name: 'title',
     required: true,

@@ -300,7 +300,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: var(--space-300);
-  /* position: relative; */
+  
 }
 
 .form__header {
@@ -329,6 +329,7 @@ body {
 .form__control {
   display: flex;
   align-items: center;
+  gap: var(--space-80);
   /* text-align: left; */
   border: none;
 }
@@ -444,5 +445,18 @@ body {
   font-style: italic;
 }
 
+/* New project styles */
+.new-project {
+  position: relative;
+}
 
+/* .form__control {
+  gap: var(--space-80)
+} */
+
+.new-project__form {
+  position: absolute;
+  top: -60px;
+  left: 0;
+}
 
