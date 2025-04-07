@@ -8,23 +8,11 @@ import deleteIcon from '../assets/images/icon-delete.svg'
 const { parseISO, format } = require('date-fns');
 
 export function displayTasks() {
-  // const content = document.querySelector('#content');
-  // content.textContent = ""
-
-  
-  // const tasksContainer = Object.assign(document.createElement('ul'), {
-  //   className: 'tasks',
-  // });
+ 
 
   const taskList = document.querySelector('#task-list');
   taskList.textContent = ""
 
-  
-
-  
-  // tasks.appendChild(tasksContainer);
-
-  // console.log(tasks);
   tasks.map((task) => {
     // Priorities object
     const priorities = [

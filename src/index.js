@@ -62,16 +62,11 @@ addTaskButton.addEventListener('click', () => {
   });
 });
 
-// displayTasks()
+
 taskList.addEventListener('tasksUpdated', displayTasks);
 taskList.addEventListener('tasksUpdated', addToLocalStorage);
 restoreFromLocalStorage();
-// Check Local Storage previously accessed or not
-// if (!localStorage.getItem("tasks")) {
-//   addToLocalStorage()
-// } else {
-//   restoreFromLocalStorage()
-// }
+
 
 taskList.addEventListener('click', (event) => {
   const elementId = event.target.parentNode.id;
@@ -133,8 +128,6 @@ taskList.addEventListener('click', (event) => {
   }
 });
 
-// Get New List button
 
-const newProjectButton = document.querySelector('#new-project-button');
-console.log(newProjectButton);
-newProjectButton.addEventListener('click', showNewProjectForm)
+
+

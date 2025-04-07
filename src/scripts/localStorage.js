@@ -24,12 +24,4 @@ export function restoreFromLocalStorage() {
       taskList.dispatchEvent(new CustomEvent('tasksUpdated'));
     }
   }
-
-  // const storedTasks = JSON.parse(localStorage.getItem("tasks"))
-
-  // if (storedTasks.length) {
-  //   // Push multiple tasks using spread operator
-  //   tasks.push(...storedTasks)
-  //   taskList.dispatchEvent(new CustomEvent('itemsUpdated'))
-  // }
 }

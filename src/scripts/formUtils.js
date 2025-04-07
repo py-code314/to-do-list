@@ -1,4 +1,5 @@
 import { format } from 'date-fns';
+import { categories } from './newProject';
 
 // Import images
 import blueCircleImg from '../assets/images/icon-blue-circle.svg';
@@ -22,12 +23,12 @@ const statuses = [
 ];
 
 // Categories object
-const categories = [
-  { value: 'inbox', text: 'Inbox' },
-  { value: 'personal', text: 'Personal' },
-  { value: 'work', text: 'Work' },
-  // { value: 'hobbies', text: 'Hobbies' },
-];
+// const categories = [
+//   { value: 'inbox', text: 'Inbox' },
+//   { value: 'personal', text: 'Personal' },
+//   { value: 'work', text: 'Work' },
+//   // { value: 'hobbies', text: 'Hobbies' },
+// ];
 
 // Format today's date
 const today = format(new Date(), 'yyyy-MM-dd');
