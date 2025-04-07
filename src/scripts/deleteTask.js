@@ -8,5 +8,5 @@ export function deleteTask(id) {
   // Mutate the array inline instead of reassigning
   tasks.splice(0, tasks.length, ...filteredTasks)
   
-  taskList.dispatchEvent(new CustomEvent('itemsUpdated'));
+  taskList.dispatchEvent(new CustomEvent('tasksUpdated'));
 }

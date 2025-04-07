@@ -5,7 +5,7 @@ import blueCircleImg from '../assets/images/icon-blue-circle.svg';
 import orangeCircleImg from '../assets/images/icon-orange-circle.svg';
 import redCircleImg from '../assets/images/icon-red-circle.svg';
 
-const content = document.querySelector('#content');
+// const content = document.querySelector('#content');
 
 // Priorities object
 const priorities = [
@@ -26,7 +26,7 @@ const categories = [
   { value: 'inbox', text: 'Inbox' },
   { value: 'personal', text: 'Personal' },
   { value: 'work', text: 'Work' },
-  { value: 'hobbies', text: 'Hobbies' },
+  // { value: 'hobbies', text: 'Hobbies' },
 ];
 
 // Format today's date
@@ -34,9 +34,9 @@ const today = format(new Date(), 'yyyy-MM-dd');
 
 export function generateForm({formHeading, titleValue, descriptionValue, dueDateValue, priorityValue, statusValue, categoryValue, notesValue, checklistValue}) {
   /* Dialog modal */
-  const modal = Object.assign(document.createElement('dialog'), {
-    className: 'modal',
-  });
+  // const modal = Object.assign(document.createElement('dialog'), {
+  //   className: 'modal',
+  // });
 
   /* Create Form */
   const taskForm = Object.assign(document.createElement('form'), {
@@ -84,7 +84,7 @@ export function generateForm({formHeading, titleValue, descriptionValue, dueDate
   // Create Title Label
   const titleLabel = Object.assign(document.createElement('label'), {
     className: 'form__label',
-    for: 'title',
+    htmlFor: 'title',
     textContent: 'Title:',
   });
   const asterisk2 = Object.assign(document.createElement('strong'), {
@@ -121,7 +121,7 @@ export function generateForm({formHeading, titleValue, descriptionValue, dueDate
   // Create Description Label
   const descriptionLabel = Object.assign(document.createElement('label'), {
     className: 'form__label',
-    for: 'description',
+    htmlFor: 'description',
     textContent: 'Description: ',
   });
 
@@ -145,7 +145,7 @@ export function generateForm({formHeading, titleValue, descriptionValue, dueDate
   // Create Due Date Label
   const dueDateLabel = Object.assign(document.createElement('label'), {
     className: 'form__label',
-    for: 'due-date',
+    htmlFor: 'due-date',
     textContent: 'Due Date:',
   });
   const asterisk3 = Object.assign(document.createElement('strong'), {
@@ -210,7 +210,7 @@ export function generateForm({formHeading, titleValue, descriptionValue, dueDate
 
     // Create Priority Label
     const priorityLabel = Object.assign(document.createElement('label'), {
-      for: `${priority.value}`,
+      htmlFor: `${priority.value}`,
       textContent: `${priority.text}`,
     });
 
@@ -267,7 +267,7 @@ export function generateForm({formHeading, titleValue, descriptionValue, dueDate
 
     // Create Status Label
     const statusLabel = Object.assign(document.createElement('label'), {
-      for: `${status.value}`,
+      htmlFor: `${status.value}`,
       textContent: `${status.text}`,
     });
 
@@ -287,7 +287,7 @@ export function generateForm({formHeading, titleValue, descriptionValue, dueDate
   // Create Category Label
   const categoryLabel = Object.assign(document.createElement('label'), {
     className: 'form__label',
-    for: 'category',
+    htmlFor: 'category',
     textContent: 'Category: ',
   });
 
@@ -317,7 +317,7 @@ export function generateForm({formHeading, titleValue, descriptionValue, dueDate
   // Create Notes Label
   const notesLabel = Object.assign(document.createElement('label'), {
     className: 'form__label',
-    for: 'notes',
+    htmlFor: 'notes',
     textContent: 'Notes: ',
   });
 
@@ -375,18 +375,18 @@ export function generateForm({formHeading, titleValue, descriptionValue, dueDate
   // Add Header, Content, Footer to Form
   taskForm.append(formHeader, formContent, formFooter);
 
-  // Add Form, Modal to parent elements
-  modal.appendChild(taskForm);
-  content.appendChild(modal);
+  // // Add Form, Modal to parent elements
+  // modal.appendChild(taskForm);
+  // content.appendChild(modal);
 
   // Reset Form
   // taskForm.reset()
   
-  // Show Modal
-  modal.showModal();
+  // // Show Modal
+  // modal.showModal();
 
   return {
-    modal,
+    // modal,
     taskForm,
     titleInput,
     dueDateInput,

@@ -35,5 +35,5 @@ export function createNewTask(form) {
   console.log(tasks);
 
   // Fire Custom Event after tasks updated
-  taskList.dispatchEvent(new CustomEvent('itemsUpdated'))
+  taskList.dispatchEvent(new CustomEvent('tasksUpdated'))
 }

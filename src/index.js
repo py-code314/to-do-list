@@ -17,6 +17,7 @@ import { addToLocalStorage } from './scripts/localStorage';
 import { restoreFromLocalStorage } from './scripts/localStorage';
 import { deleteTask } from './scripts/deleteTask';
 import { editTask } from './scripts/editTask';
+import { addNewProject } from './scripts/newProject';
 
 const taskList = document.querySelector('#task-list');
 
@@ -62,8 +63,8 @@ addTaskButton.addEventListener('click', () => {
 });
 
 // displayTasks()
-taskList.addEventListener('itemsUpdated', displayTasks);
-taskList.addEventListener('itemsUpdated', addToLocalStorage);
+taskList.addEventListener('tasksUpdated', displayTasks);
+taskList.addEventListener('tasksUpdated', addToLocalStorage);
 restoreFromLocalStorage();
 // Check Local Storage previously accessed or not
 // if (!localStorage.getItem("tasks")) {
@@ -80,19 +81,29 @@ taskList.addEventListener('click', (event) => {
     console.log('edit button clicked');
 
     const {
-      modal,
+      // modal,
       taskForm,
       titleInput,
       dueDateInput,
       titleError,
       dueDateError,
       cancelButton,
+      editTaskDiv,
     } = editTask(parseInt(event.target.parentNode.value));
     console.log(taskForm);
 
+    console.log(deleteButton);
+    // Disable Delete Button
+    deleteButton.disabled = true;
+    deleteButton.style.cursor = 'not-allowed';
+
     cancelButton.addEventListener('click', () => {
-      modal.close();
+      // modal.close();
+      editTaskDiv.style.display = 'none';
     });
+    // Enable Delete Button
+    deleteButton.disabled = false;
+    deleteButton.style.cursor = 'pointer';
 
     titleInput.addEventListener('input', () => {
       validateTitleInput(titleInput, titleError);
@@ -110,9 +121,20 @@ taskList.addEventListener('click', (event) => {
       );
 
       if (isFormValid) {
-        modal.close();
+        // modal.close();
+        editTaskDiv.style.display = 'none';
         createNewTask(taskForm);
       }
+
+      // Enable Delete Button
+      deleteButton.disabled = false;
+      deleteButton.style.cursor = 'pointer';
     });
   }
 });
+
+// Get New List button
+
+const newProjectButton = document.querySelector('#new-project-button');
+console.log(newProjectButton);
+newProjectButton.addEventListener('click', addNewProject)

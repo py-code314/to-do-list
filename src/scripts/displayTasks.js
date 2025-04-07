@@ -60,7 +60,7 @@ export function displayTasks() {
 
     // Create Check box
     const taskStatus = Object.assign(document.createElement('input'), {
-      id: task.id,
+      id: 'status',
       className: 'task__input',
       type: 'checkbox',
       name: 'status',
@@ -70,7 +70,7 @@ export function displayTasks() {
     // Create Title
     const taskTitle = Object.assign(document.createElement('label'), {
       className: 'task__title',
-      htmlFor: task.id,
+      htmlFor: 'status',
       textContent: task.title,
     });
 
