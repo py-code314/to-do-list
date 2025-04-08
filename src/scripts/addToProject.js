@@ -10,12 +10,35 @@ function addTaskToProject() {
   tasks.forEach((task) => {
     const projectList = projects.querySelector(`#${task.category}`);
     if (projectList) {
-      // Create task item
-      const projectItem = Object.assign(document.createElement('li'), {
-        className: 'project__item',
+      // Create Title container
+      const titleDiv = Object.assign(document.createElement('div'), {
+        className: 'task__div',
+      });
+
+      // Create Check box
+      const taskStatus = Object.assign(document.createElement('input'), {
+        id: `status-${task.id}`,
+        className: 'task__input',
+        type: 'checkbox',
+        name: 'status',
+        checked: task.status === 'completed' ? true : false,
+      });
+
+      // Create Title
+      const taskTitle = Object.assign(document.createElement('label'), {
+        className: 'task__title',
+        htmlFor: `status-${task.id}`,
         textContent: task.title,
       });
-      projectList.appendChild(projectItem);
+
+      // Add Check box and Title to Title Div
+      titleDiv.append(taskStatus, taskTitle);
+
+      // Add divider
+      const divider = Object.assign(document.createElement('hr'));
+
+      projectList.append(titleDiv, divider);
+      // projectList.appendChild(projectItem);
     }
   });
 }
