@@ -63,17 +63,30 @@ addTaskButton.addEventListener('click', () => {
 });
 
 
-taskList.addEventListener('tasksUpdated', displayTasks);
+// taskList.addEventListener('tasksUpdated', displayTasks);
 taskList.addEventListener('tasksUpdated', addToLocalStorage);
 restoreFromLocalStorage();
 
+const allTasks = document.querySelectorAll('.task');
+console.log(allTasks);
+
+
 
 taskList.addEventListener('click', (event) => {
-  const elementId = event.target.parentNode.id;
-  if (elementId === 'deleteButton') {
+  // Grab all Delete buttons
+  const allDeleteButtons = document.querySelectorAll('#deleteButton');
+ 
+  allDeleteButtons.forEach(deleteButton => {
+    // Enable all Delete Buttons
+    deleteButton.disabled = false;
+    deleteButton.style.cursor = 'pointer';
+  })
+  const buttonId = event.target.parentNode.id;
+ 
+  if (buttonId === 'deleteButton') {
     deleteTask(parseInt(event.target.parentNode.value));
-  } else if (elementId === 'editButton') {
-    console.log('edit button clicked');
+  } else if (buttonId === 'editButton') {
+    
 
     const {
       // modal,
@@ -85,20 +98,23 @@ taskList.addEventListener('click', (event) => {
       cancelButton,
       editTaskDiv,
     } = editTask(parseInt(event.target.parentNode.value));
-    console.log(taskForm);
+   
 
-    console.log(deleteButton);
+    
+    const deleteButton = event.target.parentNode.nextElementSibling;
+   
     // Disable Delete Button
     deleteButton.disabled = true;
     deleteButton.style.cursor = 'not-allowed';
 
     cancelButton.addEventListener('click', () => {
-      // modal.close();
+      
       editTaskDiv.style.display = 'none';
+      // Enable Delete Button
+      deleteButton.disabled = false;
+      deleteButton.style.cursor = 'pointer';
     });
-    // Enable Delete Button
-    deleteButton.disabled = false;
-    deleteButton.style.cursor = 'pointer';
+    
 
     titleInput.addEventListener('input', () => {
       validateTitleInput(titleInput, titleError);
@@ -116,7 +132,7 @@ taskList.addEventListener('click', (event) => {
       );
 
       if (isFormValid) {
-        // modal.close();
+       
         editTaskDiv.style.display = 'none';
         createNewTask(taskForm);
       }

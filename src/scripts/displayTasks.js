@@ -183,3 +183,8 @@ export function displayTasks() {
     taskList.appendChild(taskDiv);
   });
 }
+
+const taskList = document.querySelector('#task-list');
+console.log(taskList);
+
+taskList.addEventListener('tasksUpdated', displayTasks);

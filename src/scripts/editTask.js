@@ -7,10 +7,10 @@ const editContainer = document.querySelector('.edit');
 export function editTask(id) {
 
   editContainer.textContent = ""
-  console.log(id);
+  // console.log(id);
   // Get Current Task by matching id
   let currentTask = tasks.filter(task => task.id === id)
-  console.log(currentTask);
+  // console.log(currentTask);
   currentTask = currentTask[0]
   // console.log(currentTask.title);
 
