@@ -11,45 +11,66 @@ const {
 // Container which has all the action buttons
 const action = document.querySelector('.action');
 
+function displayTodayTasks() {
+  // Format today's date
+  const today = format(new Date(), 'yyyy-MM-dd');
+
+  // Filter tasks based on today
+  const todayTasks = tasks.filter(
+    (task) =>
+      compareAsc(new Date(task.dueDate), new Date(today)) === 0 ||
+      compareAsc(new Date(task.dueDate), new Date(today)) < 0
+  );
+
+  displayTasks(todayTasks);
+}
+
+function displayTomorrowTasks() {
+  // Filter tasks based on tomorrow
+  const tomorrowTasks = tasks.filter(
+    (task) => isTomorrow(parseISO(task.dueDate)) === true
+  );
+  displayTasks(tomorrowTasks);
+}
+
+function displayNext7DaysTasks() {
+  // Format today's date
+  const today = format(new Date(), 'yyyy-MM-dd');
+
+  // Get tomorrow's date
+  let oneWeek = addDays(parseISO(today), 7);
+
+  // Format tomorrow
+  oneWeek = format(oneWeek, 'yyyy-MM-dd');
+
+  const next7DaysTasks = tasks.filter(
+    (task) => task.dueDate >= today && task.dueDate <= oneWeek
+  );
+
+  displayTasks(next7DaysTasks);
+}
+
+function displayInboxTasks() {
+  // Filter tasks with category Inbox
+  const tasksInbox = tasks.filter((task) => task.category === 'inbox');
+
+  displayTasks(tasksInbox);
+}
+
+function displayAllTasks() {
+  displayTasks(tasks);
+}
+
 action.addEventListener('click', (event) => {
   if (event.target.id === 'today') {
-    // Format today's date
-    const today = format(new Date(), 'yyyy-MM-dd');
-
-    // Filter tasks based on today
-    const todayTasks = tasks.filter(
-      (task) =>
-        compareAsc(new Date(task.dueDate), new Date(today)) === 0 ||
-        compareAsc(new Date(task.dueDate), new Date(today)) < 0
-    );
-
-    displayTasks(todayTasks);
+    displayTodayTasks();
   } else if (event.target.id === 'tomorrow') {
-    // Filter tasks based on tomorrow
-    const tomorrowTasks = tasks.filter(
-      (task) => isTomorrow(parseISO(task.dueDate)) === true
-    );
-    displayTasks(tomorrowTasks);
+    displayTomorrowTasks();
   } else if (event.target.id === 'next-7-days') {
-    // Format today's date
-    const today = format(new Date(), 'yyyy-MM-dd');
-
-    // Get tomorrow's date
-    let tomorrow = addDays(parseISO(today), 1);
-    // Format tomorrow
-    tomorrow = format(tomorrow, 'yyyy-MM-dd');
-    // Filter tasks later than tomorrow
-    const laterThanTomorrowTasks = tasks.filter(
-      (task) => task.dueDate > tomorrow
-    );
-
-    displayTasks(laterThanTomorrowTasks);
+    displayNext7DaysTasks();
   } else if (event.target.id === 'inbox') {
-    // Filter tasks with category Inbox
-    const tasksInbox = tasks.filter((task) => task.category === 'inbox');
-
-    displayTasks(tasksInbox);
+    displayInboxTasks();
   } else if (event.target.id === 'all-tasks') {
-    displayTasks(tasks);
+    displayAllTasks();
   }
 });
