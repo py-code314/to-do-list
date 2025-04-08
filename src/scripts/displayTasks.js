@@ -1,19 +1,18 @@
 import { tasks } from './formData';
 
 // Import Images
-import editIcon from '../assets/images/icon-edit.svg'
-import deleteIcon from '../assets/images/icon-delete.svg'
-
+import editIcon from '../assets/images/icon-edit.svg';
+import deleteIcon from '../assets/images/icon-delete.svg';
 
 const { parseISO, format } = require('date-fns');
 
-export function displayTasks() {
- 
+const taskList = document.querySelector('#task-list');
 
-  const taskList = document.querySelector('#task-list');
-  taskList.textContent = ""
+export function displayTasks(filteredTasks) {
+  // const taskList = document.querySelector('#task-list');
+  taskList.textContent = '';
 
-  tasks.map((task) => {
+  filteredTasks.map((task) => {
     // Priorities object
     const priorities = [
       { value: 'low', color: 'var(--clr-light-blue' },
@@ -48,7 +47,7 @@ export function displayTasks() {
 
     // Create Check box
     const taskStatus = Object.assign(document.createElement('input'), {
-      id: 'status',
+      id: `status-${task.id}`,
       className: 'task__input',
       type: 'checkbox',
       name: 'status',
@@ -75,7 +74,7 @@ export function displayTasks() {
       id: 'editButton',
       className: 'button button--edit',
       ariaLabel: `Edit ${task.title}`,
-      value: task.id
+      value: task.id,
     });
     // Set Background color based on Priority
     for (const priority of priorities) {
@@ -94,7 +93,7 @@ export function displayTasks() {
       alt: '',
       width: '22',
       height: '22',
-      title: 'Edit'
+      title: 'Edit',
     });
 
     // Add Edit image to Edit button
@@ -105,7 +104,7 @@ export function displayTasks() {
       id: 'deleteButton',
       className: 'button button--delete',
       ariaLabel: `Delete ${task.title}`,
-      value: task.id
+      value: task.id,
     });
     // Set Background color based on Priority
     for (const priority of priorities) {
@@ -124,7 +123,7 @@ export function displayTasks() {
       alt: '',
       width: '22',
       height: '22',
-      title: 'Delete'
+      title: 'Delete',
     });
 
     // Add Edit image to Edit button
@@ -184,7 +183,8 @@ export function displayTasks() {
   });
 }
 
-const taskList = document.querySelector('#task-list');
-console.log(taskList);
-
-taskList.addEventListener('tasksUpdated', displayTasks);
+taskList.addEventListener('tasksUpdated', () => {
+  // Filter tasks with category Inbox
+  const tasksInbox = tasks.filter((task) => task.category === 'inbox');
+  displayTasks(tasksInbox);
+});
