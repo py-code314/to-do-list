@@ -96,7 +96,7 @@ function displayProjects() {
   for (const category of categoriesToDisplay) {
     // Create Project Div
     const projectDiv = Object.assign(document.createElement('div'), {
-      id: category.id,
+      // id: category.id,
       className: 'project',
     });
 
@@ -125,6 +125,7 @@ function displayProjects() {
 
     // Create Project List Div
     const projectList = Object.assign(document.createElement('ul'), {
+      id: category.id,
       className: 'project__list',
     });
 
@@ -133,7 +134,11 @@ function displayProjects() {
 
     // Add Project Div to Projects
     projects.appendChild(projectDiv);
+
+    
   }
+
+  
 }
 
 projects.addEventListener('projectsUpdated', addProjectsToLocalStorage);
@@ -156,7 +161,7 @@ export function restoreProjectsFromLocalStorage() {
 
     if (storedCategories.length) {
       categories.push(...storedCategories);
-      projects.dispatchEvent(new CustomEvent('tasksUpdated'));
+      // projects.dispatchEvent(new CustomEvent('tasksUpdated'));
 
       projects.dispatchEvent(new CustomEvent('projectsUpdated'));
     }

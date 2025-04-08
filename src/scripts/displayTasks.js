@@ -57,7 +57,7 @@ export function displayTasks(filteredTasks) {
     // Create Title
     const taskTitle = Object.assign(document.createElement('label'), {
       className: 'task__title',
-      htmlFor: 'status',
+      htmlFor: `status-${task.id}`,
       textContent: task.title,
     });
 

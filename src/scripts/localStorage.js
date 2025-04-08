@@ -25,3 +25,5 @@ export function restoreFromLocalStorage() {
     }
   }
 }
+
+taskList.addEventListener('tasksUpdated', addToLocalStorage);

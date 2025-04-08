@@ -2,8 +2,8 @@
 import './styles/styles.css';
 // import JS modules
 import './scripts/newTodo';
-// import './scripts/formButtons'
 import './scripts/filterTasks'
+import './scripts/addToProject';
 
 /* Import functions */
 import { showNewTaskForm } from './scripts/newTaskForm';
@@ -21,8 +21,7 @@ import { editTask } from './scripts/editTask';
 import { showNewProjectForm } from './scripts/newProject';
 
 import { tasks } from './scripts/formData';
-// const tasksInbox = tasks.filter((task) => task.category === 'inbox');
-// displayTasks(tasksInbox)
+
 
 const taskList = document.querySelector('#task-list');
 
@@ -68,12 +67,11 @@ addTaskButton.addEventListener('click', () => {
 });
 
 
-// taskList.addEventListener('tasksUpdated', displayTasks);
-taskList.addEventListener('tasksUpdated', addToLocalStorage);
+
+
 restoreFromLocalStorage();
 
-const allTasks = document.querySelectorAll('.task');
-// console.log(allTasks);
+
 
 
 
