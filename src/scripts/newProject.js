@@ -2,6 +2,7 @@
 import boxIcon from '../assets/images/icon-box.svg';
 import removeIcon from '../assets/images/icon-remove.svg';
 import { tasks } from './formData';
+import { generateForm } from './formUtils';
 
 const newProjectDiv = document.querySelector('.new-project');
 
@@ -10,58 +11,21 @@ const projects = document.querySelector('#projects');
 export let categories = [{ id: 'inbox', value: 'inbox', text: 'Inbox' }];
 
 export function showNewProjectForm() {
-  /* Create Form */
-  const projectForm = Object.assign(document.createElement('form'), {
-    className: 'form new-project__form',
-    method: 'dialog',
-  });
+  const { form, submitButton } = generateForm();
 
-  /* Create Title field */
-  const titleField = Object.assign(document.createElement('div'), {
-    className: 'form__control new-project__form-control',
-  });
-
-  // Create Title Input
-  const titleInput = Object.assign(document.createElement('input'), {
-    id: 'title',
-    className: 'form__input new-project__form-input',
-    type: 'text',
-    name: 'title',
-    required: true,
-    autofocus: true,
-  });
-
-  // Create Submit button
-  const submitButton = Object.assign(document.createElement('button'), {
-    id: 'submit',
-    className: 'button button--submit',
-    type: 'submit',
-    value: 'submit',
-    textContent: 'Add',
-  });
-
-  // Add Input, Submit button to Title field
-  titleField.append(titleInput, submitButton);
-
-  // Add Title Field to Project Form
-  projectForm.appendChild(titleField);
-
-  // Add Project Form to New Project Div
-  newProjectDiv.appendChild(projectForm);
-
-  return { projectForm, submitButton };
+  return { form, submitButton };
 }
 
 const newProjectButton = document.querySelector('#new-project-button');
 
 newProjectButton.addEventListener('click', () => {
-  const { projectForm } = showNewProjectForm();
+  const { form } = showNewProjectForm();
 
-  projectForm.addEventListener('submit', (event) => {
+  form.addEventListener('submit', (event) => {
     event.preventDefault();
 
-    projectForm.style.display = 'none';
-    createNewProject(projectForm);
+    // form.style.display = 'none';
+    createNewProject(form);
   });
 });
 
@@ -151,15 +115,11 @@ function displayProjects() {
     // Add delete image to delete button
     removeButton.appendChild(removeImage);
 
-    // Add delete button titleButton div
-
-
     // Add title div and delete button to titleButton div
-    titleButtonDiv.append(projectTitleDiv, removeButton)
+    titleButtonDiv.append(projectTitleDiv, removeButton);
 
     // Add titleButton div to projectDiv
-    projectDiv.appendChild(titleButtonDiv)
-
+    projectDiv.appendChild(titleButtonDiv);
 
     // Create Project List Div
     const projectList = Object.assign(document.createElement('ul'), {
@@ -204,10 +164,8 @@ export function restoreProjectsFromLocalStorage() {
 
 restoreProjectsFromLocalStorage();
 
-
 projects.addEventListener('click', (event) => {
   if (event.target.parentNode.id === 'removeButton') {
     console.log('remove button clicked');
-    
   }
-})
+});

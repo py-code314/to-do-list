@@ -23,7 +23,7 @@ const statuses = [
 // Format today's date
 const today = format(new Date(), 'yyyy-MM-dd');
 
-export function generateForm({
+export function generateTaskForm({
   formHeading,
   titleValue,
   descriptionValue,
@@ -395,4 +395,55 @@ export function generateForm({
     dueDateError,
     cancelButton,
   };
+}
+
+export function generateForm() {
+  /* Dialog modal */
+  const modal = Object.assign(document.createElement('dialog'), {
+    className: 'modal modal--small',
+  });
+
+  /* Create Form */
+  const form = Object.assign(document.createElement('form'), {
+    className: 'form',
+    method: 'dialog',
+  });
+
+  /* Create container for input and button */
+  const inputButtonDiv = Object.assign(document.createElement('div'), {
+    className: 'form__div',
+  });
+
+  // Create title input
+  const titleInput = Object.assign(document.createElement('input'), {
+    id: 'title',
+    className: 'form__input',
+    type: 'text',
+    name: 'title',
+    required: true,
+    autofocus: true,
+  });
+
+  // Create Submit button
+  const submitButton = Object.assign(document.createElement('button'), {
+    id: 'submit',
+    className: 'button button--submit',
+    type: 'submit',
+    value: 'submit',
+    textContent: 'Submit',
+  });
+
+  // Add input, submit button to inputButtonDiv
+  inputButtonDiv.append(titleInput, submitButton);
+
+  // Add inputButtonDiv to form
+  form.appendChild(inputButtonDiv);
+
+  // Add form, modal to parent elements
+  modal.appendChild(form);
+  content.appendChild(modal);
+
+  modal.show()
+
+  return {form, submitButton}
 }

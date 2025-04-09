@@ -1,5 +1,6 @@
 import { tasks } from './formData';
 import { displayTask } from './displayTask';
+import {displaySearchResults} from './search'
 const {
   format,
   compareAsc,
@@ -61,6 +62,8 @@ function displayAllTasks() {
   displayTask(tasks);
 }
 
+
+
 action.addEventListener('click', (event) => {
   if (event.target.id === 'today') {
     displayTodayTasks();
@@ -72,5 +75,7 @@ action.addEventListener('click', (event) => {
     displayInboxTasks();
   } else if (event.target.id === 'all-tasks') {
     displayAllTasks();
+  } else if (event.target.id === 'search') {
+    displaySearchResults()
   }
 });

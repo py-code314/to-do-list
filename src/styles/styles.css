@@ -13,7 +13,8 @@
   --space-900: 2rem;
   --space-1100: 2.5rem;
 
-  --width-dialog: 40.625rem;
+  --width-dialog-lg: 40.625rem;
+  --width-dialog-sm: 25rem;
 
   --ff-baskerville: 'Libre Baskerville', serif;
   --ff-montserrat: 'Montserrat', sans-serif;
@@ -251,7 +252,7 @@ body {
 
 /* Styles for dialog modal */
 .modal {
-  width: var(--width-dialog);
+  width: var(--width-dialog-lg);
   max-block-size: 95%;
   border: none;
   border-radius: var(--radius-2);
@@ -263,6 +264,10 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   animation: popup 0.8s ease-in-out;
+}
+
+.modal--small {
+  width: var(--width-dialog-sm);
 }
 
 /* Animate dialog popup */
@@ -442,14 +447,14 @@ body {
 .button--edit,
 .button--delete,
 .button--details {
-  display: none;
+  visibility: hidden;
 }
 
 .task:hover .button--edit,
 .task:hover .button--delete,
 .project:hover .button--delete,
 .task:hover .button--details {
-  display: block;
+  visibility: visible;
 }
 
 /* New project styles */

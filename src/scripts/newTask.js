@@ -1,6 +1,6 @@
 /* Show Form when user clicks Add Task button */
 
-import { generateForm } from './formUtils';
+import { generateTaskForm } from './formUtils';
 
 export function displayNewTaskForm() {
   const {
@@ -11,7 +11,7 @@ export function displayNewTaskForm() {
     titleError,
     dueDateError,
     cancelButton,
-  } = generateForm({
+  } = generateTaskForm({
     formHeading: 'New Task',
     titleValue: '',
     descriptionValue: '',

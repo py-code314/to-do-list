@@ -5,6 +5,7 @@ import './scripts/newTodo';
 import './scripts/filterTasks';
 import './scripts/addToProject';
 import './scripts/taskDetails'
+import './scripts/search'
 
 /* Import functions */
 import { displayNewTaskForm } from './scripts/newTask';

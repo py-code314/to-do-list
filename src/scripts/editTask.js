@@ -1,5 +1,5 @@
 import { tasks } from './formData';
-import { generateForm } from './formUtils';
+import { generateTaskForm } from './formUtils';
 
 // Show Edit Form with prefilled values
 export function displayEditTaskForm(id) {
@@ -15,7 +15,7 @@ export function displayEditTaskForm(id) {
     titleError,
     dueDateError,
     cancelButton,
-  } = generateForm({
+  } = generateTaskForm({
     formHeading: 'Edit Task',
     titleValue: currentTask.title,
     descriptionValue: currentTask.description,
