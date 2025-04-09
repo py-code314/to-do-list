@@ -1,17 +1,10 @@
 /* Show Form when user clicks Add Task button */
 
-import { generateForm } from "./formUtils";
+import { generateForm } from './formUtils';
 
-const content = document.querySelector('#content');
-
-export function showNewTaskForm() {
-  /* Dialog modal */
-  const modal = Object.assign(document.createElement('dialog'), {
-    className: 'modal',
-  });
-
+export function displayNewTaskForm() {
   const {
-    // modal,
+    modal,
     taskForm,
     titleInput,
     dueDateInput,
@@ -29,13 +22,6 @@ export function showNewTaskForm() {
     notesValue: '',
   });
 
-  // Add Form, Modal to parent elements
-  modal.appendChild(taskForm);
-  content.appendChild(modal);
-
-  // Show Modal
-  modal.showModal();
-
   return {
     modal,
     taskForm,
@@ -46,4 +32,3 @@ export function showNewTaskForm() {
     cancelButton,
   };
 }
-

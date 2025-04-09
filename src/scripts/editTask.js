@@ -1,28 +1,15 @@
-import { tasks } from "./formData";
+import { tasks } from './formData';
 import { generateForm } from './formUtils';
 
-const editContainer = document.querySelector('.edit');
-
 // Show Edit Form with prefilled values
-export function editTask(id) {
-
-  editContainer.textContent = ""
-  // console.log(id);
+export function displayEditTaskForm(id) {
   // Get Current Task by matching id
-  let currentTask = tasks.filter(task => task.id === id)
-  // console.log(currentTask);
-  currentTask = currentTask[0]
-  // console.log(currentTask.title);
-
-  // Add Container for Edit Task Form
-  const editTaskDiv
-   = Object.assign(document.createElement('div'), {
-    className: 'edit__task'
-  });
+  let currentTask = tasks.filter((task) => task.id === id);
+  currentTask = currentTask[0];
 
   const {
-    // modal,
-    taskForm, 
+    modal,
+    taskForm,
     titleInput,
     dueDateInput,
     titleError,
@@ -46,32 +33,16 @@ export function editTask(id) {
     value: id,
   });
 
-  // Add Id Input to Task Form
-  taskForm.appendChild(idInput)
-
-
-
-  // Add Task Form and Edit Task container to parent elements
-  
-  editTaskDiv
-    .appendChild(taskForm)
-  
-  editContainer.appendChild(editTaskDiv
-
-  )
-
+  // Add idInput to taskForm
+  taskForm.appendChild(idInput);
 
   return {
-    // modal,
+    modal,
     taskForm,
     titleInput,
     dueDateInput,
     titleError,
     dueDateError,
     cancelButton,
-    editTaskDiv
-
   };
 }
-
-

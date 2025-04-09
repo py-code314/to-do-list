@@ -7,7 +7,7 @@ const taskList = document.querySelector('#task-list');
 // Initialize State
 export let tasks = [];
 
-export function createNewTask(form) {
+export function createOrUpdateTask(form) {
   // Create new formData object
   const formData = new FormData(form);
 
