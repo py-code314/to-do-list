@@ -17,7 +17,7 @@ function addTaskToProject() {
 
       // Create Check box
       const taskStatus = Object.assign(document.createElement('input'), {
-        id: `status-${task.id}`,
+        id: `item-${task.id}`,
         className: 'task__input',
         type: 'checkbox',
         name: 'status',
@@ -27,7 +27,7 @@ function addTaskToProject() {
       // Create Title
       const taskTitle = Object.assign(document.createElement('label'), {
         className: 'task__title',
-        htmlFor: `status-${task.id}`,
+        htmlFor: `item-${task.id}`,
         textContent: task.title,
       });
 

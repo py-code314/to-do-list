@@ -99,7 +99,7 @@ export function displayTasks(filteredTasks) {
     // Add Edit image to Edit button
     editButton.appendChild(editImage);
 
-    // Create Edit button
+    // Create delete button
     const deleteButton = Object.assign(document.createElement('button'), {
       id: 'deleteButton',
       className: 'button button--delete',
@@ -116,7 +116,7 @@ export function displayTasks(filteredTasks) {
       }
     }
 
-    // Create Edit Image
+    // Create delete Image
     const deleteImage = Object.assign(document.createElement('img'), {
       className: 'task__image',
       src: `${deleteIcon}`,
