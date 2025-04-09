@@ -13,7 +13,7 @@ import {
   validateForm,
 } from './scripts/formValidation';
 import { createNewTask } from './scripts/formData';
-import { displayTasks } from './scripts/displayTasks';
+import { displayTask } from './scripts/task';
 import { addToLocalStorage } from './scripts/localStorage';
 import { restoreFromLocalStorage } from './scripts/localStorage';
 import { deleteTask } from './scripts/deleteTask';

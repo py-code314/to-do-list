@@ -1,6 +1,7 @@
 // Import Images
 import boxIcon from '../assets/images/icon-box.svg';
 import removeIcon from '../assets/images/icon-remove.svg';
+import { tasks } from './formData';
 
 const newProjectDiv = document.querySelector('.new-project');
 
@@ -202,3 +203,11 @@ export function restoreProjectsFromLocalStorage() {
 }
 
 restoreProjectsFromLocalStorage();
+
+
+projects.addEventListener('click', (event) => {
+  if (event.target.parentNode.id === 'removeButton') {
+    console.log('remove button clicked');
+    
+  }
+})

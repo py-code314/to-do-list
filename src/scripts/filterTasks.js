@@ -1,5 +1,5 @@
 import { tasks } from './formData';
-import { displayTasks } from './displayTasks';
+import { displayTask } from './task';
 const {
   format,
   compareAsc,
@@ -22,7 +22,7 @@ function displayTodayTasks() {
       compareAsc(new Date(task.dueDate), new Date(today)) < 0
   );
 
-  displayTasks(todayTasks);
+  displayTask(todayTasks);
 }
 
 function displayTomorrowTasks() {
@@ -30,7 +30,7 @@ function displayTomorrowTasks() {
   const tomorrowTasks = tasks.filter(
     (task) => isTomorrow(parseISO(task.dueDate)) === true
   );
-  displayTasks(tomorrowTasks);
+  displayTask(tomorrowTasks);
 }
 
 function displayNext7DaysTasks() {
@@ -47,18 +47,18 @@ function displayNext7DaysTasks() {
     (task) => task.dueDate >= today && task.dueDate <= oneWeek
   );
 
-  displayTasks(next7DaysTasks);
+  displayTask(next7DaysTasks);
 }
 
 function displayInboxTasks() {
   // Filter tasks with category Inbox
   const tasksInbox = tasks.filter((task) => task.category === 'inbox');
 
-  displayTasks(tasksInbox);
+  displayTask(tasksInbox);
 }
 
 function displayAllTasks() {
-  displayTasks(tasks);
+  displayTask(tasks);
 }
 
 action.addEventListener('click', (event) => {

@@ -408,7 +408,7 @@ body {
   border-radius: var(--radius-2);
 }
 
-.task__container {
+.task__wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -435,10 +435,10 @@ body {
   
 }
 
-.task__buttons {
+/* .task__buttons {
   display: flex;
   gap: var(--space-200);
-}
+} */
 
 .task__category {
   text-transform: capitalize;
