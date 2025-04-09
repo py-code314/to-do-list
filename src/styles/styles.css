@@ -460,3 +460,9 @@ body {
   left: 0;
 }
 
+/* Styles for project title and button container */
+.project__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
