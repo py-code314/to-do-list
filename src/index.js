@@ -4,6 +4,7 @@ import './styles/styles.css';
 import './scripts/newTodo';
 import './scripts/filterTasks';
 import './scripts/addToProject';
+import './scripts/taskDetails'
 
 /* Import functions */
 import { displayNewTaskForm } from './scripts/newTask';
@@ -12,8 +13,8 @@ import {
   validateDueDateInput,
   validateForm,
 } from './scripts/formValidation';
-import { createNewTask } from './scripts/formData';
-import { displayTask } from './scripts/task';
+import { createOrUpdateTask } from './scripts/formData';
+import { displayTask } from './scripts/displayTask';
 import { addToLocalStorage } from './scripts/localStorage';
 import { restoreFromLocalStorage } from './scripts/localStorage';
 import { deleteTask } from './scripts/deleteTask';
@@ -21,6 +22,7 @@ import { displayEditTaskForm } from './scripts/editTask';
 import { showNewProjectForm } from './scripts/newProject';
 
 import { tasks } from './scripts/formData';
+import { displayTaskDetails } from './scripts/taskDetails';
 
 const taskList = document.querySelector('#task-list');
 
@@ -111,5 +113,7 @@ taskList.addEventListener('click', (event) => {
         createOrUpdateTask(taskForm);
       }
     });
+  } else if (buttonId === 'detailsButton') {
+    displayTaskDetails(parseInt(event.target.parentNode.value))
   }
 });

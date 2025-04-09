@@ -29,11 +29,10 @@
   --clr-black: hsl(0, 0%, 0%);
   --clr-dark-grey: hsl(226, 46%, 20%);
   --clr-red: hsl(0, 100%, 50%);
-  --clr-light-red: hsl(6, 77%, 74%);
-  --clr-light-orange: hsl(37, 91%, 71%);
+  --clr-light-red: hsl(6, 78%, 74%);
+  --clr-light-orange: hsl(37, 90%, 71%);
   --clr-light-blue: hsl(204, 70%, 72%);
   --clr-very-light-green: hsl(120, 29%, 93%);
-
 
   --shadow-1: 3px 0px 5px 0px hsla(0, 0%, 0%, 0.75);
   --shadow-2: 5px 5px 10px hsla(0, 0%, 0%, 0.5);
@@ -161,7 +160,6 @@ body {
   grid-area: main;
   padding: var(--space-400);
   overflow-y: auto;
-
 }
 
 .profile {
@@ -240,17 +238,16 @@ body {
   width: 35%;
 }
 
-.edit {
-  
+.details {
   width: 65%;
 }
 
-.edit__task {
+/* .task {
   border: 1px solid var(--clr-black);
   border-radius: var(--radius-1);
   padding: var(--space-300);
-  background-color: var(--clr-very-light-green);
-}
+  
+} */
 
 /* Styles for dialog modal */
 .modal {
@@ -300,7 +297,6 @@ body {
   display: flex;
   flex-direction: column;
   gap: var(--space-300);
-  
 }
 
 .form__header {
@@ -308,7 +304,7 @@ body {
 }
 
 /* Place Close button at top right corner */
-.button--close {
+/* .button--close {
   position: absolute;
   top: var(--space-40);
   right: var(--space-40);
@@ -316,7 +312,7 @@ body {
   background-color: var(--clr-white);
   cursor: pointer;
   border: transparent;
-}
+} */
 
 /* Styles for Form Inputs */
 .form__content {
@@ -398,13 +394,11 @@ body {
   padding: var(--space-40) var(--space-80);
 }
 
-
-
 .task {
   padding: var(--space-300);
   display: flex;
   flex-direction: column;
-  gap: var(--space-40);
+  gap: var(--space-200);
   border-radius: var(--radius-2);
 }
 
@@ -418,31 +412,44 @@ body {
   display: flex;
   align-items: center;
   gap: var(--space-200);
+  /* font-weight: var(--fw-medium); */
+}
+
+.task__div--details {
+  justify-content: space-between;
+}
+
+.task__title,
+.task__due-date,
+.task__category {
+  text-transform: capitalize;
   font-weight: var(--fw-medium);
 }
 
 .task__title {
-  text-transform: capitalize;
-  /* font-weight: var(--fw-medium); */
   font-size: var(--fs-600);
 }
-
-
 
 .task__input {
   padding: var(--space-80);
   width: var(--fs-400);
-  
 }
 
-/* .task__buttons {
-  display: flex;
-  gap: var(--space-200);
-} */
-
 .task__category {
-  text-transform: capitalize;
   font-style: italic;
+}
+
+.button--edit,
+.button--delete,
+.button--details {
+  display: none;
+}
+
+.task:hover .button--edit,
+.task:hover .button--delete,
+.project:hover .button--delete,
+.task:hover .button--details {
+  display: block;
 }
 
 /* New project styles */

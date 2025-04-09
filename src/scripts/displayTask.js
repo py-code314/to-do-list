@@ -88,8 +88,8 @@ export function displayTask(filteredTasks) {
       className: 'task__image',
       src: `${editIcon}`,
       alt: '',
-      width: '22',
-      height: '22',
+      width: '15',
+      height: '15',
       title: 'Edit',
     });
 
@@ -118,8 +118,8 @@ export function displayTask(filteredTasks) {
       className: 'task__image',
       src: `${deleteIcon}`,
       alt: '',
-      width: '22',
-      height: '22',
+      width: '17',
+      height: '17',
       title: 'Delete',
     });
 
@@ -143,9 +143,10 @@ export function displayTask(filteredTasks) {
     });
 
     // Create date
-    const taskDueDate = Object.assign(document.createElement('p'), {
+    const taskDueDate = Object.assign(document.createElement('time'), {
       className: 'task__due-date',
       textContent: format(parseISO(task.dueDate), 'MM/dd/yyyy'),
+      dateTime: task.dueDate,
     });
 
     // Create category
@@ -179,8 +180,8 @@ export function displayTask(filteredTasks) {
       className: 'task__image',
       src: `${expandIcon}`,
       alt: '',
-      width: '22',
-      height: '22',
+      width: '17',
+      height: '17',
       title: 'Details',
     });
 

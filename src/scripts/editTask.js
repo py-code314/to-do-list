@@ -3,7 +3,7 @@ import { generateForm } from './formUtils';
 
 // Show Edit Form with prefilled values
 export function displayEditTaskForm(id) {
-  // Get Current Task by matching id
+  // Get current task by matching id
   let currentTask = tasks.filter((task) => task.id === id);
   currentTask = currentTask[0];
 
