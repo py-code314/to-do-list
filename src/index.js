@@ -1,14 +1,14 @@
 // import styles
 import './styles/styles.css';
 // import JS modules
-import './scripts/newTodo';
+import './scripts/newTaskForm';
 import './scripts/filterTasks';
 import './scripts/addToProject';
-import './scripts/taskDetails'
-import './scripts/search'
+import './scripts/taskDetails';
+import './scripts/search';
 
 /* Import functions */
-import { displayNewTaskForm } from './scripts/newTask';
+import { displayNewTaskForm } from './scripts/newTaskForm';
 import {
   validateTitleInput,
   validateDueDateInput,
@@ -115,6 +115,6 @@ taskList.addEventListener('click', (event) => {
       }
     });
   } else if (buttonId === 'detailsButton') {
-    displayTaskDetails(parseInt(event.target.parentNode.value))
+    displayTaskDetails(parseInt(event.target.parentNode.value));
   }
 });

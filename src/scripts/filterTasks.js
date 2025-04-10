@@ -75,7 +75,5 @@ action.addEventListener('click', (event) => {
     displayInboxTasks();
   } else if (event.target.id === 'all-tasks') {
     displayAllTasks();
-  } else if (event.target.id === 'search') {
-    displaySearchResults()
-  }
+  } 
 });

@@ -5,6 +5,7 @@ import { categories } from './newProject';
 import blueCircleImg from '../assets/images/icon-blue-circle.svg';
 import orangeCircleImg from '../assets/images/icon-orange-circle.svg';
 import redCircleImg from '../assets/images/icon-red-circle.svg';
+import closeIcon from '../assets/images/icon-close.svg';
 
 // Priorities object
 const priorities = [
@@ -397,7 +398,7 @@ export function generateTaskForm({
   };
 }
 
-export function generateForm() {
+export function generateForm({labelValue}) {
   /* Dialog modal */
   const modal = Object.assign(document.createElement('dialog'), {
     className: 'modal modal--small',
@@ -407,6 +408,14 @@ export function generateForm() {
   const form = Object.assign(document.createElement('form'), {
     className: 'form',
     method: 'dialog',
+  });
+
+  
+  // Create title label
+  const titleLabel = Object.assign(document.createElement('label'), {
+    className: 'form__label',
+    htmlFor: 'title',
+    textContent: labelValue,
   });
 
   /* Create container for input and button */
@@ -433,17 +442,37 @@ export function generateForm() {
     textContent: 'Submit',
   });
 
+  // Create close button
+  const closeButton = Object.assign(document.createElement('button'), {
+    id: 'closeButton',
+    className: 'button button--close',
+    ariaLabel: 'Close form',
+  });
+
+  // Create close image
+  const closeImage = Object.assign(document.createElement('img'), {
+    className: 'task__image',
+    src: `${closeIcon}`,
+    alt: '',
+    width: '28',
+    height: '28',
+    title: 'Close',
+  });
+
+  // Add close image to close button
+  closeButton.appendChild(closeImage);
+
   // Add input, submit button to inputButtonDiv
   inputButtonDiv.append(titleInput, submitButton);
 
-  // Add inputButtonDiv to form
-  form.appendChild(inputButtonDiv);
+  // Add label, inputButtonDiv and closeButton to form
+  form.append(titleLabel, inputButtonDiv, closeButton);
 
   // Add form, modal to parent elements
   modal.appendChild(form);
   content.appendChild(modal);
 
-  modal.show()
+  modal.showModal();
 
-  return {form, submitButton}
+  return { modal, form, submitButton, closeButton };
 }

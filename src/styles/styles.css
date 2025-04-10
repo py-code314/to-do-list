@@ -309,15 +309,16 @@ body {
 }
 
 /* Place Close button at top right corner */
-/* .button--close {
+.button--close {
   position: absolute;
-  top: var(--space-40);
-  right: var(--space-40);
+  top: 0;
+  right: 0;
   border-radius: var(--radius-circle);
   background-color: var(--clr-white);
   cursor: pointer;
   border: transparent;
-} */
+  
+}
 
 /* Styles for Form Inputs */
 .form__content {
@@ -405,6 +406,7 @@ body {
   flex-direction: column;
   gap: var(--space-200);
   border-radius: var(--radius-2);
+  position: relative;
 }
 
 .task__wrapper {

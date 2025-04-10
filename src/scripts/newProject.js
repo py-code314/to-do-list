@@ -11,18 +11,23 @@ const projects = document.querySelector('#projects');
 export let categories = [{ id: 'inbox', value: 'inbox', text: 'Inbox' }];
 
 export function showNewProjectForm() {
-  const { form, submitButton } = generateForm();
+  const { modal, form, submitButton, closeButton } = generateForm({labelValue: 'Project'});
 
-  return { form, submitButton };
+  return { modal, form, submitButton, closeButton };
 }
 
 const newProjectButton = document.querySelector('#new-project-button');
 
 newProjectButton.addEventListener('click', () => {
-  const { form } = showNewProjectForm();
+  const { modal, form, closeButton } = showNewProjectForm();
+
+  closeButton.addEventListener('click', () => {
+    modal.close();
+  });
 
   form.addEventListener('submit', (event) => {
     event.preventDefault();
+    modal.close()
 
     // form.style.display = 'none';
     createNewProject(form);
@@ -46,6 +51,7 @@ function createNewProject(form) {
     value: taskData.title.toLowerCase(),
     text: title,
   };
+  //TODO: make title lower case, capitalize in css
 
   categories.push(category);
 

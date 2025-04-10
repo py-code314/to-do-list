@@ -1,4 +1,4 @@
-import { NewTask } from './newTodo';
+import { NewTask } from "./newTask";
 // import { displayTasks } from './displayTasks';
 
 const taskList = document.querySelector('#task-list');
@@ -21,7 +21,7 @@ export function createOrUpdateTask(form) {
   const taskIndex = tasks.findIndex(
     (oldTask) => oldTask.id === parseInt(task.id)
   );
-  console.log(taskIndex);
+
   if (taskIndex !== -1) {
     tasks[taskIndex] = task;
   } else {
