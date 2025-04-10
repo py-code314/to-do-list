@@ -44,17 +44,18 @@ export function displayTask(filteredTasks) {
 
     // Create check box
     const taskCheckbox = Object.assign(document.createElement('input'), {
-      id: `checkbox-${task.id}`,
+      id: task.title,
       className: 'task__input',
       type: 'checkbox',
       name: 'checkbox',
-      checked: task.status === 'completed' ? true : false,
+      checked: task.status === 'complete' ? true : false,
+      value: task.id,
     });
 
     // Create title
     const taskTitle = Object.assign(document.createElement('label'), {
       className: 'task__title',
-      htmlFor: `checkbox-${task.id}`,
+      htmlFor: 'task.title',
       textContent: task.title,
     });
 
@@ -68,7 +69,6 @@ export function displayTask(filteredTasks) {
 
     // Create edit button
     const editButton = Object.assign(document.createElement('button'), {
-      id: 'editButton',
       className: 'button button--edit',
       ariaLabel: `Edit ${task.title}`,
       value: task.id,
@@ -98,7 +98,6 @@ export function displayTask(filteredTasks) {
 
     // Create delete button
     const deleteButton = Object.assign(document.createElement('button'), {
-      id: 'deleteButton',
       className: 'button button--delete',
       ariaLabel: `Delete ${task.title}`,
       value: task.id,
@@ -160,7 +159,6 @@ export function displayTask(filteredTasks) {
 
     // Create details button
     const detailsButton = Object.assign(document.createElement('button'), {
-      id: 'detailsButton',
       className: 'button button--details',
       ariaLabel: `Show details for ${task.title}`,
       value: task.id,
@@ -201,6 +199,8 @@ export function displayTask(filteredTasks) {
 
 taskList.addEventListener('tasksUpdated', () => {
   // Filter tasks with category inbox
-  const tasksInbox = tasks.filter((task) => task.category === 'Inbox');
+  const tasksInbox = tasks.filter(
+    (task) => task.category === 'Inbox' && task.status === 'incomplete'
+  );
   displayTask(tasksInbox);
 });

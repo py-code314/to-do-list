@@ -18,7 +18,7 @@ const priorities = [
 const statuses = [
   { value: 'incomplete', text: 'Incomplete' },
   { value: 'in-progress', text: 'In Progress' },
-  { value: 'completed', text: 'Completed' },
+  { value: 'complete', text: 'Complete' },
 ];
 
 // Format today's date

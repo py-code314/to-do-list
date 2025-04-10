@@ -4,14 +4,14 @@ import removeIcon from '../assets/images/icon-remove.svg';
 import { tasks } from './formData';
 import { generateForm } from './formUtils';
 
-const newProjectDiv = document.querySelector('.new-project');
-
 const projects = document.querySelector('#projects');
 
 export let categories = [{ id: 'Inbox', value: 'Inbox', text: 'Inbox' }];
 
 export function showNewProjectForm() {
-  const { modal, form, submitButton, closeButton } = generateForm({labelValue: 'Project'});
+  const { modal, form, submitButton, closeButton } = generateForm({
+    labelValue: 'Project',
+  });
 
   return { modal, form, submitButton, closeButton };
 }
@@ -22,14 +22,15 @@ newProjectButton.addEventListener('click', () => {
   const { modal, form, closeButton } = showNewProjectForm();
 
   closeButton.addEventListener('click', () => {
-    modal.close();
+    // modal.close();
+    modal.remove();
   });
 
   form.addEventListener('submit', (event) => {
     event.preventDefault();
-    modal.close()
+    modal.close();
+    
 
-    // form.style.display = 'none';
     createNewProject(form);
   });
 });
@@ -41,15 +42,12 @@ function createNewProject(form) {
   // Convert formData to JS object
   const taskData = Object.fromEntries(formData);
 
-  
-
   // Create Category object
   const category = {
     id: taskData.title,
     value: taskData.title,
     text: taskData.title,
   };
-  
 
   categories.push(category);
 
@@ -159,7 +157,6 @@ export function restoreProjectsFromLocalStorage() {
 
     if (storedCategories.length) {
       categories.push(...storedCategories);
-      // projects.dispatchEvent(new CustomEvent('tasksUpdated'));
 
       projects.dispatchEvent(new CustomEvent('projectsUpdated'));
     }
@@ -170,16 +167,16 @@ restoreProjectsFromLocalStorage();
 
 projects.addEventListener('click', (event) => {
   if (event.target.parentNode.id === 'removeButton') {
-    console.log('remove button clicked');
-    deleteProject(event.target.parentNode.value)
-
+    deleteProject(event.target.parentNode.value);
   }
 });
 
 function deleteProject(id) {
-  const filteredCategories = categories.filter(category => category.id !== id)
-  console.log(filteredCategories);
-  categories = filteredCategories
+  const filteredCategories = categories.filter(
+    (category) => category.id !== id
+  );
 
-  projects.dispatchEvent(new CustomEvent('projectsUpdated'))
+  categories = filteredCategories;
+
+  projects.dispatchEvent(new CustomEvent('projectsUpdated'));
 }

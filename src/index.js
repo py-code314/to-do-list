@@ -6,6 +6,7 @@ import './scripts/filterTasks';
 import './scripts/addToProject';
 import './scripts/taskDetails';
 import './scripts/search';
+import './scripts/completedTasks'
 
 /* Import functions */
 import { displayNewTaskForm } from './scripts/newTaskForm';
@@ -41,7 +42,8 @@ addTaskButton.addEventListener('click', () => {
   } = displayNewTaskForm();
 
   cancelButton.addEventListener('click', () => {
-    modal.close();
+    // modal.close();
+    modal.remove();
   });
 
   titleInput.addEventListener('input', () => {
@@ -60,7 +62,8 @@ addTaskButton.addEventListener('click', () => {
     );
 
     if (isFormValid) {
-      modal.close();
+      // modal.close();
+      modal.remove();
 
       createOrUpdateTask(taskForm);
     }
@@ -71,11 +74,11 @@ restoreFromLocalStorage();
 
 // Event delegation
 taskList.addEventListener('click', (event) => {
-  const buttonId = event.target.parentNode.id;
+  const button = event.target.parentNode;
 
-  if (buttonId === 'deleteButton') {
-    deleteTask(parseInt(event.target.parentNode.value));
-  } else if (buttonId === 'editButton') {
+  if (button.classList.contains('button--delete')) {
+    deleteTask(parseInt(button.value));
+  } else if (button.classList.contains('button--edit')) {
     const {
       modal,
       taskForm,
@@ -84,10 +87,11 @@ taskList.addEventListener('click', (event) => {
       titleError,
       dueDateError,
       cancelButton,
-    } = displayEditTaskForm(parseInt(event.target.parentNode.value));
+    } = displayEditTaskForm(parseInt(button.value));
 
     cancelButton.addEventListener('click', () => {
-      modal.close();
+      // modal.close();
+      modal.remove();
     });
 
     // Validate title input
@@ -110,11 +114,12 @@ taskList.addEventListener('click', (event) => {
       );
 
       if (isFormValid) {
-        modal.close();
+        // modal.close();
+        modal.remove();
         createOrUpdateTask(taskForm);
       }
     });
-  } else if (buttonId === 'detailsButton') {
-    displayTaskDetails(parseInt(event.target.parentNode.value));
+  } else if (button.classList.contains('button--details')) {
+    displayTaskDetails(parseInt(button.value));
   }
 });

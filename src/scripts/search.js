@@ -15,7 +15,8 @@ action.addEventListener('click', (event) => {
     const { modal, form, closeButton } = showSearchForm();
 
     closeButton.addEventListener('click', () => {
-      modal.close();
+      // modal.close();
+      modal.remove();
     });
 
     form.addEventListener('submit', (event) => {
