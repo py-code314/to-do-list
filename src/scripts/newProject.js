@@ -8,7 +8,7 @@ const newProjectDiv = document.querySelector('.new-project');
 
 const projects = document.querySelector('#projects');
 
-export let categories = [{ id: 'inbox', value: 'inbox', text: 'Inbox' }];
+export let categories = [{ id: 'Inbox', value: 'Inbox', text: 'Inbox' }];
 
 export function showNewProjectForm() {
   const { modal, form, submitButton, closeButton } = generateForm({labelValue: 'Project'});
@@ -41,17 +41,15 @@ function createNewProject(form) {
   // Convert formData to JS object
   const taskData = Object.fromEntries(formData);
 
-  // Capitalize title
-  let title = taskData.title;
-  title = title.charAt(0).toUpperCase() + title.slice(1);
+  
 
   // Create Category object
   const category = {
-    id: taskData.title.toLowerCase(),
-    value: taskData.title.toLowerCase(),
-    text: title,
+    id: taskData.title,
+    value: taskData.title,
+    text: taskData.title,
   };
-  //TODO: make title lower case, capitalize in css
+  
 
   categories.push(category);
 
@@ -173,5 +171,15 @@ restoreProjectsFromLocalStorage();
 projects.addEventListener('click', (event) => {
   if (event.target.parentNode.id === 'removeButton') {
     console.log('remove button clicked');
+    deleteProject(event.target.parentNode.value)
+
   }
 });
+
+function deleteProject(id) {
+  const filteredCategories = categories.filter(category => category.id !== id)
+  console.log(filteredCategories);
+  categories = filteredCategories
+
+  projects.dispatchEvent(new CustomEvent('projectsUpdated'))
+}

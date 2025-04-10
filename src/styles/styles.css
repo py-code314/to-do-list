@@ -218,6 +218,7 @@ body {
 .project__name {
   font-weight: var(--fw-medium);
   font-size: var(--fs-600);
+  /* text-transform: capitalize; */
 }
 
 .new-project__button {
@@ -429,7 +430,7 @@ body {
 .task__title,
 .task__due-date,
 .task__category {
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
   font-weight: var(--fw-medium);
 }
 

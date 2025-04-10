@@ -53,7 +53,7 @@ function displayNext7DaysTasks() {
 
 function displayInboxTasks() {
   // Filter tasks with category Inbox
-  const tasksInbox = tasks.filter((task) => task.category === 'inbox');
+  const tasksInbox = tasks.filter((task) => task.category === 'Inbox');
 
   displayTask(tasksInbox);
 }

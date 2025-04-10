@@ -305,7 +305,7 @@ export function generateTaskForm({
   });
   for (const category of categories) {
     const categoryOption = Object.assign(document.createElement('option'), {
-      value: `${category.value}`,
+      value: `${category.text}`,
       textContent: `${category.text}`,
       selected: category.value === categoryValue ? true : false,
     });

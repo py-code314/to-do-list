@@ -3,7 +3,7 @@
 // Default id for New Task is a number
 export class NewTask {
   constructor({ title, description, dueDate, priority, status, category, notes, checklist = false, id = Date.now() }) {
-    this.title = title.toLowerCase()
+    this.title = title
     this.description = description
     this.dueDate = dueDate
     this.priority = priority

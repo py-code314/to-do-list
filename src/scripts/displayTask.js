@@ -201,6 +201,6 @@ export function displayTask(filteredTasks) {
 
 taskList.addEventListener('tasksUpdated', () => {
   // Filter tasks with category inbox
-  const tasksInbox = tasks.filter((task) => task.category === 'inbox');
+  const tasksInbox = tasks.filter((task) => task.category === 'Inbox');
   displayTask(tasksInbox);
 });

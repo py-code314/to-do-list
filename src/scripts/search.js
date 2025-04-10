@@ -1,43 +1,38 @@
-import { generateForm } from "./formUtils";
-import { tasks } from "./formData";
-import { displayTask } from "./displayTask";
+import { generateForm } from './formUtils';
+import { tasks } from './formData';
+import { displayTask } from './displayTask';
 
 // Container which has all the action buttons
 const action = document.querySelector('.action');
 
 function showSearchForm() {
-  const { modal, form, closeButton } = generateForm({ labelValue: 'Search' })
-  return {modal, form, closeButton}
+  const { modal, form, closeButton } = generateForm({ labelValue: 'Search' });
+  return { modal, form, closeButton };
 }
 
 action.addEventListener('click', (event) => {
   if (event.target.id === 'search') {
-    const { modal, form, closeButton } = showSearchForm()
+    const { modal, form, closeButton } = showSearchForm();
 
     closeButton.addEventListener('click', () => {
       modal.close();
     });
-    
+
     form.addEventListener('submit', (event) => {
       event.preventDefault();
-      modal.close()
+      modal.close();
       // Create new formData object
       const formData = new FormData(form);
 
       // Convert formData to JS object
       let input = Object.fromEntries(formData);
-      
-      input = input.title.toLowerCase()
-      console.log(input);
-      displaySearchResults(input)
-    })
+      input = input.title.toLowerCase();
+
+      displaySearchResults(input);
+    });
   }
-})
+});
 export function displaySearchResults(input) {
-  console.log('show searched tasks');
-
-  const searchResults = tasks.filter(task => task.title === input)
-  displayTask(searchResults)
+  const searchResults = tasks.filter((task) => task.title === input);
+  displayTask(searchResults);
 }
-
-
