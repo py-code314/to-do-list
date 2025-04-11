@@ -3,7 +3,7 @@ import './styles/styles.css';
 // import JS modules
 import './scripts/newTaskForm';
 import './scripts/filterTasks';
-import './scripts/addToProject';
+import './scripts/project-task-handler';
 import './scripts/taskDetails';
 import './scripts/search';
 import './scripts/completedTasks'

@@ -1,14 +1,22 @@
 import { tasks } from './formData';
 
 const taskList = document.querySelector('#task-list');
-
 const projects = document.querySelector('#projects');
 
 function addTaskToProject() {
+  // Clear all tasks before looping through all the tasks
   const projectLists = projects.querySelectorAll('.project__list');
   projectLists.forEach((list) => (list.textContent = ''));
-  tasks.forEach((task) => {
+
+  // Filter completed tasks
+  const incompleteTasks = tasks.filter(task => task.status === 'incomplete')
+
+  // Loop through all incomplete tasks and add the task if task category
+  // matches with project name
+  incompleteTasks.forEach((task) => {
     const projectList = projects.querySelector(`#${task.category}`);
+
+    // Add checkbox and task title under related project
     if (projectList) {
       // Create Title container
       const titleDiv = Object.assign(document.createElement('div'), {
@@ -16,12 +24,13 @@ function addTaskToProject() {
       });
 
       // Create Check box
-      const taskStatus = Object.assign(document.createElement('input'), {
+      const taskCheckbox = Object.assign(document.createElement('input'), {
         id: `item-${task.id}`,
         className: 'task__input',
         type: 'checkbox',
         name: 'status',
-        checked: task.status === 'completed' ? true : false,
+        checked: task.status === 'complete' ? true : false,
+        value: task.id,
       });
 
       // Create Title
@@ -32,15 +41,28 @@ function addTaskToProject() {
       });
 
       // Add Check box and Title to Title Div
-      titleDiv.append(taskStatus, taskTitle);
+      titleDiv.append(taskCheckbox, taskTitle);
 
       // Add divider
       const divider = Object.assign(document.createElement('hr'));
 
       projectList.append(titleDiv, divider);
-      // projectList.appendChild(projectItem);
     }
   });
 }
 
+function markAsComplete(id) {
+  let checkedTask = tasks.find(task => task.id === id)
+  checkedTask.status = checkedTask.status === 'incomplete' ? 'complete' : 'incomplete'
+
+  taskList.dispatchEvent(new CustomEvent('tasksUpdated'))
+}
+
 taskList.addEventListener('tasksUpdated', addTaskToProject);
+projects.addEventListener('click', (event) => {
+  console.log(event);
+  const checkbox = event.target;
+  if (checkbox.classList.contains('task__input')) {
+    markAsComplete(parseInt(checkbox.value));
+  }
+})
