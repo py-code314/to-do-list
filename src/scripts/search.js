@@ -1,5 +1,6 @@
 import { generateForm } from './formUtils';
-import { tasks } from './formData';
+// import { tasks } from './formData';
+import { tasks } from './newTask';
 import { displayTask } from './displayTask';
 
 // Container which has all the action buttons

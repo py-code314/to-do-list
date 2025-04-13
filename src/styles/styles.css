@@ -29,6 +29,7 @@
   --clr-light-grey: hsl(220, 16%, 96%);
   --clr-black: hsl(0, 0%, 0%);
   --clr-dark-grey: hsl(226, 46%, 20%);
+  --clr-grey: hsl(210, 9%, 70%);
   --clr-red: hsl(0, 100%, 50%);
   --clr-light-red: hsl(6, 77%, 74%);
   --clr-light-orange: hsl(37, 91%, 71%);
@@ -131,10 +132,9 @@ body {
 
 .header {
   grid-area: header;
-  padding: 0 var(--space-400) var(--space-900);
+  padding:  var(--space-400) var(--space-900);
   text-align: center;
   font-family: var(--ff-baskerville);
-  border-block-end: 1px solid lightseagreen;
   background-color: #343a40;
   color: var(--clr-white);
 }
@@ -155,6 +155,7 @@ body {
   flex-direction: column;
   gap: var(--space-900);
   flex: 1;
+  padding-inline-start: var(--space-80);
 }
 
 .main {
@@ -185,6 +186,8 @@ body {
   flex-direction: column;
 }
 
+
+
 .button {
   display: flex;
   align-items: center;
@@ -193,6 +196,17 @@ body {
   background-color: var(--clr-light-grey);
   padding: var(--space-40) 0;
   cursor: pointer;
+}
+
+.button--action {
+  /* display: block; */
+  width: 100%;
+  padding-inline-start: var(--space-80);
+  border-radius: var(--radius-1);
+}
+
+.button--action:hover {
+  background-color: var(--clr-grey);
 }
 
 .projects {
@@ -237,11 +251,11 @@ body {
   display: flex;
   flex-direction: column;
   gap: var(--space-200);
-  width: 35%;
+  width: 40%;
 }
 
 .details {
-  width: 65%;
+  width: 60%;
 }
 
 /* .task {

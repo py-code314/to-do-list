@@ -1,4 +1,6 @@
-import { tasks } from './formData';
+// import { tasks } from './formData';
+import { tasks } from './newTask';
+// import {tasks} from './newTask'
 import { displayTask } from './displayTask';
 import {displaySearchResults} from './search'
 const {
@@ -58,22 +60,42 @@ function displayInboxTasks() {
   displayTask(tasksInbox);
 }
 
+function displayCompletedTasks() {
+  // Filter tasks with category Inbox
+  const tasksCompleted = tasks.filter((task) =>  task.status === 'complete');
+
+  displayTask(tasksCompleted);
+}
+
 function displayAllTasks() {
   displayTask(tasks);
 }
 
-
+const actionButtons = document.querySelectorAll('.button--action');
+// console.log(actionButtons);
 
 action.addEventListener('click', (event) => {
-  if (event.target.id === 'today') {
+  actionButtons.forEach(button => button.style.backgroundColor = 'var(--clr-light-grey)')
+  let buttonId = event.target.id
+  let button = event.target.style;
+  if (buttonId === 'today') {
+    // console.log(button, color);
+    button.backgroundColor = 'var(--clr-grey)'
     displayTodayTasks();
-  } else if (event.target.id === 'tomorrow') {
+  } else if (buttonId === 'tomorrow') {
+    button.backgroundColor = 'var(--clr-grey)'
     displayTomorrowTasks();
-  } else if (event.target.id === 'next-7-days') {
+  } else if (buttonId === 'next-7-days') {
+    button.backgroundColor = 'var(--clr-grey)'
     displayNext7DaysTasks();
-  } else if (event.target.id === 'inbox') {
+  } else if (buttonId === 'inbox') {
+    button.backgroundColor = 'var(--clr-grey)'
     displayInboxTasks();
-  } else if (event.target.id === 'all-tasks') {
+  } else if (buttonId === 'completed') {
+    button.backgroundColor = 'var(--clr-grey)'
+    displayCompletedTasks();
+  } else if (buttonId === 'all-tasks') {
+    button.backgroundColor = 'var(--clr-grey)'
     displayAllTasks();
   } 
 });

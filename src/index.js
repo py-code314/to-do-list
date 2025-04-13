@@ -1,12 +1,14 @@
 // import styles
 import './styles/styles.css';
 // import JS modules
+import './scripts/newTask'
 import './scripts/newTaskForm';
 import './scripts/filterTasks';
 import './scripts/project-task-handler';
 import './scripts/taskDetails';
 import './scripts/search';
 import './scripts/completedTasks'
+import './scripts/displayTask'
 
 /* Import functions */
 import { displayNewTaskForm } from './scripts/newTaskForm';
@@ -23,8 +25,10 @@ import { deleteTask } from './scripts/deleteTask';
 import { displayEditTaskForm } from './scripts/editTask';
 import { showNewProjectForm } from './scripts/newProject';
 
-import { tasks } from './scripts/formData';
+import { tasks } from './scripts/newTask';
 import { displayTaskDetails } from './scripts/taskDetails';
+
+
 
 const taskList = document.querySelector('#task-list');
 

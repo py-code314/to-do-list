@@ -29,7 +29,6 @@ newProjectButton.addEventListener('click', () => {
   form.addEventListener('submit', (event) => {
     event.preventDefault();
     modal.close();
-    
 
     createNewProject(form);
   });
@@ -59,6 +58,7 @@ projects.addEventListener('projectsUpdated', displayProjects);
 
 function displayProjects() {
   projects.textContent = '';
+
   const categoriesToDisplay = [...categories].slice(1);
 
   for (const category of categoriesToDisplay) {

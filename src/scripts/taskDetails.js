@@ -1,4 +1,5 @@
-import { tasks } from './formData';
+// import { tasks } from './formData';
+import { tasks } from './newTask';
 
 // Import images
 import closeIcon from '../assets/images/icon-close.svg';
@@ -12,13 +13,13 @@ const priorities = [
 ];
 
 export function displayTaskDetails(id) {
-  console.log('details button clicked');
+  // console.log('details button clicked');
 
   taskDetails.textContent = '';
   // Get current task by matching id
   let currentTask = tasks.filter((task) => task.id === id);
   currentTask = currentTask[0];
-  console.log(currentTask);
+  // console.log(currentTask);
 
   // Create a task container
   const taskContainer = Object.assign(document.createElement('div'), {

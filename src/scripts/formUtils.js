@@ -33,7 +33,6 @@ export function generateTaskForm({
   statusValue,
   categoryValue,
   notesValue,
-  checklistValue,
 }) {
   /* Dialog modal */
   const modal = Object.assign(document.createElement('dialog'), {
@@ -133,6 +132,7 @@ export function generateTaskForm({
     type: 'text',
     name: 'description',
     value: descriptionValue,
+    
   });
 
   // Add label and input to descriptionField
@@ -164,9 +164,10 @@ export function generateTaskForm({
     className: 'form__input',
     type: 'date',
     name: 'dueDate',
-    min: `${today}`,
+    // min: `${today}`,
     required: true,
-    value: dueDateValue,
+    // value: dueDateValue,
+    value: dueDateValue || `${today}`,
   });
 
   // Add label and input to dueDateField

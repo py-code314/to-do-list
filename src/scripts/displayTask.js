@@ -1,4 +1,7 @@
-import { tasks } from './formData';
+// import { tasks } from './formData';
+import { tasks } from './newTask';
+import './newTask'
+
 
 // Import images
 import editIcon from '../assets/images/icon-edit.svg';
@@ -7,11 +10,15 @@ import expandIcon from '../assets/images/icon-expand.svg'
 
 const { parseISO, format } = require('date-fns');
 const taskList = document.querySelector('#task-list');
+// taskList.dispatchEvent(new CustomEvent('tasksUpdated'));
+
 const priorities = [
   { value: 'low', color: 'var(--clr-light-blue' },
   { value: 'medium', color: 'var(--clr-light-orange)' },
   { value: 'high', color: 'var(--clr-light-red)' },
 ];
+
+
 
 export function displayTask(filteredTasks) {
   taskList.textContent = '';
@@ -197,6 +204,8 @@ export function displayTask(filteredTasks) {
   });
 }
 
+
+
 taskList.addEventListener('tasksUpdated', () => {
   // Filter tasks with category inbox
   const tasksInbox = tasks.filter(
@@ -204,3 +213,7 @@ taskList.addEventListener('tasksUpdated', () => {
   );
   displayTask(tasksInbox);
 });
+
+
+
+

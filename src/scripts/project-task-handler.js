@@ -1,4 +1,5 @@
-import { tasks } from './formData';
+// import { tasks } from './formData';
+import { tasks } from './newTask';
 
 const taskList = document.querySelector('#task-list');
 const projects = document.querySelector('#projects');

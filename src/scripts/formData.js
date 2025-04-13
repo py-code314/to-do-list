@@ -5,7 +5,10 @@ const taskList = document.querySelector('#task-list');
 // console.log(content);
 
 // Initialize State
-export let tasks = [];
+// export let tasks = [
+//   // { title: 'task 3', description: 'dkfdkfd', dueDate: '2025-04-11', priority: 'high', status: 'incomplete', notes: '' },
+// ];
+import { tasks } from './newTask';
 
 export function createOrUpdateTask(form) {
   // Create new formData object
