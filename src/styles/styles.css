@@ -35,6 +35,8 @@
   --clr-light-orange: hsl(37, 91%, 71%);
   --clr-light-blue: hsl(204, 70%, 72%);
   --clr-very-light-green: hsl(120, 29%, 93%);
+  --clr-teal: hsl(180, 100%, 25%);
+  --clr-blue: hsl(226, 58%, 52%);
 
   --shadow-1: 3px 0px 5px 0px hsla(0, 0%, 0%, 0.75);
   --shadow-2: 5px 5px 10px hsla(0, 0%, 0%, 0.5);
@@ -132,7 +134,7 @@ body {
 
 .header {
   grid-area: header;
-  padding:  var(--space-400) var(--space-900);
+  padding: var(--space-400) var(--space-900);
   text-align: center;
   font-family: var(--ff-baskerville);
   background-color: #343a40;
@@ -185,8 +187,6 @@ body {
   display: flex;
   flex-direction: column;
 }
-
-
 
 .button {
   display: flex;
@@ -323,6 +323,10 @@ body {
   text-align: center;
 }
 
+.form__title {
+  color: var(--clr-blue);
+}
+
 /* Place Close button at top right corner */
 .button--close {
   position: absolute;
@@ -332,7 +336,6 @@ body {
   background-color: var(--clr-white);
   cursor: pointer;
   border: transparent;
-  
 }
 
 /* Styles for Form Inputs */
@@ -354,6 +357,7 @@ body {
 .form__label,
 .form__legend {
   width: 35%;
+  font-weight: var(--fw-medium);
 }
 
 .form__input,
@@ -365,9 +369,29 @@ body {
   width: 65%;
 }
 
+.form__wrapper {
+  width: 65%;
+}
+
 .form__input:user-invalid {
   border: none;
   outline: 2px solid red;
+}
+
+.form__input--radio {
+  appearance: none;
+  padding: 0;
+  width: var(--space-400);
+  height: var(--space-400);
+  border: 1px solid var(--clr-black);
+  border-radius: 0;
+  transition: background-color 0.2s ease-in;
+}
+
+.form__input--radio:checked {
+  background-color: var(--clr-teal);
+  background-clip: content-box;
+  padding: 2px;
 }
 
 /* Styles for form error messages */
@@ -387,6 +411,7 @@ body {
 
 .form__wrapper {
   display: flex;
+  justify-content: space-evenly;
   align-items: center;
   gap: var(--space-200);
 }
@@ -405,14 +430,16 @@ body {
   margin-block-start: var(--space-300);
 }
 
-.button--cancel {
+.button--cancel,
+.button--submit {
   padding: var(--space-40) var(--space-80);
+  font-weight: var(--fw-medium);
+  color: var(--clr-white);
+  background-color: var(--clr-dark-grey);
 }
 
 .button--submit {
-  background-color: var(--clr-dark-grey);
-  color: var(--clr-white);
-  padding: var(--space-40) var(--space-80);
+  background-color: var(--clr-blue);
 }
 
 .task {

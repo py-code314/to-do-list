@@ -66,8 +66,8 @@ addTaskButton.addEventListener('click', () => {
     );
 
     if (isFormValid) {
-      // modal.close();
-      modal.remove();
+      modal.close();
+      // modal.remove();
 
       createOrUpdateTask(taskForm);
     }

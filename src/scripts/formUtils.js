@@ -17,7 +17,7 @@ const priorities = [
 // Statuses object
 const statuses = [
   { value: 'incomplete', text: 'Incomplete' },
-  { value: 'in-progress', text: 'In Progress' },
+  
   { value: 'complete', text: 'Complete' },
 ];
 
@@ -205,7 +205,7 @@ export function generateTaskForm({
     // Create priority input
     const priorityInput = Object.assign(document.createElement('input'), {
       id: `${priority.value}`,
-      className: 'form__input',
+      className: 'form__input form__input--radio',
       type: 'radio',
       name: 'priority',
       value: `${priority.value}`,
@@ -223,8 +223,8 @@ export function generateTaskForm({
       className: 'form__image',
       src: `${priority.image}`,
       alt: 'pic',
-      width: '15',
-      height: '15',
+      width: '17',
+      height: '17',
     });
 
     // Add input, label and image to priorityDiv
@@ -263,7 +263,7 @@ export function generateTaskForm({
     // Create status input
     const statusInput = Object.assign(document.createElement('input'), {
       id: `${status.value}`,
-      className: 'form__input',
+      className: 'form__input form__input--radio',
       type: 'radio',
       name: 'status',
       value: `${status.value}`,
