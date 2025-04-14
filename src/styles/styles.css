@@ -36,7 +36,7 @@
   --clr-light-blue: hsl(204, 70%, 72%);
   --clr-very-light-green: hsl(120, 29%, 93%);
   --clr-teal: hsl(180, 100%, 25%);
-  --clr-blue: hsl(226, 58%, 52%);
+  --clr-blue: #3e5fcc;
 
   --shadow-1: 3px 0px 5px 0px hsla(0, 0%, 0%, 0.75);
   --shadow-2: 5px 5px 10px hsla(0, 0%, 0%, 0.5);
@@ -130,6 +130,7 @@ body {
     'header header'
     'sidebar main';
   font-family: var(--ff-montserrat);
+  height: 100vh;
 }
 
 .header {
@@ -149,7 +150,11 @@ body {
   background-color: var(--clr-light-grey);
   padding: var(--space-400);
   box-shadow: var(--shadow-1);
-  max-height: 90vh;
+  /* max-height: 90vh; */
+  position: sticky;
+  /* top: 0; */
+  /* bottom: 0; */
+  height: 90vh;
 }
 
 .to-dos {
@@ -214,6 +219,8 @@ body {
   flex-direction: column;
   gap: var(--space-900);
   /* flex: 1; */
+  height: 45vh;
+  overflow-y: auto;
 }
 
 .project__header {
@@ -235,10 +242,19 @@ body {
   /* text-transform: capitalize; */
 }
 
-.new-project__button {
+.new-project {
+  padding: 0 var(--space-80);
+}
+
+.button--new-project {
   display: flex;
   align-items: center;
   gap: var(--space-80);
+  background-color: var(--clr-blue);
+  padding: var(--space-80) var(--space-200);
+  font-weight: var(--fw-medium);
+  color: var(--clr-white);
+  border-radius: var(--radius-1);
 }
 
 .content {
@@ -418,6 +434,7 @@ body {
 
 .form__div {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   gap: var(--space-40);
   text-wrap: nowrap;

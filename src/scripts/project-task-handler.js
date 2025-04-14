@@ -4,7 +4,7 @@ import { tasks } from './newTask';
 const taskList = document.querySelector('#task-list');
 const projects = document.querySelector('#projects');
 
-function addTaskToProject() {
+export function addTaskToProject() {
   // Clear all tasks before looping through all the tasks
   const projectLists = projects.querySelectorAll('.project__list');
   projectLists.forEach((list) => (list.textContent = ''));

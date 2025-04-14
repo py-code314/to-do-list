@@ -3,8 +3,10 @@ import boxIcon from '../assets/images/icon-box.svg';
 import removeIcon from '../assets/images/icon-remove.svg';
 import { tasks } from './formData';
 import { generateForm } from './formUtils';
+// import {addTaskToProject} from './project-task-handler'
 
 const projects = document.querySelector('#projects');
+const taskList = document.querySelector('#task-list');
 
 export let categories = [{ id: 'Inbox', value: 'Inbox', text: 'Inbox' }];
 
@@ -52,6 +54,7 @@ function createNewProject(form) {
 
   // Fire Custom Event
   projects.dispatchEvent(new CustomEvent('projectsUpdated'));
+  taskList.dispatchEvent(new CustomEvent('tasksUpdated'));
 }
 
 projects.addEventListener('projectsUpdated', displayProjects);
@@ -138,6 +141,8 @@ function displayProjects() {
 }
 
 projects.addEventListener('projectsUpdated', addProjectsToLocalStorage);
+// taskList.dispatchEvent(new CustomEvent('tasksUpdated'))
+// taskList.addEventListener('tasksUpdated', addTaskToProject);
 
 // Add all Projects to Local storage
 export function addProjectsToLocalStorage() {
@@ -179,4 +184,5 @@ function deleteProject(id) {
   categories = filteredCategories;
 
   projects.dispatchEvent(new CustomEvent('projectsUpdated'));
+  taskList.dispatchEvent(new CustomEvent('tasksUpdated'));
 }
