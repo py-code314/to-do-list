@@ -13,6 +13,10 @@ const {
 
 // Container which has all the action buttons
 const action = document.querySelector('.action');
+const taskList = document.querySelector('#task-list');
+
+// Filtered tasks screen stays the same after editing a task
+
 
 function displayTodayTasks() {
   // Format today's date
@@ -53,7 +57,7 @@ function displayNext7DaysTasks() {
   displayTask(next7DaysTasks);
 }
 
-function displayInboxTasks() {
+export function displayInboxTasks() {
   // Filter tasks with category Inbox
   const tasksInbox = tasks.filter((task) => task.category === 'Inbox' && task.status === 'incomplete');
 
@@ -67,9 +71,11 @@ function displayCompletedTasks() {
   displayTask(tasksCompleted);
 }
 
+
 function displayAllTasks() {
   displayTask(tasks);
 }
+
 
 const actionButtons = document.querySelectorAll('.button--action');
 // console.log(actionButtons);
@@ -80,22 +86,33 @@ action.addEventListener('click', (event) => {
   let button = event.target.style;
   if (buttonId === 'today') {
     // console.log(button, color);
-    button.backgroundColor = 'var(--clr-grey)'
+    button.backgroundColor = 'var(--clr-grey)';
     displayTodayTasks();
+    // Filtered tasks screen stays the same after editing a task
+    taskList.addEventListener('tasksUpdated', displayTodayTasks);
   } else if (buttonId === 'tomorrow') {
     button.backgroundColor = 'var(--clr-grey)'
     displayTomorrowTasks();
+    taskList.addEventListener('tasksUpdated', displayTomorrowTasks);
   } else if (buttonId === 'next-7-days') {
     button.backgroundColor = 'var(--clr-grey)'
     displayNext7DaysTasks();
+    taskList.addEventListener('tasksUpdated', displayNext7DaysTasks);
   } else if (buttonId === 'inbox') {
     button.backgroundColor = 'var(--clr-grey)'
     displayInboxTasks();
+    taskList.addEventListener('tasksUpdated', displayInboxTasks);
   } else if (buttonId === 'completed') {
     button.backgroundColor = 'var(--clr-grey)'
     displayCompletedTasks();
+    taskList.addEventListener('tasksUpdated', displayCompletedTasks);
   } else if (buttonId === 'all-tasks') {
-    button.backgroundColor = 'var(--clr-grey)'
+    button.backgroundColor = 'var(--clr-grey)';
     displayAllTasks();
+    // Filtered tasks screen stays the same after editing a task
+    taskList.addEventListener('tasksUpdated', displayAllTasks);
   } 
 });
+
+
+// displayInboxTasks()

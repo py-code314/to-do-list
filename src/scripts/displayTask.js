@@ -225,10 +225,11 @@ function formatTaskDueDate(dueDate) {
   }
 }
 
-taskList.addEventListener('tasksUpdated', () => {
-  // Filter tasks with category inbox
-  const tasksInbox = tasks.filter(
-    (task) => task.category === 'Inbox' && task.status === 'incomplete'
-  );
-  displayTask(tasksInbox);
-});
+// taskList.addEventListener('tasksUpdated', displayTask(filteredTasks))
+// taskList.addEventListener('tasksUpdated', () => {
+//   // Filter tasks with category inbox
+//   const tasksInbox = tasks.filter(
+//     (task) => task.category === 'Inbox' && task.status === 'incomplete'
+//   );
+//   displayTask(tasksInbox);
+// });
