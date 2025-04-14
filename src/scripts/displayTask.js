@@ -1,14 +1,19 @@
 // import { tasks } from './formData';
 import { tasks } from './newTask';
-import './newTask'
-
+import './newTask';
 
 // Import images
 import editIcon from '../assets/images/icon-edit.svg';
 import deleteIcon from '../assets/images/icon-delete.svg';
-import expandIcon from '../assets/images/icon-expand.svg'
+import expandIcon from '../assets/images/icon-expand.svg';
 
-const { parseISO, format } = require('date-fns');
+const {
+  format,
+  compareAsc,
+  isTomorrow,
+  parseISO,
+  addDays,
+} = require('date-fns');
 const taskList = document.querySelector('#task-list');
 // taskList.dispatchEvent(new CustomEvent('tasksUpdated'));
 
@@ -17,8 +22,6 @@ const priorities = [
   { value: 'medium', color: 'var(--clr-light-orange)' },
   { value: 'high', color: 'var(--clr-light-red)' },
 ];
-
-
 
 export function displayTask(filteredTasks) {
   taskList.textContent = '';
@@ -148,10 +151,14 @@ export function displayTask(filteredTasks) {
       className: 'task__div',
     });
 
+    // Format today's date
+    const today = format(new Date(), 'yyyy-MM-dd');
+
     // Create date
     const taskDueDate = Object.assign(document.createElement('time'), {
       className: 'task__due-date',
-      textContent: format(parseISO(task.dueDate), 'MM/dd/yyyy'),
+      // textContent: format(parseISO(task.dueDate), 'MM/dd/yyyy'),
+      textContent: formatTaskDueDate(task.dueDate),
       dateTime: task.dueDate,
     });
 
@@ -194,7 +201,7 @@ export function displayTask(filteredTasks) {
     detailsButton.appendChild(expandImage);
 
     // Add dateCategoryDiv and detailsButton to taskBody
-    taskBody.append(dateCategoryDiv, detailsButton)
+    taskBody.append(dateCategoryDiv, detailsButton);
 
     // Add checkbox, title, date, category, buttons  to task container
     taskContainer.append(taskHeader, taskBody);
@@ -204,7 +211,19 @@ export function displayTask(filteredTasks) {
   });
 }
 
-
+// Change task due date into text
+function formatTaskDueDate(dueDate) {
+  const today = format(new Date(), 'yyyy-MM-dd');
+  if (dueDate < today) {
+    return 'Overdue';
+  } else if (dueDate === today) {
+    return 'Today';
+  } else if (isTomorrow(parseISO(dueDate))) {
+    return 'Tomorrow';
+  } else {
+    return format(parseISO(dueDate), 'MM/dd/yyyy');
+  }
+}
 
 taskList.addEventListener('tasksUpdated', () => {
   // Filter tasks with category inbox
@@ -213,7 +232,3 @@ taskList.addEventListener('tasksUpdated', () => {
   );
   displayTask(tasksInbox);
 });
-
-
-
-

@@ -1,16 +1,16 @@
 // Using Constraint Validation API
 
 import { tasks } from './newTask';
-const taskList = document.querySelector('#task-list');
+// const taskList = document.querySelector('#task-list');
 
-// Function to handle tasks update
-function updateTaskTitles() {
-  const taskTitles = tasks.map((task) => task.title);
-  return {taskTitles}
-}
+// // Function to handle tasks update
+// function updateTaskTitles() {
+//   const taskTitles = tasks.map((task) => task.title);
+//   return {taskTitles}
+// }
 
-// Listen for 'tasksUpdated' event
-taskList.addEventListener('tasksUpdated', updateTaskTitles);
+// // Listen for 'tasksUpdated' event
+// taskList.addEventListener('tasksUpdated', updateTaskTitles);
 
 
 export function validateTitleInput(titleInput, titleError) {
@@ -39,21 +39,21 @@ export function validateForm(
   titleError,
   dueDateError
 ) {
-  const { taskTitles } = updateTaskTitles()
-  console.log(taskTitles, titleInput.value);
+  // const { taskTitles } = updateTaskTitles()
+  // console.log(taskTitles, titleInput.value);
   let isValid = true;
   if (titleInput.validity.valueMissing) {
     titleError.textContent = 'Title must not be empty';
     isValid = false;
     titleInput.focus();
   }
-  else if (taskTitles.includes(titleInput.value)) {
+  // else if (taskTitles.includes(titleInput.value)) {
     
-    console.log('title exists');
-    titleError.textContent = 'Task with same name already exists.'
-    isValid = false;
-    titleInput.focus();
-  }
+  //   console.log('title exists');
+  //   titleError.textContent = 'Task with same name already exists.'
+  //   isValid = false;
+  //   titleInput.focus();
+  // }
   else {
     titleError.textContent = '';
   }
