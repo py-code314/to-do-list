@@ -271,11 +271,11 @@ body {
   display: flex;
   flex-direction: column;
   gap: var(--space-200);
-  width: 40%;
+  width: 45%;
 }
 
 .details {
-  width: 60%;
+  width: 55%;
 }
 
 /* .task {

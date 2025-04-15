@@ -11,7 +11,7 @@ const priorities = [
   { value: 'medium', color: 'var(--clr-light-orange)' },
   { value: 'high', color: 'var(--clr-light-red)' },
 ];
-
+console.log(tasks);
 export function displayTaskDetails(id) {
   // console.log('details button clicked');
 

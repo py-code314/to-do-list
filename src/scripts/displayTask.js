@@ -229,24 +229,5 @@ function formatTaskDueDate(dueDate,status) {
   }
  
 }
-// function formatTaskDueDate(dueDate) {
-//   const today = format(new Date(), 'yyyy-MM-dd');
-//   if (dueDate < today) {
-//     return 'Overdue';
-//   } else if (dueDate === today) {
-//     return 'Today';
-//   } else if (isTomorrow(parseISO(dueDate))) {
-//     return 'Tomorrow';
-//   } else {
-//     return format(parseISO(dueDate), 'MM/dd/yyyy');
-//   }
-// }
 
-// taskList.addEventListener('tasksUpdated', displayTask(filteredTasks))
-// taskList.addEventListener('tasksUpdated', () => {
-//   // Filter tasks with category inbox
-//   const tasksInbox = tasks.filter(
-//     (task) => task.category === 'Inbox' && task.status === 'incomplete'
-//   );
-//   displayTask(tasksInbox);
-// });
+displayTask(tasks)
