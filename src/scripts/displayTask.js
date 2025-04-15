@@ -158,7 +158,7 @@ export function displayTask(filteredTasks) {
     const taskDueDate = Object.assign(document.createElement('time'), {
       className: 'task__due-date',
       // textContent: format(parseISO(task.dueDate), 'MM/dd/yyyy'),
-      textContent: formatTaskDueDate(task.dueDate),
+      textContent: formatTaskDueDate(task.dueDate, task.status),
       dateTime: task.dueDate,
     });
 
@@ -212,18 +212,35 @@ export function displayTask(filteredTasks) {
 }
 
 // Change task due date into text
-function formatTaskDueDate(dueDate) {
-  const today = format(new Date(), 'yyyy-MM-dd');
-  if (dueDate < today) {
-    return 'Overdue';
-  } else if (dueDate === today) {
-    return 'Today';
-  } else if (isTomorrow(parseISO(dueDate))) {
-    return 'Tomorrow';
-  } else {
-    return format(parseISO(dueDate), 'MM/dd/yyyy');
+function formatTaskDueDate(dueDate,status) {
+  if (status === 'incomplete') {
+    const today = format(new Date(), 'yyyy-MM-dd');
+    if (dueDate < today) {
+      return 'Overdue';
+    } else if (dueDate === today) {
+      return 'Today';
+    } else if (isTomorrow(parseISO(dueDate))) {
+      return 'Tomorrow';
+    } else {
+      return format(parseISO(dueDate), 'MM/dd/yyyy');
+    }
+  } else if (status === 'complete') {
+    return 'Completed'
   }
+ 
 }
+// function formatTaskDueDate(dueDate) {
+//   const today = format(new Date(), 'yyyy-MM-dd');
+//   if (dueDate < today) {
+//     return 'Overdue';
+//   } else if (dueDate === today) {
+//     return 'Today';
+//   } else if (isTomorrow(parseISO(dueDate))) {
+//     return 'Tomorrow';
+//   } else {
+//     return format(parseISO(dueDate), 'MM/dd/yyyy');
+//   }
+// }
 
 // taskList.addEventListener('tasksUpdated', displayTask(filteredTasks))
 // taskList.addEventListener('tasksUpdated', () => {

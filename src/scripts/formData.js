@@ -29,6 +29,7 @@ export function createOrUpdateTask(form) {
     tasks[taskIndex] = task;
   } else {
     tasks.push(task);
+    
   }
 
   // Fire Custom Event after tasks updated

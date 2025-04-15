@@ -242,6 +242,10 @@ body {
   /* text-transform: capitalize; */
 }
 
+.project__list {
+  padding-inline-start: var(--space-40);
+}
+
 .new-project {
   padding: 0 var(--space-80);
 }
@@ -394,7 +398,8 @@ body {
   outline: 2px solid red;
 }
 
-.form__input--radio {
+.form__input--radio,
+.task__input {
   appearance: none;
   padding: 0;
   width: var(--space-400);
@@ -404,7 +409,10 @@ body {
   transition: background-color 0.2s ease-in;
 }
 
-.form__input--radio:checked {
+
+
+.form__input--radio:checked,
+.task__input:checked {
   background-color: var(--clr-teal);
   background-clip: content-box;
   padding: 2px;
@@ -494,11 +502,6 @@ body {
 
 .task__title {
   font-size: var(--fs-600);
-}
-
-.task__input {
-  padding: var(--space-80);
-  width: var(--fs-400);
 }
 
 .task__category {

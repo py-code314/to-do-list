@@ -5,10 +5,13 @@ const taskList = document.querySelector('#task-list');
 
 // Add all Tasks to Local storage
 export function addToLocalStorage() {
-  // console.log('saving items to local storage');
+  // const tasksToStore = [...tasks].slice(1)
+  // console.log(tasksToStore);
+  // localStorage.setItem('tasks', JSON.stringify(tasksToStore))
   localStorage.setItem('tasks', JSON.stringify(tasks))
+  
 }
-
+taskList.addEventListener('tasksUpdated', addToLocalStorage);
 
 
 // Retrieve all Tasks from Local storage
@@ -27,4 +30,4 @@ export function restoreFromLocalStorage() {
   }
 }
 
-taskList.addEventListener('tasksUpdated', addToLocalStorage);
+

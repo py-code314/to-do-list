@@ -16,7 +16,7 @@ const action = document.querySelector('.action');
 const taskList = document.querySelector('#task-list');
 
 // Filtered tasks screen stays the same after editing a task
-
+// taskList.addEventListener('tasksUpdated', displayInboxTasks);
 
 function displayTodayTasks() {
   // Format today's date
@@ -25,8 +25,8 @@ function displayTodayTasks() {
   // Filter tasks based on today
   const todayTasks = tasks.filter(
     (task) =>
-      compareAsc(new Date(task.dueDate), new Date(today)) === 0 ||
-      compareAsc(new Date(task.dueDate), new Date(today)) < 0
+      (compareAsc(new Date(task.dueDate), new Date(today)) === 0 ||
+      compareAsc(new Date(task.dueDate), new Date(today)) < 0) && task.status !== 'complete'
   );
 
   displayTask(todayTasks);
@@ -51,7 +51,10 @@ function displayNext7DaysTasks() {
   oneWeek = format(oneWeek, 'yyyy-MM-dd');
 
   const next7DaysTasks = tasks.filter(
-    (task) => task.dueDate >= today && task.dueDate <= oneWeek
+    (task) =>
+      task.dueDate >= today &&
+      task.dueDate <= oneWeek &&
+      task.status !== 'complete'
   );
 
   displayTask(next7DaysTasks);
@@ -80,39 +83,85 @@ function displayAllTasks() {
 const actionButtons = document.querySelectorAll('.button--action');
 // console.log(actionButtons);
 
+// console.log(todayButton);
+let currentView = 'today'
 action.addEventListener('click', (event) => {
   actionButtons.forEach(button => button.style.backgroundColor = 'var(--clr-light-grey)')
   let buttonId = event.target.id
   let button = event.target.style;
+
+  currentView = buttonId
   if (buttonId === 'today') {
-    // console.log(button, color);
+    
     button.backgroundColor = 'var(--clr-grey)';
     displayTodayTasks();
-    // Filtered tasks screen stays the same after editing a task
-    taskList.addEventListener('tasksUpdated', displayTodayTasks);
+    
   } else if (buttonId === 'tomorrow') {
     button.backgroundColor = 'var(--clr-grey)'
     displayTomorrowTasks();
-    taskList.addEventListener('tasksUpdated', displayTomorrowTasks);
+    
   } else if (buttonId === 'next-7-days') {
     button.backgroundColor = 'var(--clr-grey)'
     displayNext7DaysTasks();
-    taskList.addEventListener('tasksUpdated', displayNext7DaysTasks);
+    
   } else if (buttonId === 'inbox') {
     button.backgroundColor = 'var(--clr-grey)'
     displayInboxTasks();
-    taskList.addEventListener('tasksUpdated', displayInboxTasks);
+    
   } else if (buttonId === 'completed') {
     button.backgroundColor = 'var(--clr-grey)'
     displayCompletedTasks();
-    taskList.addEventListener('tasksUpdated', displayCompletedTasks);
+    
   } else if (buttonId === 'all-tasks') {
     button.backgroundColor = 'var(--clr-grey)';
     displayAllTasks();
-    // Filtered tasks screen stays the same after editing a task
-    taskList.addEventListener('tasksUpdated', displayAllTasks);
+    
   } 
 });
 
+// taskList.addEventListener('tasksUpdated', () => {
+//   todayButton.style.backgroundColor = 'var(--clr-grey)'
+//   displayTodayTasks()
+// })
+const todayButton = action.querySelector('#today');
+const tomorrowButton = action.querySelector('#tomorrow');
+const next7DaysButton = action.querySelector('#next-7-days');
+const inboxButton = action.querySelector('#inbox');
+const completedButton = action.querySelector('#completed');
+const allTasksButton = action.querySelector('#all-tasks');
 
-// displayInboxTasks()
+
+taskList.addEventListener('tasksUpdated', () => {
+  // Update the correct view based on currentView
+  switch (currentView) {
+    case 'today':
+      todayButton.style.backgroundColor = 'var(--clr-grey)';
+      displayTodayTasks();
+      break;
+    case 'tomorrow':
+      tomorrowButton.style.backgroundColor = 'var(--clr-grey)';
+      displayTomorrowTasks();
+      break;
+    case 'next-7-days':
+      next7DaysButton.style.backgroundColor = 'var(--clr-grey)';
+      displayNext7DaysTasks();
+      break;
+    case 'inbox':
+      inboxButton.style.backgroundColor = 'var(--clr-grey)';
+      displayInboxTasks();
+      break;
+    case 'completed':
+      completedButton.style.backgroundColor = 'var(--clr-grey)';
+      displayCompletedTasks();
+      break;
+    case 'all-tasks':
+      allTasksButton.style.backgroundColor = 'var(--clr-grey)';
+      displayAllTasks();
+      break;
+    default:
+      // fallback
+      todayButton.style.backgroundColor = 'var(--clr-grey)';
+      displayTodayTasks();
+  }
+});
+

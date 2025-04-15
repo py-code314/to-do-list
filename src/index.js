@@ -30,7 +30,7 @@ import { displayTaskDetails } from './scripts/taskDetails';
 import { displayInboxTasks } from './scripts/filterTasks';
 
 
-document.addEventListener('DOMContentLoaded', displayInboxTasks)
+// document.addEventListener('DOMContentLoaded', displayInboxTasks)
 const taskList = document.querySelector('#task-list');
 
 // Event listener for Add Task button
