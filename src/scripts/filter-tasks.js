@@ -1,7 +1,7 @@
 import { tasks } from './new-task';
 
 import { displayTask } from './display-task';
-import { displaySearchResults } from './search';
+
 const {
   format,
   compareAsc,

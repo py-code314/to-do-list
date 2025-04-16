@@ -61,7 +61,6 @@ function markAsComplete(id) {
 
 taskList.addEventListener('tasksUpdated', addTaskToProject);
 projects.addEventListener('click', (event) => {
-  console.log(event);
   const checkbox = event.target;
   if (checkbox.classList.contains('task__input')) {
     markAsComplete(parseInt(checkbox.value));

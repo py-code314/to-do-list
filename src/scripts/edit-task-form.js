@@ -1,4 +1,3 @@
-
 import { tasks } from './new-task';
 import { generateTaskForm } from './form-utils';
 

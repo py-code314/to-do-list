@@ -1,4 +1,3 @@
-// import { tasks } from './formData';
 import { tasks } from './new-task';
 import './new-task';
 
@@ -9,13 +8,11 @@ import expandIcon from '../assets/images/icon-expand.svg';
 
 const {
   format,
- 
+
   isTomorrow,
   parseISO,
- 
 } = require('date-fns');
 const taskList = document.querySelector('#task-list');
-
 
 const priorities = [
   { value: 'low', color: 'var(--clr-light-blue' },

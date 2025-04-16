@@ -5,11 +5,7 @@
 export let tasks = [];
 
 const {
-  format,
-  compareAsc,
-  isTomorrow,
-  parseISO,
-  addDays,
+  format
 } = require('date-fns');
 
 export class NewTask {

@@ -1,8 +1,6 @@
-import { NewTask } from './new-task';
-
+import { NewTask, tasks } from './new-task';
 const taskList = document.querySelector('#task-list');
 
-import { tasks } from './new-task';
 
 export function createOrUpdateTask(form) {
   // Create new formData object

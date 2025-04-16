@@ -1,7 +1,5 @@
 // Using Constraint Validation API
 
-import { tasks } from './new-task';
-
 export function validateTitleInput(titleInput, titleError) {
   if (titleInput.validity.valueMissing) {
     titleError.textContent = 'Title must not be empty';

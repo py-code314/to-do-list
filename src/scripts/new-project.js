@@ -1,7 +1,6 @@
 // Import Images
 import boxIcon from '../assets/images/icon-box.svg';
 import removeIcon from '../assets/images/icon-remove.svg';
-import { tasks } from './task-utils';
 import { generateForm } from './form-utils';
 
 const projects = document.querySelector('#projects');

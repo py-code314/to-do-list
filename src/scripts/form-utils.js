@@ -163,9 +163,9 @@ export function generateTaskForm({
     className: 'form__input',
     type: 'date',
     name: 'dueDate',
-    // min: `${today}`,
+
     required: true,
-    // value: dueDateValue,
+
     value: dueDateValue || `${today}`,
   });
 
