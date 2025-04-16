@@ -418,6 +418,10 @@ body {
   padding: 2px;
 }
 
+.task__input:checked + .task__title {
+  text-decoration: line-through;
+}
+
 /* Styles for form error messages */
 .form__error {
   color: var(--clr-red);

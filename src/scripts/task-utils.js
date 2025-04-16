@@ -1,14 +1,8 @@
-import { NewTask } from "./newTask";
-// import { displayTasks } from './displayTasks';
+import { NewTask } from './new-task';
 
 const taskList = document.querySelector('#task-list');
-// console.log(content);
 
-// Initialize State
-// export let tasks = [
-//   // { title: 'task 3', description: 'dkfdkfd', dueDate: '2025-04-11', priority: 'high', status: 'incomplete', notes: '' },
-// ];
-import { tasks } from './newTask';
+import { tasks } from './new-task';
 
 export function createOrUpdateTask(form) {
   // Create new formData object
@@ -29,7 +23,6 @@ export function createOrUpdateTask(form) {
     tasks[taskIndex] = task;
   } else {
     tasks.push(task);
-    
   }
 
   // Fire Custom Event after tasks updated

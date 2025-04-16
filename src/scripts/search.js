@@ -1,7 +1,7 @@
-import { generateForm } from './formUtils';
-// import { tasks } from './formData';
-import { tasks } from './newTask';
-import { displayTask } from './displayTask';
+import { generateForm } from './form-utils';
+
+import { tasks } from './new-task';
+import { displayTask } from './display-task';
 
 // Container which has all the action buttons
 const action = document.querySelector('.action');
@@ -16,8 +16,7 @@ action.addEventListener('click', (event) => {
     const { modal, form, closeButton } = showSearchForm();
 
     closeButton.addEventListener('click', () => {
-      // modal.close();
-      modal.remove();
+      modal.close();
     });
 
     form.addEventListener('submit', (event) => {

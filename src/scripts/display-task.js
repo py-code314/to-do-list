@@ -1,6 +1,6 @@
 // import { tasks } from './formData';
-import { tasks } from './newTask';
-import './newTask';
+import { tasks } from './new-task';
+import './new-task';
 
 // Import images
 import editIcon from '../assets/images/icon-edit.svg';
@@ -9,13 +9,13 @@ import expandIcon from '../assets/images/icon-expand.svg';
 
 const {
   format,
-  compareAsc,
+ 
   isTomorrow,
   parseISO,
-  addDays,
+ 
 } = require('date-fns');
 const taskList = document.querySelector('#task-list');
-// taskList.dispatchEvent(new CustomEvent('tasksUpdated'));
+
 
 const priorities = [
   { value: 'low', color: 'var(--clr-light-blue' },
@@ -212,7 +212,7 @@ export function displayTask(filteredTasks) {
 }
 
 // Change task due date into text
-function formatTaskDueDate(dueDate,status) {
+function formatTaskDueDate(dueDate, status) {
   if (status === 'incomplete') {
     const today = format(new Date(), 'yyyy-MM-dd');
     if (dueDate < today) {
@@ -225,9 +225,8 @@ function formatTaskDueDate(dueDate,status) {
       return format(parseISO(dueDate), 'MM/dd/yyyy');
     }
   } else if (status === 'complete') {
-    return 'Completed'
+    return 'Completed';
   }
- 
 }
 
-displayTask(tasks)
+displayTask(tasks);

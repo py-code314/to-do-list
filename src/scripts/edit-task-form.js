@@ -1,6 +1,6 @@
-// import { tasks } from './formData';
-import { tasks } from './newTask';
-import { generateTaskForm } from './formUtils';
+
+import { tasks } from './new-task';
+import { generateTaskForm } from './form-utils';
 
 // Show Edit Form with prefilled values
 export function displayEditTaskForm(id) {

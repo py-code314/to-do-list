@@ -1,8 +1,7 @@
-// import { tasks } from './formData';
-import { tasks } from './newTask';
-// import {tasks} from './newTask'
-import { displayTask } from './displayTask';
-import {displaySearchResults} from './search'
+import { tasks } from './new-task';
+
+import { displayTask } from './display-task';
+import { displaySearchResults } from './search';
 const {
   format,
   compareAsc,
@@ -15,9 +14,6 @@ const {
 const action = document.querySelector('.action');
 const taskList = document.querySelector('#task-list');
 
-// Filtered tasks screen stays the same after editing a task
-// taskList.addEventListener('tasksUpdated', displayInboxTasks);
-
 function displayTodayTasks() {
   // Format today's date
   const today = format(new Date(), 'yyyy-MM-dd');
@@ -26,7 +22,8 @@ function displayTodayTasks() {
   const todayTasks = tasks.filter(
     (task) =>
       (compareAsc(new Date(task.dueDate), new Date(today)) === 0 ||
-      compareAsc(new Date(task.dueDate), new Date(today)) < 0) && task.status !== 'complete'
+        compareAsc(new Date(task.dueDate), new Date(today)) < 0) &&
+      task.status !== 'complete'
   );
 
   displayTask(todayTasks);
@@ -62,74 +59,62 @@ function displayNext7DaysTasks() {
 
 export function displayInboxTasks() {
   // Filter tasks with category Inbox
-  const tasksInbox = tasks.filter((task) => task.category === 'Inbox' && task.status === 'incomplete');
+  const tasksInbox = tasks.filter(
+    (task) => task.category === 'Inbox' && task.status === 'incomplete'
+  );
 
   displayTask(tasksInbox);
 }
 
 function displayCompletedTasks() {
   // Filter tasks with category Inbox
-  const tasksCompleted = tasks.filter((task) =>  task.status === 'complete');
+  const tasksCompleted = tasks.filter((task) => task.status === 'complete');
 
   displayTask(tasksCompleted);
 }
-
 
 function displayAllTasks() {
   displayTask(tasks);
 }
 
-
 const actionButtons = document.querySelectorAll('.button--action');
-// console.log(actionButtons);
 
-// console.log(todayButton);
-let currentView = 'today'
+let currentView = 'today';
 action.addEventListener('click', (event) => {
-  actionButtons.forEach(button => button.style.backgroundColor = 'var(--clr-light-grey)')
-  let buttonId = event.target.id
+  actionButtons.forEach(
+    (button) => (button.style.backgroundColor = 'var(--clr-light-grey)')
+  );
+  let buttonId = event.target.id;
   let button = event.target.style;
 
-  currentView = buttonId
+  currentView = buttonId;
   if (buttonId === 'today') {
-    
     button.backgroundColor = 'var(--clr-grey)';
     displayTodayTasks();
-    
   } else if (buttonId === 'tomorrow') {
-    button.backgroundColor = 'var(--clr-grey)'
+    button.backgroundColor = 'var(--clr-grey)';
     displayTomorrowTasks();
-    
   } else if (buttonId === 'next-7-days') {
-    button.backgroundColor = 'var(--clr-grey)'
+    button.backgroundColor = 'var(--clr-grey)';
     displayNext7DaysTasks();
-    
   } else if (buttonId === 'inbox') {
-    button.backgroundColor = 'var(--clr-grey)'
+    button.backgroundColor = 'var(--clr-grey)';
     displayInboxTasks();
-    
   } else if (buttonId === 'completed') {
-    button.backgroundColor = 'var(--clr-grey)'
+    button.backgroundColor = 'var(--clr-grey)';
     displayCompletedTasks();
-    
   } else if (buttonId === 'all-tasks') {
     button.backgroundColor = 'var(--clr-grey)';
     displayAllTasks();
-    
-  } 
+  }
 });
 
-// taskList.addEventListener('tasksUpdated', () => {
-//   todayButton.style.backgroundColor = 'var(--clr-grey)'
-//   displayTodayTasks()
-// })
 const todayButton = action.querySelector('#today');
 const tomorrowButton = action.querySelector('#tomorrow');
 const next7DaysButton = action.querySelector('#next-7-days');
 const inboxButton = action.querySelector('#inbox');
 const completedButton = action.querySelector('#completed');
 const allTasksButton = action.querySelector('#all-tasks');
-
 
 taskList.addEventListener('tasksUpdated', () => {
   // Update the correct view based on currentView
@@ -164,4 +149,3 @@ taskList.addEventListener('tasksUpdated', () => {
       displayTodayTasks();
   }
 });
-

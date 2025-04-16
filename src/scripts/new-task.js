@@ -2,9 +2,6 @@
 // Convert task id to int because Edit Task id is a string
 // Default id for New Task is a number
 
-// import { tasks } from "./formData"
-// import { displayTask } from "./displayTask";
-// export let tasks = Array.from([]);
 export let tasks = [];
 
 const {
@@ -15,9 +12,6 @@ const {
   addDays,
 } = require('date-fns');
 
-
-const taskList = document.querySelector('#task-list');
-
 export class NewTask {
   constructor({
     title,
@@ -27,9 +21,7 @@ export class NewTask {
     status,
     category,
     notes,
-    // checklist = false,
-    // id = Date.now(),
-    id
+    id,
   }) {
     this.title = title;
     this.description = description;
@@ -38,9 +30,8 @@ export class NewTask {
     this.status = status;
     this.category = category;
     this.notes = notes;
-    // this.checklist = checklist;
+
     this.id = parseInt(id) || Date.now();
-    // this.id = parseInt(id);
   }
 }
 
@@ -52,7 +43,7 @@ const task1 = new NewTask({
   status: 'incomplete',
   category: 'Inbox',
   notes: 'check the date before buying',
-  id: 1
+  id: 1,
 });
 
 tasks.push(task1);
@@ -65,11 +56,10 @@ const task2 = new NewTask({
   status: 'incomplete',
   category: 'Inbox',
   notes: 'have all ingredients to cook',
-  id: 2
+  id: 2,
 });
 
 tasks.push(task2);
-
 
 const task3 = new NewTask({
   title: 'go to gym',
@@ -79,7 +69,7 @@ const task3 = new NewTask({
   status: 'incomplete',
   category: 'Inbox',
   notes: 'lift weights',
-  id: 3
+  id: 3,
 });
 
 tasks.push(task3);
@@ -110,19 +100,3 @@ const task5 = new NewTask({
 });
 
 tasks.push(task5);
-
-
-
-
-
-
-console.log(tasks);
-
-// // Fire Custom Event after tasks updated
-// taskList.dispatchEvent(new CustomEvent('tasksUpdated'));
-// console.log('Dispatching tasksUpdated event...');
-// taskList.dispatchEvent(new CustomEvent('tasksUpdated'));
-// console.log('Event dispatched.');
-
-
-

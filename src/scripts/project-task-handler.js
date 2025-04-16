@@ -1,5 +1,4 @@
-// import { tasks } from './formData';
-import { tasks } from './newTask';
+import { tasks } from './new-task';
 
 const taskList = document.querySelector('#task-list');
 const projects = document.querySelector('#projects');
@@ -10,7 +9,7 @@ export function addTaskToProject() {
   projectLists.forEach((list) => (list.textContent = ''));
 
   // Filter completed tasks
-  const incompleteTasks = tasks.filter(task => task.status === 'incomplete')
+  const incompleteTasks = tasks.filter((task) => task.status === 'incomplete');
 
   // Loop through all incomplete tasks and add the task if task category
   // matches with project name
@@ -53,10 +52,11 @@ export function addTaskToProject() {
 }
 
 function markAsComplete(id) {
-  let checkedTask = tasks.find(task => task.id === id)
-  checkedTask.status = checkedTask.status === 'incomplete' ? 'complete' : 'incomplete'
+  let checkedTask = tasks.find((task) => task.id === id);
+  checkedTask.status =
+    checkedTask.status === 'incomplete' ? 'complete' : 'incomplete';
 
-  taskList.dispatchEvent(new CustomEvent('tasksUpdated'))
+  taskList.dispatchEvent(new CustomEvent('tasksUpdated'));
 }
 
 taskList.addEventListener('tasksUpdated', addTaskToProject);
@@ -66,4 +66,4 @@ projects.addEventListener('click', (event) => {
   if (checkbox.classList.contains('task__input')) {
     markAsComplete(parseInt(checkbox.value));
   }
-})
+});

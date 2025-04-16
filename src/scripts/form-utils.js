@@ -1,5 +1,5 @@
 import { format } from 'date-fns';
-import { categories } from './newProject';
+import { categories } from './new-project';
 
 // Import images
 import blueCircleImg from '../assets/images/icon-blue-circle.svg';
@@ -17,7 +17,7 @@ const priorities = [
 // Statuses object
 const statuses = [
   { value: 'incomplete', text: 'Incomplete' },
-  
+
   { value: 'complete', text: 'Complete' },
 ];
 
@@ -132,7 +132,6 @@ export function generateTaskForm({
     type: 'text',
     name: 'description',
     value: descriptionValue,
-    
   });
 
   // Add label and input to descriptionField
@@ -399,7 +398,7 @@ export function generateTaskForm({
   };
 }
 
-export function generateForm({labelValue}) {
+export function generateForm({ labelValue }) {
   /* Dialog modal */
   const modal = Object.assign(document.createElement('dialog'), {
     className: 'modal modal--small',
@@ -411,7 +410,6 @@ export function generateForm({labelValue}) {
     method: 'dialog',
   });
 
-  
   // Create title label
   const titleLabel = Object.assign(document.createElement('label'), {
     className: 'form__label',

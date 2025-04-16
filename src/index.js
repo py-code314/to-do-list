@@ -1,34 +1,33 @@
 // import styles
 import './styles/styles.css';
 // import JS modules
-import './scripts/newTask'
-import './scripts/newTaskForm';
-import './scripts/filterTasks';
+import './scripts/new-task';
+import './scripts/new-task-form';
+import './scripts/filter-tasks';
 import './scripts/project-task-handler';
-import './scripts/taskDetails';
+import './scripts/task-details';
 import './scripts/search';
-import './scripts/completedTasks'
-import './scripts/displayTask'
+import './scripts/completed-tasks';
+import './scripts/display-task';
 
 /* Import functions */
-import { displayNewTaskForm } from './scripts/newTaskForm';
+import { displayNewTaskForm } from './scripts/new-task-form';
 import {
   validateTitleInput,
   validateDueDateInput,
   validateForm,
-} from './scripts/formValidation';
-import { createOrUpdateTask } from './scripts/formData';
-import { displayTask } from './scripts/displayTask';
-import { addToLocalStorage } from './scripts/localStorage';
-import { restoreFromLocalStorage } from './scripts/localStorage';
-import { deleteTask } from './scripts/deleteTask';
-import { displayEditTaskForm } from './scripts/editTask';
-import { showNewProjectForm } from './scripts/newProject';
+} from './scripts/form-validation';
+import { createOrUpdateTask } from './scripts/task-utils';
+import { displayTask } from './scripts/display-task';
+import { addToLocalStorage } from './scripts/local-storage';
+import { restoreFromLocalStorage } from './scripts/local-storage';
+import { deleteTask } from './scripts/delete-task';
+import { displayEditTaskForm } from './scripts/edit-task-form';
+import { showNewProjectForm } from './scripts/new-project';
 
-import { tasks } from './scripts/newTask';
-import { displayTaskDetails } from './scripts/taskDetails';
-import { displayInboxTasks } from './scripts/filterTasks';
-
+import { tasks } from './scripts/new-task';
+import { displayTaskDetails } from './scripts/task-details';
+import { displayInboxTasks } from './scripts/filter-tasks';
 
 // document.addEventListener('DOMContentLoaded', displayInboxTasks)
 const taskList = document.querySelector('#task-list');
@@ -47,8 +46,7 @@ addTaskButton.addEventListener('click', () => {
   } = displayNewTaskForm();
 
   cancelButton.addEventListener('click', () => {
-    // modal.close();
-    modal.remove();
+    modal.close();
   });
 
   titleInput.addEventListener('input', () => {
@@ -68,7 +66,6 @@ addTaskButton.addEventListener('click', () => {
 
     if (isFormValid) {
       modal.close();
-      // modal.remove();
 
       createOrUpdateTask(taskForm);
     }
@@ -95,8 +92,7 @@ taskList.addEventListener('click', (event) => {
     } = displayEditTaskForm(parseInt(button.value));
 
     cancelButton.addEventListener('click', () => {
-      // modal.close();
-      modal.remove();
+      modal.close();
     });
 
     // Validate title input
@@ -119,8 +115,8 @@ taskList.addEventListener('click', (event) => {
       );
 
       if (isFormValid) {
-        // modal.close();
-        modal.remove();
+        modal.close();
+
         createOrUpdateTask(taskForm);
       }
     });

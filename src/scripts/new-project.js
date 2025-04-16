@@ -1,9 +1,8 @@
 // Import Images
 import boxIcon from '../assets/images/icon-box.svg';
 import removeIcon from '../assets/images/icon-remove.svg';
-import { tasks } from './formData';
-import { generateForm } from './formUtils';
-// import {addTaskToProject} from './project-task-handler'
+import { tasks } from './task-utils';
+import { generateForm } from './form-utils';
 
 const projects = document.querySelector('#projects');
 const taskList = document.querySelector('#task-list');
@@ -24,8 +23,7 @@ newProjectButton.addEventListener('click', () => {
   const { modal, form, closeButton } = showNewProjectForm();
 
   closeButton.addEventListener('click', () => {
-    // modal.close();
-    modal.remove();
+    modal.close();
   });
 
   form.addEventListener('submit', (event) => {
@@ -141,8 +139,6 @@ function displayProjects() {
 }
 
 projects.addEventListener('projectsUpdated', addProjectsToLocalStorage);
-// taskList.dispatchEvent(new CustomEvent('tasksUpdated'))
-// taskList.addEventListener('tasksUpdated', addTaskToProject);
 
 // Add all Projects to Local storage
 export function addProjectsToLocalStorage() {
