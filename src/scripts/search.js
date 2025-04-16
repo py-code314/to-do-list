@@ -1,7 +1,7 @@
 import { generateForm } from './form-utils';
 
 import { tasks } from './new-task';
-import { displayTask } from './display-task';
+import { displayTask } from './task-display';
 
 // Container which has all the action buttons
 const action = document.querySelector('.action');

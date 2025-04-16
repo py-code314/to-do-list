@@ -7,8 +7,10 @@ import './scripts/filter-tasks';
 import './scripts/project-task-handler';
 import './scripts/task-details';
 import './scripts/search';
-import './scripts/completed-tasks';
-import './scripts/display-task';
+import './scripts/task-status-handler';
+import './scripts/task-display';
+import './scripts/filter-buttons';
+import './scripts/tasks-reload'
 
 /* Import functions */
 import { displayNewTaskForm } from './scripts/new-task-form';
@@ -18,11 +20,11 @@ import {
   validateForm,
 } from './scripts/form-validation';
 import { createOrUpdateTask } from './scripts/task-utils';
-import { displayTask } from './scripts/display-task';
+import { displayTask } from './scripts/task-display';
 import { addToLocalStorage } from './scripts/local-storage';
 import { restoreFromLocalStorage } from './scripts/local-storage';
 import { deleteTask } from './scripts/delete-task';
-import { displayEditTaskForm } from './scripts/edit-task-form';
+import { displayEditTaskForm } from './scripts/task-edit-form';
 import { showNewProjectForm } from './scripts/new-project';
 
 import { tasks } from './scripts/new-task';
