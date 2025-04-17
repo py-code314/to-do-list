@@ -1,68 +1,58 @@
+// Import data and functions
 import { tasks } from './new-task';
+import { createContainer, createInput, createLabel } from './dom-utils';
 
+// Get HTML elements
 const taskList = document.querySelector('#task-list');
 const projects = document.querySelector('#projects');
 
 export function addTaskToProject() {
-  // Clear all tasks before looping through all the tasks
+  // Clear project lists
   const projectLists = projects.querySelectorAll('.project__list');
-  projectLists.forEach((list) => (list.textContent = ''));
+  projectLists.forEach((list) => {
+    list.textContent = '';
+  });
 
-  // Filter completed tasks
+  // Filter incomplete tasks
   const incompleteTasks = tasks.filter((task) => task.status === 'incomplete');
 
-  // Loop through all incomplete tasks and add the task if task category
-  // matches with project name
+  // Add incomplete task to a project list
   incompleteTasks.forEach((task) => {
+
     const projectList = projects.querySelector(`#${task.category}`);
-
-    // Add checkbox and task title under related project
     if (projectList) {
-      // Create Title container
-      const titleDiv = Object.assign(document.createElement('div'), {
-        className: 'task__div',
-      });
+      // Create task container
+      const taskContainer = createContainer(
+        projectList,
+        'div',
+        '',
+        'task__div'
+      );
 
-      // Create Check box
-      const taskCheckbox = Object.assign(document.createElement('input'), {
-        id: `item-${task.id}`,
-        className: 'task__input',
-        type: 'checkbox',
-        name: 'status',
-        checked: task.status === 'complete' ? true : false,
-        value: task.id,
-      });
+      // Create checkbox
+      const checkbox = createInput(
+        taskContainer,
+        `item-${task.id}`,
+        'task__input',
+        'checkbox',
+        'status',
+        task.id
+      );
+      checkbox.checked = task.status === 'complete';
 
-      // Create Title
-      const taskTitle = Object.assign(document.createElement('label'), {
-        className: 'task__title',
-        htmlFor: `item-${task.id}`,
-        textContent: task.title,
-      });
+      // Create task title
+      const label = createLabel(
+        taskContainer,
+        'task__title',
+        `item-${task.id}`,
+        task.title
+      );
 
-      // Add Check box and Title to Title Div
-      titleDiv.append(taskCheckbox, taskTitle);
+      const divider = document.createElement('hr');
 
-      // Add divider
-      const divider = Object.assign(document.createElement('hr'));
-
-      projectList.append(titleDiv, divider);
+      projectList.appendChild(divider);
     }
   });
 }
 
-function markAsComplete(id) {
-  let checkedTask = tasks.find((task) => task.id === id);
-  checkedTask.status =
-    checkedTask.status === 'incomplete' ? 'complete' : 'incomplete';
-
-  taskList.dispatchEvent(new CustomEvent('tasksUpdated'));
-}
-
 taskList.addEventListener('tasksUpdated', addTaskToProject);
-projects.addEventListener('click', (event) => {
-  const checkbox = event.target;
-  if (checkbox.classList.contains('task__input')) {
-    markAsComplete(parseInt(checkbox.value));
-  }
-});
