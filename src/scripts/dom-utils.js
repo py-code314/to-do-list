@@ -75,3 +75,11 @@ export const createImage = (parent, className, src, alt, width, height, title) =
   parent.appendChild(image);
   return image;
 };
+
+export const createParagraph = (parent, className, text) => {
+  const paragraph = document.createElement('p');
+  paragraph.className = className;
+  paragraph.textContent = text;
+  parent.appendChild(paragraph);
+  return paragraph;
+};

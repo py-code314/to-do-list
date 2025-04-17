@@ -9,6 +9,7 @@ import {
   createAsterisk,
   createButton,
   createImage,
+  createParagraph
 } from './dom-utils';
 
 // Import images
@@ -63,8 +64,11 @@ export function generateTaskForm({
   formTitle.className = 'form__title';
   formTitle.textContent = formHeading;
 
-  const instruction = document.createElement('p');
-  instruction.textContent = 'Required fields.';
+  const instruction = createParagraph(
+    formHeader,
+    'form__instruction',
+    'Required fields.'
+  );
 
   const asterisk1 = document.createElement('strong');
   asterisk1.className = 'form__asterisk';
