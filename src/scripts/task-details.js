@@ -75,18 +75,18 @@ export function displayTaskDetails(taskId) {
   // Create due date and category container
   const dateCategoryDiv = createContainer(taskElement, 'div', '', 'task__div');
 
-  const taskDueDate = document.createElement('time');
-  taskDueDate.className = 'task__due-date';
-  taskDueDate.textContent = format(parseISO(task.dueDate), 'MM/dd/yyyy');
-  taskDueDate.dateTime = task.dueDate;
+  const taskDueDate = createParagraph(
+    dateCategoryDiv,
+    'task__due-date',
+    format(parseISO(task.dueDate), 'MM/dd/yyyy'),
+    task.dueDate
+  );
 
   const taskCategory = createParagraph(
     dateCategoryDiv,
     'task__category',
     task.category
   );
-
-  dateCategoryDiv.appendChild(taskDueDate);
 
   // Create notes
   const taskNotes = createParagraph(taskElement, 'task__notes', task.notes);

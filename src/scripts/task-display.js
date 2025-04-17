@@ -1,5 +1,14 @@
-// Import data
+// Import data and functions
 import { tasks } from './new-task';
+import {
+  createContainer,
+  createInput,
+  createLabel,
+  createButton,
+  createImage,
+  createParagraph,
+  createTime,
+} from './dom-utils';
 
 // Import images
 import editIcon from '../assets/images/icon-edit.svg';
@@ -23,132 +32,145 @@ export function displayTask(tasks) {
 
   tasks.forEach((task) => {
     // Create a task container
-    const taskElement = document.createElement('li');
-    taskElement.id = task.id;
-    taskElement.className = 'task';
+    const taskElement = createContainer(taskList, 'li', task.id, 'task');
 
     // Set background color based on priority
-    const priority = priorities.find((p) => p.value === task.priority);
+    const priority = priorities.find(
+      (priority) => priority.value === task.priority
+    );
     if (priority) {
       taskElement.style.backgroundColor = priority.color;
     }
 
-    // Create checkbox, title and buttons container
-    const titleButtons = document.createElement('div');
-    titleButtons.className = 'task__wrapper';
+    const titleButtons = createContainer(
+      taskElement,
+      'div',
+      '',
+      'task__wrapper'
+    );
 
-    // Create container for checkbox and title
-    const checkboxTitle = document.createElement('div');
-    checkboxTitle.className = 'task__div';
+    const checkboxTitle = createContainer(titleButtons, 'div', '', 'task__div');
 
-    // Create checkbox
-    const checkbox = document.createElement('input');
-    checkbox.id = `checkbox-${task.id}`;
-    checkbox.className = 'task__input';
-    checkbox.type = 'checkbox';
-    checkbox.name = 'checkbox';
+    const checkbox = createInput(
+      checkboxTitle,
+      `checkbox-${task.id}`,
+      'task__input',
+      'checkbox',
+      'status',
+      task.id
+    );
     checkbox.checked = task.status === 'complete';
-    checkbox.value = task.id;
 
-    const title = document.createElement('label');
-    title.className = 'task__title';
-    title.htmlFor = `checkbox-${task.id}`;
-    title.textContent = task.title;
+    const title = createLabel(
+      checkboxTitle,
+      'task__title',
+      `checkbox-${task.id}`,
+      task.title
+    );
 
-    checkboxTitle.append(checkbox, title);
+    const buttons = createContainer(titleButtons, 'div', '', 'task__div');
 
-    // Create buttons container
-    const buttons = document.createElement('div');
-    buttons.className = 'task__div';
 
-    // Create edit and delete buttons
-    const editButton = document.createElement('button');
-    editButton.className = 'button button--edit';
+    const editButton = createButton(
+      buttons,
+      '',
+      'button button--edit',
+      'button',
+      task.id,
+      ''
+    );
     editButton.ariaLabel = `Edit ${task.title}`;
-    editButton.value = task.id;
 
     if (priority) {
       editButton.style.backgroundColor = priority.color;
     }
 
-    const editImage = document.createElement('img');
-    editImage.className = 'task__image';
-    editImage.src = editIcon;
-    editImage.alt = '';
-    editImage.width = '15';
-    editImage.height = '15';
-    editImage.title = 'Edit';
+    const editImage = createImage(
+      editButton,
+      'task__image',
+      editIcon,
+      '',
+      '15',
+      '15',
+      'Edit'
+    );
 
-    editButton.appendChild(editImage);
-
-    const deleteButton = document.createElement('button');
-    deleteButton.className = 'button button--delete';
+    const deleteButton = createButton(
+      buttons,
+      '',
+      'button button--delete',
+      'button',
+      task.id,
+      ''
+    );
     deleteButton.ariaLabel = `Delete ${task.title}`;
-    deleteButton.value = task.id;
 
     if (priority) {
       deleteButton.style.backgroundColor = priority.color;
     }
 
-    const deleteImage = document.createElement('img');
-    deleteImage.className = 'task__image';
-    deleteImage.src = deleteIcon;
-    deleteImage.alt = '';
-    deleteImage.width = '17';
-    deleteImage.height = '17';
-    deleteImage.title = 'Delete';
+    const deleteImage = createImage(
+      deleteButton,
+      'task__image',
+      deleteIcon,
+      '',
+      '17',
+      '17',
+      'Delete'
+    );
 
-    deleteButton.appendChild(deleteImage);
+    const taskDetails = createContainer(
+      taskElement,
+      'div',
+      '',
+      'task__wrapper'
+    );
 
-    buttons.append(editButton, deleteButton);
-
-    titleButtons.append(checkboxTitle, buttons);
-
-    // Create details(date, category and expand button) container
-    const taskDetails = document.createElement('div');
-    taskDetails.className = 'task__wrapper';
-
-    // Create date and category container
-    const dateCategory = document.createElement('div');
-    dateCategory.className = 'task__div';
+    const dateCategory = createContainer(
+      taskDetails,
+      'div',
+      '',
+      'task__div'
+    );
 
     // Create date and category
-    const dueDate = document.createElement('time');
-    dueDate.className = 'task__due-date';
-    dueDate.textContent = formatTaskDueDate(task.dueDate, task.status);
-    dueDate.dateTime = task.dueDate;
+    const dueDate = createTime(
+      dateCategory,
+      'task__due-date',
+      formatTaskDueDate(task.dueDate, task.status),
+      task.dueDate
+    );
 
-    const category = document.createElement('p');
-    category.className = 'task__category';
-    category.textContent = task.category;
 
-    dateCategory.append(dueDate, category);
+    const category = createParagraph(
+      dateCategory,
+      'task__category',
+      task.category
+    );
 
-    // Create expand button
-    const expandButton = document.createElement('button');
-    expandButton.className = 'button button--details';
+    const expandButton = createButton(
+      taskDetails,
+      '',
+      'button button--details',
+      'button',
+      task.id,
+      ''
+    );
     expandButton.ariaLabel = `Show details for ${task.title}`;
-    expandButton.value = task.id;
 
     if (priority) {
       expandButton.style.backgroundColor = priority.color;
     }
 
-    const expandImage = document.createElement('img');
-    expandImage.className = 'task__image';
-    expandImage.src = expandIcon;
-    expandImage.alt = '';
-    expandImage.width = '17';
-    expandImage.height = '17';
-    expandImage.title = 'Details';
-
-    expandButton.appendChild(expandImage);
-
-    taskDetails.append(dateCategory, expandButton);
-
-    taskElement.append(titleButtons, taskDetails);
-
-    taskList.appendChild(taskElement);
+    const expandImage = createImage(
+      expandButton,
+      'task__image',
+      expandIcon,
+      '',
+      '17',
+      '17',
+      'Details'
+    );
   });
 }
 

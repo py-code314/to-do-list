@@ -83,3 +83,12 @@ export const createParagraph = (parent, className, text) => {
   parent.appendChild(paragraph);
   return paragraph;
 };
+
+export const createTime = (parent, className, text, dateTime) => {  
+  const time = document.createElement('time');
+  time.className = className;
+  time.textContent = text;
+  time.dateTime = dateTime;
+  parent.appendChild(time);
+  return time;
+};  
