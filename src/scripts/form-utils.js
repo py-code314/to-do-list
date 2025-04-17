@@ -1,5 +1,15 @@
-import { format } from 'date-fns';
+// Import data and functions
 import { categories } from './new-project';
+import { format } from 'date-fns';
+import {
+  createContainer,
+  createLegend,
+  createLabel,
+  createInput,
+  createAsterisk,
+  createButton,
+  createImage,
+} from './dom-utils';
 
 // Import images
 import blueCircleImg from '../assets/images/icon-blue-circle.svg';
@@ -7,23 +17,26 @@ import orangeCircleImg from '../assets/images/icon-orange-circle.svg';
 import redCircleImg from '../assets/images/icon-red-circle.svg';
 import closeIcon from '../assets/images/icon-close.svg';
 
-// Priorities object
+// Import elements from DOM
+const content = document.querySelector('#content');
+
+// Priorities array
 const priorities = [
   { value: 'low', text: 'Low', image: blueCircleImg },
   { value: 'medium', text: 'Medium', image: orangeCircleImg },
   { value: 'high', text: 'High', image: redCircleImg },
 ];
 
-// Statuses object
+// Statuses array
 const statuses = [
   { value: 'incomplete', text: 'Incomplete' },
-
   { value: 'complete', text: 'Complete' },
 ];
 
 // Format today's date
 const today = format(new Date(), 'yyyy-MM-dd');
 
+/* Generate a form for creating a new task or editing an existing task */
 export function generateTaskForm({
   formHeading,
   titleValue,
@@ -34,357 +47,277 @@ export function generateTaskForm({
   categoryValue,
   notesValue,
 }) {
-  /* Dialog modal */
-  const modal = Object.assign(document.createElement('dialog'), {
-    className: 'modal',
-  });
+  // Create dialog modal
+  const modal = createContainer(content, 'dialog', 'modal', 'modal');
 
-  /* Create form */
-  const taskForm = Object.assign(document.createElement('form'), {
-    className: 'form',
-    method: 'dialog',
-    noValidate: true,
-  });
+  // Create form
+  const taskForm = document.createElement('form');
+  taskForm.className = 'form';
+  taskForm.method = 'dialog';
+  taskForm.noValidate = true;
 
-  /* Create form header */
-  const formHeader = Object.assign(document.createElement('header'), {
-    className: 'form__header',
-  });
+  // Create form header and content
+  const formHeader = createContainer(taskForm, 'header', '', 'form__header');
 
-  // Create form title
-  const formTitle = Object.assign(document.createElement('h2'), {
-    className: 'form__title',
-    textContent: formHeading,
-  });
+  const formTitle = document.createElement('h2');
+  formTitle.className = 'form__title';
+  formTitle.textContent = formHeading;
 
-  // Create paragraph element
-  const instruction = Object.assign(document.createElement('p'), {
-    textContent: 'Required fields.',
-  });
-  const asterisk1 = Object.assign(document.createElement('strong'), {
-    className: 'form__asterisk',
-    textContent: '*',
-  });
-  // Add asterisk1 to para
+  const instruction = document.createElement('p');
+  instruction.textContent = 'Required fields.';
+
+  const asterisk1 = document.createElement('strong');
+  asterisk1.className = 'form__asterisk';
+  asterisk1.textContent = '*';
   instruction.insertAdjacentElement('afterbegin', asterisk1);
 
-  // Add h2 and para to form header
   formHeader.append(formTitle, instruction);
 
-  /* Form Content */
-  const formContent = Object.assign(document.createElement('div'), {
-    className: 'form__content',
-  });
+  // Create form content
+  const formContent = createContainer(taskForm, 'div', '', 'form__content');
 
-  /* Create title field */
-  const titleField = Object.assign(document.createElement('div'), {
-    className: 'form__control',
-  });
+  // Create title field and elements inside
+  const titleField = createContainer(formContent, 'div', '', 'form__control');
 
-  // Create title label
-  const titleLabel = Object.assign(document.createElement('label'), {
-    className: 'form__label',
-    htmlFor: 'title',
-    textContent: 'Title:',
-  });
-  const asterisk2 = Object.assign(document.createElement('strong'), {
-    className: 'form__asterisk',
-    textContent: '*',
-  });
-  titleLabel.appendChild(asterisk2);
+  const titleLabel = createLabel(titleField, 'form__label', 'title', 'Title: ');
+  const asterisk2 = createAsterisk(titleLabel);
 
-  // Create title input
-  const titleInput = Object.assign(document.createElement('input'), {
-    id: 'title',
-    className: 'form__input',
-    type: 'text',
-    name: 'title',
-    required: true,
-    autofocus: true,
-    value: titleValue,
-  });
+  const titleInput = createInput(
+    titleField,
+    'title',
+    'form__input',
+    'text',
+    'title',
+    titleValue
+  );
 
-  // Add label and input to titleField
-  titleField.append(titleLabel, titleInput);
+  titleInput.required = true;
+  titleInput.autofocus = true;
 
   // Create error div
-  const titleError = Object.assign(document.createElement('div'), {
-    id: 'title-error',
-    className: 'form__error',
-  });
+  const titleError = createContainer(
+    formContent,
+    'div',
+    'title-error',
+    'form__error'
+  );
 
-  /* Create description field */
-  const descriptionField = Object.assign(document.createElement('div'), {
-    className: 'form__control',
-  });
+  // Create description field and elements inside
+  const descriptionField = createContainer(
+    formContent,
+    'div',
+    '',
+    'form__control'
+  );
 
-  // Create description label
-  const descriptionLabel = Object.assign(document.createElement('label'), {
-    className: 'form__label',
-    htmlFor: 'description',
-    textContent: 'Description: ',
-  });
+  const descriptionLabel = createLabel(
+    descriptionField,
+    'form__label',
+    'description',
+    'Description: '
+  );
 
-  // Create description input
-  const descriptionInput = Object.assign(document.createElement('input'), {
-    id: 'description',
-    className: 'form__input',
-    type: 'text',
-    name: 'description',
-    value: descriptionValue,
-  });
+  const descriptionInput = createInput(
+    descriptionField,
+    'description',
+    'form__input',
+    'text',
+    'description',
+    descriptionValue
+  );
 
-  // Add label and input to descriptionField
-  descriptionField.append(descriptionLabel, descriptionInput);
+  // Create due date field and elements inside
+  const dueDateField = createContainer(formContent, 'div', '', 'form__control');
 
-  /* Create due date field */
-  const dueDateField = Object.assign(document.createElement('div'), {
-    className: 'form__control',
-  });
+  const dueDateLabel = createLabel(
+    dueDateField,
+    'form__label',
+    'due-date',
+    'Due Date: '
+  );
 
-  // Create due date label
-  const dueDateLabel = Object.assign(document.createElement('label'), {
-    className: 'form__label',
-    htmlFor: 'due-date',
-    textContent: 'Due Date:',
-  });
-  // Create asterisk3
-  const asterisk3 = Object.assign(document.createElement('strong'), {
-    className: 'form__asterisk',
-    textContent: '*',
-  });
+  const asterisk3 = createAsterisk(dueDateLabel);
 
-  // Add asterisk3 to dueDateLabel
-  dueDateLabel.appendChild(asterisk3);
+  const dueDateInput = createInput(
+    dueDateField,
+    'due-date',
+    'form__input',
+    'date',
+    'dueDate',
+    dueDateValue || `${today}`
+  );
+  dueDateInput.required = true;
 
-  // Create due date input
-  const dueDateInput = Object.assign(document.createElement('input'), {
-    id: 'due-date',
-    className: 'form__input',
-    type: 'date',
-    name: 'dueDate',
+  // Create error div
+  const dueDateError = createContainer(
+    formContent,
+    'div',
+    'due-date-error',
+    'form__error'
+  );
 
-    required: true,
+  // Create priority field and elements inside
+  const priorityFieldset = createContainer(
+    formContent,
+    'fieldset',
+    '',
+    'form__control'
+  );
 
-    value: dueDateValue || `${today}`,
-  });
+  const priorityLegend = createLabel(
+    priorityFieldset,
+    'form__legend',
+    '',
+    'Priority: '
+  );
 
-  // Add label and input to dueDateField
-  dueDateField.append(dueDateLabel, dueDateInput);
+  const priorityWrapper = createContainer(
+    priorityFieldset,
+    'div',
+    '',
+    'form__wrapper'
+  );
 
-  // Add error div
-  const dueDateError = Object.assign(document.createElement('div'), {
-    id: 'due-date-error',
-    className: 'form__error',
-  });
-
-  /* Create priority fieldset */
-  const priorityFieldset = Object.assign(document.createElement('fieldset'), {
-    className: 'form__control',
-  });
-
-  // Create priority legend
-  const priorityLegend = Object.assign(document.createElement('legend'), {
-    className: 'form__legend',
-    textContent: 'Priority: ',
-  });
-
-  // Create wrapper for radio buttons
-  const priorityWrapper = Object.assign(document.createElement('div'), {
-    className: 'form__wrapper',
-  });
-
-  // Create  priority radio buttons
   for (const priority of priorities) {
-    // Create Priority Div
-    const priorityDiv = Object.assign(document.createElement('div'), {
-      className: 'form__div',
-    });
+    const priorityDiv = createContainer(
+      priorityWrapper,
+      'div',
+      '',
+      'form__div'
+    );
 
-    // Create priority input
-    const priorityInput = Object.assign(document.createElement('input'), {
-      id: `${priority.value}`,
-      className: 'form__input form__input--radio',
-      type: 'radio',
-      name: 'priority',
-      value: `${priority.value}`,
-      checked: priority.value === priorityValue ? true : false,
-    });
+    const priorityInput = createInput(
+      priorityDiv,
+      `${priority.value}`,
+      'form__input form__input--radio',
+      'radio',
+      'priority',
+      `${priority.value}`
+    );
+    priorityInput.checked = priority.value === priorityValue ? true : false;
 
-    // Create priority label
-    const priorityLabel = Object.assign(document.createElement('label'), {
-      htmlFor: `${priority.value}`,
-      textContent: `${priority.text}`,
-    });
+    const priorityLabel = createLabel(
+      priorityDiv,
+      '',
+      `${priority.value}`,
+      `${priority.text}`
+    );
 
-    // Create color image
-    const priorityImage = Object.assign(document.createElement('img'), {
-      className: 'form__image',
-      src: `${priority.image}`,
-      alt: 'pic',
-      width: '17',
-      height: '17',
-    });
-
-    // Add input, label and image to priorityDiv
-    priorityDiv.append(priorityInput, priorityLabel, priorityImage);
-
-    // Add priorityDiv to priorityWrapper
-    priorityWrapper.appendChild(priorityDiv);
-
-    // Add legend, wrapper to priorityFieldset
-    priorityFieldset.append(priorityLegend, priorityWrapper);
+    const priorityImage = createImage(
+      priorityDiv,
+      'form__image',
+      `${priority.image}`,
+      'pic',
+      '17',
+      '17',
+      `${priority.text}`
+    );
   }
 
-  /* Create status field */
-  const statusFieldset = Object.assign(document.createElement('fieldset'), {
-    className: 'form__control',
-  });
+  // Create status field and elements inside
+  const statusFieldset = createContainer(
+    formContent,
+    'fieldset',
+    '',
+    'form__control'
+  );
 
-  // Create status legend
-  const statusLegend = Object.assign(document.createElement('legend'), {
-    className: 'form__legend',
-    textContent: 'Status: ',
-  });
+  const statusLegend = createLegend(statusFieldset, 'form__legend', 'Status: ');
 
-  // Create wrapper for radio buttons
-  const statusWrapper = Object.assign(document.createElement('div'), {
-    className: 'form__wrapper',
-  });
+  const statusWrapper = createContainer(
+    statusFieldset,
+    'div',
+    '',
+    'form__wrapper'
+  );
 
-  // Create  status radio buttons
   for (const status of statuses) {
-    // Create Status div
-    const statusDiv = Object.assign(document.createElement('div'), {
-      className: 'form__div',
-    });
+    const statusDiv = createContainer(statusWrapper, 'div', '', 'form__div');
 
-    // Create status input
-    const statusInput = Object.assign(document.createElement('input'), {
-      id: `${status.value}`,
-      className: 'form__input form__input--radio',
-      type: 'radio',
-      name: 'status',
-      value: `${status.value}`,
-      checked: status.value === statusValue ? true : false,
-    });
+    const statusInput = createInput(
+      statusDiv,
+      `${status.value}`,
+      'form__input form__input--radio',
+      'radio',
+      'status',
+      `${status.value}`
+    );
+    statusInput.checked = status.value === statusValue ? true : false;
 
-    // Create status label
-    const statusLabel = Object.assign(document.createElement('label'), {
-      htmlFor: `${status.value}`,
-      textContent: `${status.text}`,
-    });
-
-    // Add legend and input to statusDiv
-    statusDiv.append(statusInput, statusLabel);
-
-    // Add statusDiv to statusWrapper
-    statusWrapper.appendChild(statusDiv);
-
-    // Add legend and wrapper to statusFieldset
-    statusFieldset.append(statusLegend, statusWrapper);
+    const statusLabel = createLabel(
+      statusDiv,
+      '',
+      `${status.value}`,
+      `${status.text}`
+    );
   }
 
-  /* Create category field */
-  const categoryField = Object.assign(document.createElement('div'), {
-    className: 'form__control',
-  });
+  // Create category field and elements inside
+  const categoryField = createContainer(
+    formContent,
+    'div',
+    '',
+    'form__control'
+  );
 
-  // Create category label
-  const categoryLabel = Object.assign(document.createElement('label'), {
-    className: 'form__label',
-    htmlFor: 'category',
-    textContent: 'Category: ',
-  });
+  const categoryLabel = createLabel(
+    categoryField,
+    'form__label',
+    'category',
+    'Category: '
+  );
 
-  // Create category options
-  const categorySelect = Object.assign(document.createElement('select'), {
-    id: 'category',
-    className: 'form__select',
-    name: 'category',
-  });
+  const categorySelect = document.createElement('select');
+  categorySelect.id = 'category';
+  categorySelect.className = 'form__select';
+  categorySelect.name = 'category';
   for (const category of categories) {
-    const categoryOption = Object.assign(document.createElement('option'), {
-      value: `${category.text}`,
-      textContent: `${category.text}`,
-      selected: category.value === categoryValue ? true : false,
-    });
+    const categoryOption = document.createElement('option');
+    categoryOption.value = `${category.text}`;
+    categoryOption.textContent = `${category.text}`;
+    categoryOption.selected = category.value === categoryValue ? true : false;
     categorySelect.appendChild(categoryOption);
   }
 
-  // Add label and options to categoryField
-  categoryField.append(categoryLabel, categorySelect);
+  categoryField.appendChild(categorySelect);
 
-  /* Create notes field */
-  const notesField = document.createElement('div');
-  notesField.classList.add('form__control');
+  // Create notes field and elements inside
+  const notesField = createContainer(formContent, 'div', '', 'form__control');
 
-  // Create notes label
-  const notesLabel = Object.assign(document.createElement('label'), {
-    className: 'form__label',
-    htmlFor: 'notes',
-    textContent: 'Notes: ',
-  });
+  const notesLabel = createLabel(notesField, 'form__label', 'notes', 'Notes: ');
 
-  // Create notes input
-  const notesTextarea = Object.assign(document.createElement('textarea'), {
-    id: 'notes',
-    className: 'form__textarea',
-    name: 'notes',
-    value: notesValue,
-  });
+  const notesTextarea = document.createElement('textarea');
+  notesTextarea.id = 'notes';
+  notesTextarea.className = 'form__textarea';
+  notesTextarea.name = 'notes';
+  notesTextarea.value = notesValue;
 
-  // Add label and input to notesField
-  notesField.append(notesLabel, notesTextarea);
+  notesField.appendChild(notesTextarea);
 
-  // Add title, description, due date, priority, status, category and notes to Form Content
-  formContent.append(
-    titleField,
-    titleError,
-    descriptionField,
-    dueDateField,
-    dueDateError,
-    priorityFieldset,
-    statusFieldset,
-    categoryField,
-    notesField
+  // Create form footer and buttons inside
+
+  const formFooter = createContainer(formContent, 'footer', '', 'form__footer');
+
+  const cancelButton = createButton(
+    formFooter,
+    'cancel',
+    'button button--cancel',
+    'button',
+    'cancel',
+    'Cancel'
+  );
+  const submitButton = createButton(
+    formFooter,
+    'submit',
+    'button button--submit',
+    'submit',
+    'submit',
+    'Add'
   );
 
-  /* Add Buttons */
-  // Create footer
-  const formFooter = Object.assign(document.createElement('footer'), {
-    className: 'form__footer',
-  });
-
-  // Create cancel button
-  const cancelButton = Object.assign(document.createElement('button'), {
-    id: 'cancel',
-    className: 'button button--cancel',
-    type: 'button',
-    value: 'cancel',
-    textContent: 'Cancel',
-  });
-
-  // Create submit button
-  const submitButton = Object.assign(document.createElement('button'), {
-    id: 'submit',
-    className: 'button button--submit',
-    type: 'submit',
-    value: 'submit',
-    textContent: 'Add',
-  });
-
-  // Add cancel and submit buttons to footer
-  formFooter.append(cancelButton, submitButton);
-
-  // Add Header, Content, Footer to Form
-  taskForm.append(formHeader, formContent, formFooter);
-
-  // Add Form, Modal to parent elements
   modal.appendChild(taskForm);
   content.appendChild(modal);
 
-  // Show Modal
   modal.showModal();
 
   return {
@@ -399,78 +332,70 @@ export function generateTaskForm({
 }
 
 export function generateForm({ labelValue }) {
-  /* Dialog modal */
-  const modal = Object.assign(document.createElement('dialog'), {
-    className: 'modal modal--small',
-  });
+  // Create modal
+  const modal = createContainer(
+    content,
+    'dialog',
+    'modal',
+    'modal modal--small'
+  );
 
-  /* Create Form */
-  const form = Object.assign(document.createElement('form'), {
-    className: 'form',
-    method: 'dialog',
-  });
+  // Create form
+  const form = document.createElement('form');
+  form.className = 'form';
+  form.method = 'dialog';
 
   // Create title label
-  const titleLabel = Object.assign(document.createElement('label'), {
-    className: 'form__label',
-    htmlFor: 'title',
-    textContent: labelValue,
-  });
+  const titleLabel = createLabel(form, 'form__label', 'title', labelValue);
 
-  /* Create container for input and button */
-  const inputButtonDiv = Object.assign(document.createElement('div'), {
-    className: 'form__div',
-  });
+  // Create input and button div
+  const inputButtonDiv = createContainer(form, 'div', '', 'form__div');
 
   // Create title input
-  const titleInput = Object.assign(document.createElement('input'), {
-    id: 'title',
-    className: 'form__input',
-    type: 'text',
-    name: 'title',
-    required: true,
-    autofocus: true,
-  });
+  const titleInput = createInput(
+    inputButtonDiv,
+    'title',
+    'form__input',
+    'text',
+    'title',
+    ''
+  );
+  titleInput.required = true;
+  titleInput.autofocus = true;
 
   // Create Submit button
-  const submitButton = Object.assign(document.createElement('button'), {
-    id: 'submit',
-    className: 'button button--submit',
-    type: 'submit',
-    value: 'submit',
-    textContent: 'Submit',
-  });
+  const submitButton = createButton(
+    inputButtonDiv,
+    'submit',
+    'button button--submit',
+    'submit',
+    'submit',
+    'Submit'
+  );
 
   // Create close button
-  const closeButton = Object.assign(document.createElement('button'), {
-    id: 'closeButton',
-    className: 'button button--close',
-    ariaLabel: 'Close form',
-  });
+  const closeButton = createButton(
+    form,
+    'closeButton',
+    'button button--close',
+    'button',
+    'close',
+    ''
+  );
+  closeButton.ariaLabel = 'Close form';
 
   // Create close image
-  const closeImage = Object.assign(document.createElement('img'), {
-    className: 'task__image',
-    src: `${closeIcon}`,
-    alt: '',
-    width: '28',
-    height: '28',
-    title: 'Close',
-  });
+  const closeImage = createImage(
+    closeButton,
+    'task__image',
+    `${closeIcon}`,
+    '',
+    '28',
+    '28',
+    'Close'
+  );
 
-  // Add close image to close button
-  closeButton.appendChild(closeImage);
-
-  // Add input, submit button to inputButtonDiv
-  inputButtonDiv.append(titleInput, submitButton);
-
-  // Add label, inputButtonDiv and closeButton to form
-  form.append(titleLabel, inputButtonDiv, closeButton);
-
-  // Add form, modal to parent elements
   modal.appendChild(form);
-  content.appendChild(modal);
-
   modal.showModal();
 
   return { modal, form, submitButton, closeButton };
