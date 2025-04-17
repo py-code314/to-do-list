@@ -56,3 +56,4 @@ export function addTaskToProject() {
 }
 
 taskList.addEventListener('tasksUpdated', addTaskToProject);
+projects.addEventListener('projectsUpdated', addTaskToProject);
