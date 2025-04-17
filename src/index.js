@@ -25,7 +25,7 @@ import { addToLocalStorage } from './scripts/storage-utils';
 import { restoreTasksFromLocalStorage } from './scripts/storage-utils';
 import { deleteTask } from './scripts/delete-task';
 import { displayEditTaskForm } from './scripts/task-edit-form';
-import { showNewProjectForm } from './scripts/new-project';
+import { showNewProjectForm } from './scripts/project-display';
 
 import { tasks } from './scripts/new-task';
 import { displayTaskDetails } from './scripts/task-details';

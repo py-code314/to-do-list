@@ -1,6 +1,6 @@
 // Import data
 import { tasks } from './new-task';
-import { categories } from './new-project';
+import { categories } from './project-handler';
 
 // Get elements from DOM
 const taskList = document.querySelector('#task-list');
@@ -61,16 +61,15 @@ export function restoreProjectsFromLocalStorage() {
     // Check for the presence of categories in Local Storage
     if (storedCategories.length) {
       categories.push(...storedCategories);
-
       projects.dispatchEvent(new CustomEvent('projectsUpdated'));
     }
   }
 }
 
-// Event Listeners 
+// Event Listeners
 taskList.addEventListener('tasksUpdated', saveTasksToLocalStorage);
 projects.addEventListener('projectsUpdated', saveProjectsToLocalStorage);
 
-// Restore data from Local Storage on page load 
+// Restore data from Local Storage on page load
 restoreTasksFromLocalStorage();
 restoreProjectsFromLocalStorage();

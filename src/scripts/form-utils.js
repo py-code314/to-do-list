@@ -1,5 +1,5 @@
 // Import data and functions
-import { categories } from './new-project';
+import { categories } from './project-handler';
 import { format } from 'date-fns';
 import {
   createContainer,
