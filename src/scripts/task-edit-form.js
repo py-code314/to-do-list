@@ -1,12 +1,14 @@
+// Import data and functions
 import { tasks } from './new-task';
 import { generateTaskForm } from './form-utils';
+import { createInput } from './dom-utils';
 
-// Show Edit Form with prefilled values
-export function displayEditTaskForm(id) {
-  // Get current task by matching id
-  let currentTask = tasks.filter((task) => task.id === id);
-  currentTask = currentTask[0];
 
+export function displayEditTaskForm(taskId) {
+  // Find the current task by matching the id
+  const currentTask = tasks.find((task) => task.id === taskId);
+
+  // Generate task form to edit
   const {
     modal,
     taskForm,
@@ -26,15 +28,8 @@ export function displayEditTaskForm(id) {
     notesValue: currentTask.notes,
   });
 
-  // Create hidden input field to store task id
-  const idInput = Object.assign(document.createElement('input'), {
-    type: 'hidden',
-    name: 'id',
-    value: id,
-  });
-
-  // Add idInput to taskForm
-  taskForm.appendChild(idInput);
+  // Add hidden input to store task id
+  createInput(taskForm, '', '', 'hidden', 'id', taskId);
 
   return {
     modal,
