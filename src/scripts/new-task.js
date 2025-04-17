@@ -43,7 +43,7 @@ tasks.push(task1);
 const task2 = new NewTask({
   title: 'try a new recipe',
   description: 'new chicken recipe',
-  dueDate: '2025-04-16',
+  dueDate: '2025-04-18',
   priority: 'low',
   status: 'incomplete',
   category: 'Inbox',
