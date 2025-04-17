@@ -5,6 +5,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
+  /* Spacing */
   --space-40: 0.25rem;
   --space-80: 0.5rem;
   --space-200: 0.75rem;
@@ -16,29 +17,34 @@
   --width-dialog-lg: 40.625rem;
   --width-dialog-sm: 25rem;
 
+  /* FONTS */
+
+  /* Font family */
   --ff-baskerville: 'Libre Baskerville', serif;
   --ff-montserrat: 'Montserrat', sans-serif;
 
+  /* Font sizes */
   --fs-400: 1rem;
   --fs-600: 1.25rem;
+
+  /* Font weights */
   --fw-medium: 500;
   --fw-bold: 700;
 
-
+  /* Colors */
   --clr-white: hsl(0, 0%, 100%);
-  --clr-tea-green: #c9e4ca;
   --clr-black: hsl(0, 0%, 0%);
-  --clr-charcoal: #364958;
+  --clr-tea-green: hsl(122, 33%, 84%);
+  --clr-charcoal: hsl(206, 24%, 28%);
   --clr-blue-munsell: #55828b;
   --clr-red: hsl(0, 100%, 50%);
   --clr-light-red: hsl(6, 77%, 74%);
   --clr-light-orange: hsl(37, 91%, 71%);
   --clr-light-blue: hsl(204, 70%, 72%);
-  --clr-very-light-green: hsl(120, 29%, 93%);
-  --clr-teal: hsl(180, 100%, 25%);
   --clr-blue: rgb(11, 124, 215);
-  /* --clr-blue: #3e5fcc; */
+  --clr-teal: hsl(180, 100%, 25%);
 
+  /* Utilities */
   --shadow-1: 3px 0px 5px 0px hsla(0, 0%, 0%, 0.75);
   --shadow-2: 5px 5px 10px hsla(0, 0%, 0%, 0.5);
   --radius-1: 0.3125rem;
@@ -110,18 +116,9 @@ ul {
   list-style-type: none;
 }
 
-.flex-ai-center {
-  display: flex;
-  align-items: center;
-  gap: var(--space-80);
-}
+/* END OF RESET */
 
-.flex-col {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-900);
-}
-
+/* Use grid for layout */
 body {
   padding: var(--space-400);
   display: grid;
@@ -134,6 +131,7 @@ body {
   height: 100vh;
 }
 
+/* Header styles */
 .header {
   grid-area: header;
   padding: var(--space-400) var(--space-900);
@@ -143,6 +141,7 @@ body {
   color: var(--clr-white);
 }
 
+/* Fixed sidebar with column layout */
 .sidebar {
   grid-area: sidebar;
   display: flex;
@@ -155,6 +154,7 @@ body {
   height: 90vh;
 }
 
+/* Sidebar navigation */
 .to-dos {
   display: flex;
   flex-direction: column;
@@ -163,6 +163,7 @@ body {
   padding-inline-start: var(--space-80);
 }
 
+/* Scrollable main content */
 .main {
   grid-area: main;
   padding: var(--space-400);
@@ -170,6 +171,7 @@ body {
   background-color: var(--clr-blue-munsell);
 }
 
+/* Profile styles */
 .profile {
   display: flex;
   align-items: center;
@@ -187,6 +189,7 @@ body {
   font-weight: var(--fw-medium);
 }
 
+/* Styles for action buttons */
 .action {
   display: flex;
   flex-direction: column;
@@ -203,6 +206,7 @@ body {
 }
 
 .button--action {
+  font-weight: var(--fw-medium);
   width: 100%;
   padding-inline-start: var(--space-80);
   border-radius: var(--radius-1);
@@ -212,6 +216,7 @@ body {
   background-color: var(--clr-blue-munsell);
 }
 
+/* Scrollable project list */
 .projects {
   display: flex;
   flex-direction: column;
@@ -220,6 +225,7 @@ body {
   overflow-y: auto;
 }
 
+/* Project styles */
 .project__header {
   display: flex;
   align-items: center;
@@ -241,8 +247,15 @@ body {
   padding-inline-start: var(--space-40);
 }
 
+/* Styles for new project button */
 .new-project {
   padding: 0 var(--space-80);
+}
+
+.project__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .button--new-project {
@@ -256,12 +269,13 @@ body {
   border-radius: var(--radius-1);
 }
 
+/* Styles for main content */
 .content {
   display: flex;
   gap: var(--space-900);
-  
 }
 
+/* Styles for task list */
 .tasks {
   display: flex;
   flex-direction: column;
@@ -269,10 +283,10 @@ body {
   width: 45%;
 }
 
+/* Styles for task details */
 .details {
   width: 55%;
 }
-
 
 /* Styles for dialog modal */
 .modal {
@@ -282,7 +296,7 @@ body {
   border-radius: var(--radius-2);
   box-shadow: var(--shadow-2);
   padding: var(--space-1100);
-  /* Place dialog in center of screen */
+  /* Place dialog in the center of screen */
   position: fixed;
   top: 50%;
   left: 50%;
@@ -336,7 +350,7 @@ body {
   color: var(--clr-blue);
 }
 
-/* Place Close button at top right corner */
+/* Place close button at top right corner */
 .button--close {
   position: absolute;
   top: 0;
@@ -347,7 +361,7 @@ body {
   border: transparent;
 }
 
-/* Styles for Form Inputs */
+/* Styles for form inputs */
 .form__content {
   display: flex;
   flex-direction: column;
@@ -381,11 +395,13 @@ body {
   width: 65%;
 }
 
+/* Invalid input styles */
 .form__input:user-invalid {
   border: none;
   outline: 2px solid red;
 }
 
+/* Style radio buttons into checkboxes */
 .form__input--radio,
 .task__input {
   appearance: none;
@@ -397,8 +413,7 @@ body {
   transition: background-color 0.2s ease-in;
 }
 
-
-
+/* Custom checked styles */
 .form__input--radio:checked,
 .task__input:checked {
   background-color: var(--clr-teal);
@@ -406,6 +421,7 @@ body {
   padding: 2px;
 }
 
+/* Styles for completed tasks */
 .task__input:checked + .task__title {
   text-decoration: line-through;
 }
@@ -447,6 +463,7 @@ body {
   margin-block-start: var(--space-300);
 }
 
+/* Styles for form buttons */
 .button--cancel,
 .button--submit {
   padding: var(--space-40) var(--space-80);
@@ -459,6 +476,7 @@ body {
   background-color: var(--clr-blue);
 }
 
+/* Styles for tasks */
 .task {
   padding: var(--space-300);
   display: flex;
@@ -499,6 +517,7 @@ body {
   font-style: italic;
 }
 
+/* Styles for task buttons */
 .button--edit,
 .button--delete,
 .button--details {
@@ -512,21 +531,4 @@ body {
   visibility: visible;
 }
 
-/* New project styles */
-.new-project {
-  position: relative;
-}
 
-
-.new-project__form {
-  position: absolute;
-  top: -60px;
-  left: 0;
-}
-
-/* Styles for project title and button container */
-.project__container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
