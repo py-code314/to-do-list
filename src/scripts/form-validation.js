@@ -1,5 +1,6 @@
-// Using Constraint Validation API
+/* Using Constraint Validation API */
 
+/* Validate if the title input field is empty */
 export function validateTitleInput(titleInput, titleError) {
   if (titleInput.validity.valueMissing) {
     titleError.textContent = 'Title must not be empty';
@@ -8,6 +9,7 @@ export function validateTitleInput(titleInput, titleError) {
   }
 }
 
+/* Validate if the due date input field is empty */
 export function validateDueDateInput(dueDateInput, dueDateError) {
   if (dueDateInput.validity.valueMissing) {
     dueDateError.textContent = 'Please select a date';
@@ -16,6 +18,7 @@ export function validateDueDateInput(dueDateInput, dueDateError) {
   }
 }
 
+/* Validate form before submitting */
 export function validateForm(
   titleInput,
   dueDateInput,

@@ -21,8 +21,8 @@ import {
 } from './scripts/form-validation';
 import { createOrUpdateTask } from './scripts/task-utils';
 import { displayTask } from './scripts/task-display';
-import { addToLocalStorage } from './scripts/local-storage';
-import { restoreFromLocalStorage } from './scripts/local-storage';
+import { addToLocalStorage } from './scripts/storage-utils';
+import { restoreTasksFromLocalStorage } from './scripts/storage-utils';
 import { deleteTask } from './scripts/delete-task';
 import { displayEditTaskForm } from './scripts/task-edit-form';
 import { showNewProjectForm } from './scripts/new-project';
@@ -74,7 +74,7 @@ addTaskButton.addEventListener('click', () => {
   });
 });
 
-restoreFromLocalStorage();
+// restoreTasksFromLocalStorage();
 
 // Event delegation
 taskList.addEventListener('click', (event) => {

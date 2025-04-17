@@ -164,7 +164,7 @@ export function generateTaskForm({
     'form__control'
   );
 
-  const priorityLegend = createLabel(
+  const priorityLegend = createLegend(
     priorityFieldset,
     'form__legend',
     '',
@@ -316,8 +316,6 @@ export function generateTaskForm({
   );
 
   modal.appendChild(taskForm);
-  content.appendChild(modal);
-
   modal.showModal();
 
   return {

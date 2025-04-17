@@ -137,33 +137,7 @@ function displayProjects() {
   }
 }
 
-projects.addEventListener('projectsUpdated', addProjectsToLocalStorage);
 
-// Add all Projects to Local storage
-export function addProjectsToLocalStorage() {
-  const categoriesToStore = [...categories].slice(1);
-
-  localStorage.setItem('categories', JSON.stringify(categoriesToStore));
-}
-
-// Retrieve all Projects from Local storage
-export function restoreProjectsFromLocalStorage() {
-  /* Check for the presence of Projects object in Local Storage 
-  to avoid localStorage = null error */
-  const storedCategoriesData = localStorage.getItem('categories');
-
-  if (storedCategoriesData) {
-    const storedCategories = JSON.parse(localStorage.getItem('categories'));
-
-    if (storedCategories.length) {
-      categories.push(...storedCategories);
-
-      projects.dispatchEvent(new CustomEvent('projectsUpdated'));
-    }
-  }
-}
-
-restoreProjectsFromLocalStorage();
 
 projects.addEventListener('click', (event) => {
   if (event.target.parentNode.id === 'removeButton') {
