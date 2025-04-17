@@ -21,13 +21,13 @@ action.addEventListener('click', (event) => {
 
   // Reset background color of all buttons
   actionButtons.forEach((button) => {
-    button.style.backgroundColor = 'var(--clr-light-grey)';
+    button.style.backgroundColor = 'var(--clr-tea-green)';
   });
 
   // Update current view
   currentView = buttonId;
   // Update background color of clicked button
-  button.backgroundColor = 'var(--clr-grey)';
+  button.backgroundColor = 'var(--clr-blue-munsell)';
 
   switch (buttonId) {
     case 'today':

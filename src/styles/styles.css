@@ -21,22 +21,23 @@
 
   --fs-400: 1rem;
   --fs-600: 1.25rem;
-
   --fw-medium: 500;
   --fw-bold: 700;
 
+
   --clr-white: hsl(0, 0%, 100%);
-  --clr-light-grey: hsl(220, 16%, 96%);
+  --clr-tea-green: #c9e4ca;
   --clr-black: hsl(0, 0%, 0%);
-  --clr-dark-grey: hsl(226, 46%, 20%);
-  --clr-grey: hsl(229, 22%, 65%);
+  --clr-charcoal: #364958;
+  --clr-blue-munsell: #55828b;
   --clr-red: hsl(0, 100%, 50%);
   --clr-light-red: hsl(6, 77%, 74%);
   --clr-light-orange: hsl(37, 91%, 71%);
   --clr-light-blue: hsl(204, 70%, 72%);
   --clr-very-light-green: hsl(120, 29%, 93%);
   --clr-teal: hsl(180, 100%, 25%);
-  --clr-blue: #3e5fcc;
+  --clr-blue: rgb(11, 124, 215);
+  /* --clr-blue: #3e5fcc; */
 
   --shadow-1: 3px 0px 5px 0px hsla(0, 0%, 0%, 0.75);
   --shadow-2: 5px 5px 10px hsla(0, 0%, 0%, 0.5);
@@ -147,7 +148,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: var(--space-80);
-  background-color: var(--clr-light-grey);
+  background-color: var(--clr-tea-green);
   padding: var(--space-400);
   box-shadow: var(--shadow-1);
   position: sticky;
@@ -166,7 +167,7 @@ body {
   grid-area: main;
   padding: var(--space-400);
   overflow-y: auto;
-  background-color: var(--clr-grey);
+  background-color: var(--clr-blue-munsell);
 }
 
 .profile {
@@ -196,7 +197,7 @@ body {
   align-items: center;
   gap: var(--space-80);
   border: transparent;
-  background-color: var(--clr-light-grey);
+  background-color: var(--clr-tea-green);
   padding: var(--space-40) 0;
   cursor: pointer;
 }
@@ -208,7 +209,7 @@ body {
 }
 
 .button--action:hover {
-  background-color: var(--clr-grey);
+  background-color: var(--clr-blue-munsell);
 }
 
 .projects {
@@ -451,7 +452,7 @@ body {
   padding: var(--space-40) var(--space-80);
   font-weight: var(--fw-medium);
   color: var(--clr-white);
-  background-color: var(--clr-dark-grey);
+  background-color: var(--clr-charcoal);
 }
 
 .button--submit {

@@ -1,13 +1,9 @@
-// class to create a new to-do object
-// Convert task id to int because Edit Task id is a string
-// Default id for New Task is a number
-
+// Import date functions
+const { format } = require('date-fns');
+// Initialize tasks
 export let tasks = [];
 
-const {
-  format
-} = require('date-fns');
-
+/* Task constructor */
 export class NewTask {
   constructor({
     title,
@@ -26,11 +22,11 @@ export class NewTask {
     this.status = status;
     this.category = category;
     this.notes = notes;
-
     this.id = parseInt(id) || Date.now();
   }
 }
 
+/* Add tasks to tasks array */
 const task1 = new NewTask({
   title: 'get milk',
   description: 'get whole milk',
