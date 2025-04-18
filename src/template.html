@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>To-Do List</title>
   </head>
+
   <body>
+    <!-- HEADER -->
     <header class="header">
       <h1 class="header__title">Taskly</h1>
     </header>
+
+    <!-- SIDEBAR -->
     <aside class="sidebar">
       <div class="to-dos">
+
+        <!-- Profile -->
         <div class="profile">
           <img
             class="profile__image"
@@ -20,7 +27,11 @@
             height="30" />
           <p class="profile__name">Username</p>
         </div>
+
+        <!-- Action buttons -->
         <ul class="action">
+
+          <!-- Add task -->
           <li class="action__item">
             <button id="addTask" class="button button--action" type="button">
               <img
@@ -32,6 +43,8 @@
               Add Task
             </button>
           </li>
+
+          <!-- Search -->
           <li class="action__item">
             <button id="search" class="button button--action" type="button">
               <img
@@ -43,6 +56,8 @@
               Search
             </button>
           </li>
+
+          <!-- Inbox -->
           <li class="action__item">
             <button id="inbox" class="button button--action" type="button">
               <img
@@ -54,6 +69,8 @@
               Inbox
             </button>
           </li>
+
+          <!-- Today -->
           <li class="action__item">
             <button id="today" class="button button--action" type="button">
               <img
@@ -65,21 +82,26 @@
               Today
             </button>
           </li>
+
+          <!-- Tomorrow -->
           <li class="action__item">
             <button id="tomorrow" class="button button--action" type="button">
-              <!-- <div class="profile__image-container"> -->
-                <img
-                  class="action__image"
-                  src="./assets/images/icon-tomorrow.svg"
-                  alt=""
-                  width="18"
-                  height="18" />
-              <!-- </div> -->
+              <img
+                class="action__image"
+                src="./assets/images/icon-tomorrow.svg"
+                alt=""
+                width="18"
+                height="18" />
               Tomorrow
             </button>
           </li>
+
+          <!-- Next 7 days -->
           <li class="action__item">
-            <button id="next-7-days" class="button button--action" type="button">
+            <button
+              id="next-7-days"
+              class="button button--action"
+              type="button">
               <img
                 class="action__image"
                 src="./assets/images/icon-7-days.svg"
@@ -89,6 +111,8 @@
               Next 7 days
             </button>
           </li>
+
+          <!-- Completed -->
           <li class="action__item">
             <button id="completed" class="button button--action" type="button">
               <img
@@ -100,6 +124,8 @@
               Completed
             </button>
           </li>
+
+          <!-- All tasks -->
           <li class="action__item">
             <button id="all-tasks" class="button button--action" type="button">
               <img
@@ -112,13 +138,14 @@
             </button>
           </li>
         </ul>
-        <div id="projects" class="projects">
-          
-        </div>
+
+        <!-- Projects -->
+        <div id="projects" class="projects"></div>
       </div>
 
       <hr />
 
+      <!-- New project -->
       <div id="new-project" class="new-project">
         <button id="new-project-button" class="button button--new-project">
           <img
@@ -133,7 +160,11 @@
     </aside>
     <main class="main">
       <div id="content" class="content">
+
+        <!-- Tasks -->
         <ul id="task-list" class="tasks"></ul>
+
+        <!-- Task details -->
         <div id="task-details" class="details"></div>
       </div>
     </main>
