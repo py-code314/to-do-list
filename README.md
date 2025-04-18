@@ -15,7 +15,7 @@ This is a solution for the [Todo List project on The Odin Project](https://www.t
 
 ## Overview
 
-This Todo List project is a simple productivity application that helps users manage tasks efficiently. The core functionality allows users to add, remove, and mark tasks as completed. Buttons in the sidebar help users navigate to different sections of the app. Edit, Delete and Details buttons can be seen when hovered over a task to perform the respective actions. Use 'New List' button to create a new list/project.
+This Todo List project is a simple productivity application that helps users manage tasks efficiently. The core functionality allows users to add, remove, and mark tasks as completed. Buttons in the sidebar help users navigate to different sections of the app. Edit, Delete and Details buttons can be seen when hovered over a task to perform the respective actions. Use 'New List' button to create a new list/project. Search feature is limited to case insensitive title search only.
 
 ### Key Features
 

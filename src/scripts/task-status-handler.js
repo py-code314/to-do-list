@@ -1,5 +1,6 @@
 // Import data
 import { tasks } from './new-task';
+
 // Get elements from DOM
 const taskList = document.querySelector('#task-list');
 const projects = document.querySelector('#projects');
@@ -13,7 +14,7 @@ function updateTaskStatus(id) {
   taskList.dispatchEvent(new CustomEvent('tasksUpdated'));
 }
 
-// Event listeners for click on checkbox
+/* Event listeners for click on checkbox */
 taskList.addEventListener('click', (event) => {
   const checkbox = event.target;
   if (checkbox.classList.contains('task__input')) {

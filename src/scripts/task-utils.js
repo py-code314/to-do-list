@@ -1,5 +1,6 @@
 // Import data
 import { NewTask, tasks } from './new-task';
+
 // Get elements from DOM
 const taskList = document.querySelector('#task-list');
 

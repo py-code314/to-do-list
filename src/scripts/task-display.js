@@ -9,16 +9,16 @@ import {
   createParagraph,
   createTime,
 } from './dom-utils';
+const { format, isTomorrow, parseISO } = require('date-fns');
 
 // Import images
 import editIcon from '../assets/images/icon-edit.svg';
 import deleteIcon from '../assets/images/icon-delete.svg';
 import expandIcon from '../assets/images/icon-expand.svg';
 
-// Import date functions
-const { format, isTomorrow, parseISO } = require('date-fns');
 // Get elements from DOM
 const taskList = document.querySelector('#task-list');
+
 // Create priorities array
 const priorities = [
   { value: 'low', color: 'var(--clr-light-blue' },
@@ -69,7 +69,6 @@ export function displayTask(tasks) {
     );
 
     const buttons = createContainer(titleButtons, 'div', '', 'task__div');
-
 
     const editButton = createButton(
       buttons,
@@ -126,12 +125,7 @@ export function displayTask(tasks) {
       'task__wrapper'
     );
 
-    const dateCategory = createContainer(
-      taskDetails,
-      'div',
-      '',
-      'task__div'
-    );
+    const dateCategory = createContainer(taskDetails, 'div', '', 'task__div');
 
     // Create date and category
     const dueDate = createTime(
@@ -140,7 +134,6 @@ export function displayTask(tasks) {
       formatTaskDueDate(task.dueDate, task.status),
       task.dueDate
     );
-
 
     const category = createParagraph(
       dateCategory,
@@ -175,6 +168,7 @@ export function displayTask(tasks) {
 }
 
 /* Format the due date of a task based on its status */
+/* Use parseISO to account for time zone differences */
 function formatTaskDueDate(dueDate, status) {
   if (status === 'incomplete') {
     const today = format(new Date(), 'yyyy-MM-dd');

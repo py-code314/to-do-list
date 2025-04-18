@@ -1,4 +1,3 @@
-
 // Get html elements
 const projects = document.querySelector('#projects');
 const taskList = document.querySelector('#task-list');
@@ -38,7 +37,7 @@ function deleteProject(projectId) {
   taskList.dispatchEvent(new CustomEvent('tasksUpdated'));
 }
 
-// Event listener to remove project
+/* Event listener to remove project */
 projects.addEventListener('click', (event) => {
   const button = event.target.parentNode;
   if (button.id === 'removeButton') {

@@ -6,9 +6,7 @@ import { displayTask } from './task-display';
 // Get HTML elements
 const action = document.querySelector('.action');
 
-/**
- * Displays a search form  */
-
+/* Displays a search form  */
 function showSearchForm() {
   const { modal, form, closeButton } = generateForm({ labelValue: 'Search' });
   return { modal, form, closeButton };
@@ -22,6 +20,7 @@ export function displaySearchResults(inputValue) {
   displayTask(searchResults);
 }
 
+/* Event listeners for search button and form*/
 action.addEventListener('click', (event) => {
   // Show search form
   if (event.target.id === 'search') {

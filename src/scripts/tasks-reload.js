@@ -20,8 +20,8 @@ const searchButton = document.querySelector('#search');
 const addTaskButton = document.querySelector('#addTask');
 const taskList = document.querySelector('#task-list');
 
+/* Reload tasks based on current view */
 taskList.addEventListener('tasksUpdated', () => {
-  // Update the correct view based on currentView
   switch (currentView) {
     case 'today':
       todayButton.style.backgroundColor = 'var(--clr-blue-munsell)';

@@ -14,6 +14,7 @@ export function saveTasksToLocalStorage() {
     'make a study playlist',
     'meditate for 5 min',
   ];
+  // Get all task titles
   const storedTaskTitles = tasks.map((task) => task.title);
 
   // Exclude default tasks
@@ -55,9 +56,11 @@ export function saveProjectsToLocalStorage() {
 /* Retrieves projects from local storage and adds them to the categories array */
 export function restoreProjectsFromLocalStorage() {
   const storedCategoriesData = localStorage.getItem('categories');
+
   // Check for the presence of categories object in Local Storage
   if (storedCategoriesData) {
     const storedCategories = JSON.parse(localStorage.getItem('categories'));
+
     // Check for the presence of categories in Local Storage
     if (storedCategories.length) {
       categories.push(...storedCategories);
@@ -66,10 +69,10 @@ export function restoreProjectsFromLocalStorage() {
   }
 }
 
-// Event Listeners
+/* Event Listeners */
 taskList.addEventListener('tasksUpdated', saveTasksToLocalStorage);
 projects.addEventListener('projectsUpdated', saveProjectsToLocalStorage);
 
-// Restore data from Local Storage on page load
+// Restore data from local storage on page load
 restoreTasksFromLocalStorage();
 restoreProjectsFromLocalStorage();

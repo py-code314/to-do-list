@@ -3,12 +3,12 @@ import { tasks } from './new-task';
 import { generateTaskForm } from './form-utils';
 import { createInput } from './dom-utils';
 
-
+/* Displays a form for editing a task */
 export function displayEditTaskForm(taskId) {
   // Find the current task by matching the id
   const currentTask = tasks.find((task) => task.id === taskId);
 
-  // Generate task form to edit
+  // Populate task form with current task data to edit
   const {
     modal,
     taskForm,

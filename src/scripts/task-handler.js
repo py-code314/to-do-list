@@ -8,7 +8,7 @@ import { displayTaskDetails } from "./task-details";
 // Get HTML elements
 const taskList = document.querySelector('#task-list');
 
-// Event delegation
+/* Event delegation */
 taskList.addEventListener('click', (event) => {
   const button = event.target.parentNode;
 
@@ -26,6 +26,7 @@ taskList.addEventListener('click', (event) => {
       cancelButton,
     } = displayEditTaskForm(parseInt(button.value));
 
+    // Close form
     cancelButton.addEventListener('click', () => {
       modal.close();
     });
@@ -39,9 +40,11 @@ taskList.addEventListener('click', (event) => {
     dueDateInput.addEventListener('input', () => {
       validateDueDateInput(dueDateInput, dueDateError);
     });
+
+    // Validate form on submit
     taskForm.addEventListener('submit', (event) => {
       event.preventDefault();
-      // Validate form on submit
+
       const isFormValid = validateForm(
         titleInput,
         dueDateInput,
