@@ -94,7 +94,6 @@ export function generateTaskForm({
     'title',
     titleValue
   );
-
   titleInput.required = true;
   titleInput.autofocus = true;
 
@@ -299,7 +298,6 @@ export function generateTaskForm({
   notesField.appendChild(notesTextarea);
 
   // Create form footer and buttons inside
-
   const formFooter = createContainer(formContent, 'footer', '', 'form__footer');
 
   const cancelButton = createButton(
@@ -310,6 +308,7 @@ export function generateTaskForm({
     'cancel',
     'Cancel'
   );
+  
   const submitButton = createButton(
     formFooter,
     'submit',

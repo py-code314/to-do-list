@@ -34,7 +34,7 @@ This Todo List project is a simple productivity application that helps users man
 ### Links
 
 - Solution URL: [https://github.com/py-code314/to-do-list](https://github.com/py-code314/to-do-list)
-- Live Site URL: []()
+- Live Site URL: [ https://py-code314.github.io/to-do-list/]( https://py-code314.github.io/to-do-list/)
 
 
 

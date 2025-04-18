@@ -1,3 +1,5 @@
+/* CREATE DOM ELEMENTS */
+
 /* Creates a container element */
 export const createContainer = (parent, name, id, className) => {
   const element = document.createElement(name);
@@ -64,7 +66,15 @@ export const createButton = (parent, id, className, type, value, text) => {
 };
 
 /* Creates an image element */
-export const createImage = (parent, className, src, alt, width, height, title) => {
+export const createImage = (
+  parent,
+  className,
+  src,
+  alt,
+  width,
+  height,
+  title
+) => {
   const image = document.createElement('img');
   image.className = className;
   image.src = src;
@@ -76,6 +86,7 @@ export const createImage = (parent, className, src, alt, width, height, title) =
   return image;
 };
 
+/* Creates a p element */
 export const createParagraph = (parent, className, text) => {
   const paragraph = document.createElement('p');
   paragraph.className = className;
@@ -84,11 +95,12 @@ export const createParagraph = (parent, className, text) => {
   return paragraph;
 };
 
-export const createTime = (parent, className, text, dateTime) => {  
+/* Creates a <time> element and appends it to the given parent element */
+export const createTime = (parent, className, text, dateTime) => {
   const time = document.createElement('time');
   time.className = className;
   time.textContent = text;
   time.dateTime = dateTime;
   parent.appendChild(time);
   return time;
-};  
+};

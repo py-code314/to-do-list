@@ -15,6 +15,7 @@ const actionButtons = document.querySelectorAll('.button--action');
 // Initialize current view
 export let currentView = 'today';
 
+/* Event listener for click on action buttons */
 action.addEventListener('click', (event) => {
   const buttonId = event.target.id;
   const button = event.target.style;
@@ -29,6 +30,7 @@ action.addEventListener('click', (event) => {
   // Update background color of clicked button
   button.backgroundColor = 'var(--clr-blue-munsell)';
 
+  // Update view
   switch (buttonId) {
     case 'today':
       displayTodayTasks();

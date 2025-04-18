@@ -10,7 +10,7 @@ import { createOrUpdateTask } from './task-utils';
 // Get elements from DOM
 const addTaskButton = document.querySelector('#addTask');
 
-// Event listeners
+/* Event listeners for creating a new task */
 addTaskButton.addEventListener('click', () => {
   // Display new task form
   const {
@@ -32,10 +32,12 @@ addTaskButton.addEventListener('click', () => {
   titleInput.addEventListener('input', () => {
     validateTitleInput(titleInput, titleError);
   }); 
+
   // Validate date input
   dueDateInput.addEventListener('input', () => {
     validateDueDateInput(dueDateInput, dueDateError);
   });
+  
   // Submit form
   taskForm.addEventListener('submit', (event) => {
     event.preventDefault();

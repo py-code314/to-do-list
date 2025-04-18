@@ -4,6 +4,7 @@ import './styles/styles.css';
 // import JS modules
 import './scripts/filter-buttons';
 import './scripts/form-handler'
+import './scripts/new-project';
 import './scripts/project-display'
 import './scripts/project-handler'
 import './scripts/project-task-handler'

@@ -13,7 +13,7 @@ const {
 
 /* Displays all incomplete tasks with category Inbox */
 export function displayInboxTasks() {
-  // Filter tasks with category Inbox
+  // Filter tasks with category Inbox and incomplete status
   const inboxTasks = tasks.filter(
     (task) => task.category === 'Inbox' && task.status === 'incomplete'
   );

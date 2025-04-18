@@ -1,4 +1,4 @@
-/* Using Constraint Validation API */
+/* USING CONSTRAINT VALIDATION API */
 
 /* Validate if the title input field is empty */
 export function validateTitleInput(titleInput, titleError) {

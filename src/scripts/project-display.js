@@ -1,8 +1,5 @@
 // Import data and functions
-
-import { generateForm } from './form-utils';
-import { categories, createNewProject } from './project-handler';
-// import { saveProjectsToLocalStorage } from './storage-utils';
+import { categories } from './project-handler';
 import { createContainer, createImage, createButton } from './dom-utils';
 
 // Import Images
@@ -11,28 +8,16 @@ import removeIcon from '../assets/images/icon-remove.svg';
 
 // Get html elements
 const projects = document.querySelector('#projects');
-// const taskList = document.querySelector('#task-list');
-const newProjectButton = document.querySelector('#new-project-button');
-
-// Initialize categories
-// export let categories = [{ id: 'Inbox', value: 'Inbox', text: 'Inbox' }];
-
-/* Generates a form for creating a new project */
-export function showNewProjectForm() {
-  const { modal, form, submitButton, closeButton } = generateForm({
-    labelValue: 'New Project',
-  });
-
-  return { modal, form, submitButton, closeButton };
-}
 
 /* Displays all projects in the projects container */
 function displayProject() {
   projects.textContent = '';
 
   for (const category of categories.slice(1)) {
+    // Create project
     const project = createContainer(projects, 'div', '', 'project');
 
+    // Create project title and remove button
     const titleButtonContainer = createContainer(
       project,
       'div',
@@ -83,6 +68,7 @@ function displayProject() {
       'Delete'
     );
 
+    // Create container for tasks
     const projectList = createContainer(
       project,
       'ul',
@@ -91,23 +77,6 @@ function displayProject() {
     );
   }
 }
-
-// Event Listeners
-newProjectButton.addEventListener('click', () => {
-  // Show form
-  const { modal, form, closeButton } = showNewProjectForm();
-
-  // Close form
-  closeButton.addEventListener('click', () => modal.close());
-
-  // Submit form
-  form.addEventListener('submit', (event) => {
-    event.preventDefault();
-    modal.close();
-    // Create new project
-    createNewProject(form);
-  });
-});
 
 projects.addEventListener('projectsUpdated', () => displayProject());
 

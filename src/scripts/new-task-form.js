@@ -1,7 +1,7 @@
-/* Show Form when user clicks Add Task button */
-
+// Import functions
 import { generateTaskForm } from './form-utils';
 
+/* Displays a form for creating a new task */
 export function displayNewTaskForm() {
   const {
     modal,
